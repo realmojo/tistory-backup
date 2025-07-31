@@ -1,0 +1,142 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>shadcn 프레임워크를 이용한 react next js 전체적인 폴더구조</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      shadcn 프레임워크를 이용한 react next js 전체적인 폴더구조
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2025-04-20 01:13:39</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    Next.js (App Router)에서 app/page.tsx는 루트 URL(/)에
+                    해당하는 페이지입니다.<br />이 페이지에서 별도의 설정 없이도
+                    app/layout.tsx에 정의된 Header, Footer, 그리고 ThemeProvider
+                    등은 <b>자동으로 적용됩니다.</b>
+                  </p>
+                  <p data-ke-size="size16">
+                    즉, layout.tsx는 상위 <b>루트 레이아웃</b>이고, page.tsx는
+                    그 안에 <b>children</b>으로 포함되므로, page.tsx는 오직
+                    <b>메인 콘텐츠만</b> 넣어주면 됩니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 최종 동작 흐름</h2>
+                  <pre class="dust"><code>layout.tsx
+ └── &lt;Header /&gt;
+ └── &lt;main&gt;{children}&lt;/main&gt; &larr; 여기로 page.tsx의 컴포넌트가 렌더링됨
+ └── &lt;Footer /&gt;
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ✅ app/page.tsx 예시 (레이아웃 자동 포함됨)
+                  </h2>
+                  <pre
+                    class="javascript"
+                  ><code>import Container from '@/components/layout/Container'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+export default function HomePage() {
+  return (
+    &lt;Container&gt;
+      &lt;Card&gt;
+        &lt;CardHeader&gt;
+          &lt;CardTitle&gt;Welcome to MyApp&lt;/CardTitle&gt;
+        &lt;/CardHeader&gt;
+        &lt;CardContent&gt;
+          &lt;p&gt;This is the home page using shadcn/ui and Next.js App Router.&lt;/p&gt;
+        &lt;/CardContent&gt;
+      &lt;/Card&gt;
+    &lt;/Container&gt;
+  )
+}
+</code></pre>
+                  <h3 data-ke-size="size23">
+                    ✅ 위 파일만으로도 layout.tsx의 Header/Footer 포함된 전체
+                    페이지가 자동으로 구성됩니다.
+                  </h3>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ❗️주의사항 (레이아웃 적용 안 될 수 있는 경우)
+                  </h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      layout.tsx가 <b>존재하지 않거나</b> children을 렌더링하지
+                      않는 경우
+                    </li>
+                    <li>
+                      app/page.tsx가
+                      <b
+                        >Client Component인데, layout.tsx는 Server Component일
+                        때</b
+                      >
+                      hydration mismatch
+                    </li>
+                    <li>
+                      폴더가 app이 아니라 pages 디렉터리 구조를 사용하는 경우
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 테스트 방법</h2>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      Header, Footer에 console.log("Header loaded") 같은 로그
+                      넣기
+                    </li>
+                    <li>브라우저에서 / 접속</li>
+                    <li>
+                      로그가 정상 출력되면 layout.tsx &rarr; page.tsx 연결 완료
+                    </li>
+                  </ol>
+                  <hr data-ke-style="style1" />
+                  <p data-ke-size="size16">
+                    원한다면 /about, /contact 등도 라우트 구조로 만들어서 같은
+                    레이아웃을 공유하도록 확장할 수 있어요. 원리도 동일합니다:
+                  </p>
+                  <pre class="stylus"><code>app/
+├── layout.tsx
+├── page.tsx
+├── about/
+│   └── page.tsx
+├── contact/
+│   └── page.tsx
+</code></pre>
+                  <p data-ke-size="size16">
+                    각 page.tsx는 레이아웃의 children 자리에 자동 삽입됩니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <p data-ke-size="size16">
+                    필요하시면 layout.tsx에 <b>서브 레이아웃 구분</b>, 다크모드
+                    토글, 모바일 대응 등까지도 확장해서 도와드릴게요.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

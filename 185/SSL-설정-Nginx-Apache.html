@@ -1,0 +1,45 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>SSL 설정 Nginx, Apache</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">SSL 설정 Nginx, Apache</h2>
+                                <div class="box-info">
+                                    <p class="category">Web 프로그래밍/Unix & Linux</p>
+                                    <p class="date">2017-07-25 00:42:31</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><b><span style="font-size: 36pt;">SSL 초간단&nbsp;설정(Nginx, Apache)</span></b></p><p><br /></p><p><b><span style="font-size: 18pt;">1) Nginx</span></b></p><p><br /></p><p>(1) HTTP(80)&nbsp;-&gt; HTTPS(443) 리다이렉트 Redirect<br /></p><table class="txc-table" width="864" cellspacing="0" cellpadding="0" border="0" style="border:none;border-collapse:collapse;;font-family:" 맑은="" 고딕",="" sans-serif;font-size:13px"=""><tbody><tr><td style="width: 864px; height: 24px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); background-color: rgb(246, 246, 246);"><p>&nbsp;server {</p><p>&nbsp; &nbsp; listen 80 default_server;</p><p>&nbsp; &nbsp; listen [::]:80 default_server;</p><p><br /></p><p>&nbsp; &nbsp; server_name _;</p><p><br /></p><p>&nbsp; &nbsp; return 301 https://$host$request_uri;</p><p>}</p></td>
+</tr>
+</tbody></table><p><br /></p><p>(2) HTTPS 443 SSL 설정</p><table class="txc-table" width="864" cellspacing="0" cellpadding="0" border="0" style="border:none;border-collapse:collapse;;font-family:" 맑은="" 고딕",="" sans-serif;font-size:13px"=""><tbody><tr><td style="width: 864px; height: 24px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); background-color: rgb(246, 246, 246);"><p> server {</p><p>&nbsp; &nbsp; listen 443 ssl default_server;</p><p>&nbsp; &nbsp; listen [::]:443 ssl default_server;</p><p>&nbsp; &nbsp; server_name _;</p><p><br /></p><p>&nbsp; &nbsp; ssl on;</p><p>&nbsp; &nbsp; ssl_certificate /etc/nginx/ssl/cert.pem;</p><p>&nbsp; &nbsp; ssl_certificate_key /etc/nginx/ssl/key.pem;</p><p><br /></p><p>&nbsp; &nbsp; client_max_body_size 10M;</p><p><br /></p><p>&nbsp; &nbsp; error_page 400 403 404 500 501 502 503 504 /tmpl/error.html;</p><p><br /></p><p>&nbsp; &nbsp; location = /tmpl/error.html {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; root /opt/error;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; internal;</p><p>&nbsp; &nbsp; }</p><p><br /></p><p>&nbsp; &nbsp; location / {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; proxy_pass &nbsp;http://backend;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; proxy_http_version 1.1;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; proxy_set_header Connection "";</p><p>&nbsp; &nbsp; }</p><p><br /></p><p>&nbsp; &nbsp; location ~ ^/static/ {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; root /opt/static;</p><p>&nbsp; &nbsp; }</p><p>}</p><p><br /></p><p>upstream backend {</p><p>&nbsp; &nbsp; server 127.0.0.1:8000;</p><p>&nbsp; &nbsp; keepalive 1024;</p><p>}</p></td>
+</tr>
+</tbody></table><p><br /></p><p><br /></p><p><br /></p><p><b><span style="font-size: 18pt;">2) Apache 설정</span></b></p><p><br /></p><p>(1) HTTP(80)&nbsp;-&gt; HTTPS(443) 리다이렉트 Redirect<br /></p><table class="txc-table" width="864" cellspacing="0" cellpadding="0" border="0" 맑은="" 고딕",="" sans-serif;font-size:13px"="" style="border: none; border-collapse: collapse;"><tbody><tr><td style="width: 864px; height: 24px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); background-color: rgb(246, 246, 246);"><p>&nbsp;&lt;VirtualHost *:80&gt;</p><p>&nbsp; ServerName example.com</p><p>&nbsp; &lt;Location /&gt;</p><p>&nbsp; &nbsp; Redirect permanent / https://example.com/</p><p>&nbsp; &lt;/Location&gt;</p><p>&lt;/VirtualHost&gt;</p></td></tr></tbody></table><p><br /></p><p>(2) HTTPS 443 SSL 설정</p><table class="txc-table" width="864" cellspacing="0" cellpadding="0" border="0" 맑은="" 고딕",="" sans-serif;font-size:13px"="" style="border: none; border-collapse: collapse;"><tbody><tr><td style="width: 864px; height: 24px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); background-color: rgb(246, 246, 246);"><p>&nbsp;LoadModule ssl_module modules/mod_ssl.so</p><p><br /></p><p><br /></p><p>Listen 443</p><p>NameVirtualHost *:443</p><p><br /></p><p>&lt;VirtualHost *:443&gt;</p><p>&nbsp; &nbsp; &nbsp;DocumentRoot /var/www/html</p><p>&nbsp; &nbsp; &nbsp;ErrorLog logs/error_log</p><p>&nbsp; &nbsp; &nbsp;ServerName https://www.example.com</p><p>&nbsp; &nbsp; &nbsp;SSLEngine on</p><p>&nbsp; &nbsp; &nbsp;SSLCertificateFile /etc/httpd/conf/ssl/cert.pem</p><p>&nbsp; &nbsp; &nbsp;SSLCertificateKeyFile /etc/httpd/conf/ssl/key.pem</p><p>&nbsp; &nbsp; &nbsp;ErrorDocument 500 /common/error.php</p><p>&nbsp; &nbsp; &nbsp;ErrorDocument 404 /common/error.php</p><p>&nbsp; &nbsp; &nbsp;ErrorDocument 403 /common/error.php</p><p>&lt;/VirtualHost&gt;</p></td></tr></tbody></table><p><br /></p><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

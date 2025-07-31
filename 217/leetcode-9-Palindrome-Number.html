@@ -1,0 +1,74 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>leetcode 9 - Palindrome Number</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      leetcode 9 - Palindrome Number
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/leetcode</p>
+                      <p class="date">2019-02-18 13:27:07</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-filename="leet.png"
+                      data-origin-width="225"
+                      data-origin-height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="leet.png"
+                          data-origin-width="225"
+                          data-origin-height="225"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <div>
+                    <blockquote>
+                      Determine whether an integer is a palindrome. An integer
+                      is a palindrome when it reads the same backward as
+                      forward.<br />정수가 회문인지 여부를 결정하십시오. 정수는
+                      전방으로 동일한 것을 읽으면 회문입니다.
+                    </blockquote>
+                  </div>
+                  <pre class="javascript"><code>
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    return String(x) == String(x).split("").reverse().join("");
+};
+</code></pre>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

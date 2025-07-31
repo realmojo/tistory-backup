@@ -1,0 +1,859 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>티스토리 다음, 네이버 썸네일 이미지 누락 해결(95% 이상)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      티스토리 다음, 네이버 썸네일 이미지 누락 해결(95% 이상)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">
+                        애드센스 운영 TIP/티스토리&애드센스
+                      </p>
+                      <p class="date">2024-05-13 02:23:08</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    안녕하세요. 오렌지셔츠입니다. 최근에 제가 발행한 글들이
+                    네이버와 다음 검색엔진에 썸네일 이미지가 누락이 되어서 며칠
+                    간 궁금증을 가졌습니다. 현재는 해결을 한 상태 입니다. 제가
+                    고민한 내용을 공유 드리겠습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    여러 블로그들을 왠만큼 다 따라 해봐도 잘 안되는 부분이
+                    있었는데 그래도 명색에 프론트 개발자라서 이것저것 분석해보기
+                    시작해서 이래저래 저만의 방법으로 찾아보았습니다.,&nbsp;
+                  </p>
+                  <h2 data-ke-size="size26">다음, 네이버 썸네일 이미지 누락</h2>
+                  <p data-ke-size="size16">
+                    어느날 내 블로그의 글이 잘 검색되는지 테스트를 해보기로하고
+                    찾아보기로 하였습니다. 그러나 이게 왠 일인가 블로그의
+                    썸네일이 나오지 않고 있던 문제가 있었습니다. 이건 포스팅을
+                    하는 것보다 더 중요한 문제 이었기에 글을 쓰지 않고
+                    우선적으로 분석을 하기로 마음먹었습니다.
+                  </p>
+                  <p
+                    style="text-align: center; clear: none; float: none"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="687"
+                      height="332"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/1.png" width="687" height="332" />
+                      </span>
+                      <figcaption>다음검색엔진 썸네일 누락</figcaption>
+                    </figure>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="679"
+                      height="330"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/1-1.png" width="679" height="330" />
+                      </span>
+                      <figcaption>네이버검색엔진 썸네일 누락</figcaption>
+                    </figure>
+                  </p>
+                  <p
+                    style="text-align: center; clear: none; float: none"
+                    data-ke-size="size16"
+                  >
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <h2 data-ke-size="size26">결론 팁 우선 공유</h2>
+                  <p data-ke-size="size16">
+                    결론팁을&nbsp;먼저 우선순위대로 말씀 말하자면
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <b>1. 티스토리 구 버전 에디터 사용하기</b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>2. 대표 이미지 크기를 600px 정사각형으로 만들기</b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >3. 이미지를 복사 붙여넣기가 아닌 파일 및 사진 업로드로
+                      올리기없음</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >4. 대표 이미지 상단에 설정하기(가급적이면 파일명을 숫자 0
+                      혹은 1로) png, jpg 상관</b
+                    >
+                  </p>
+                  <p data-ke-size="size16"><b>5. 서치어드바이저 등록하기</b></p>
+                  <h2 data-ke-size="size26">
+                    1. 티스토리 구 버전 에디터 사용하기
+                  </h2>
+                  <p data-ke-size="size16">
+                    다른 블로그를 아무리 찾아봐도 왜 구 버전을 사용해야 하는지
+                    이유가 나오지 않았습니다. 그래서 구버전 에디터와 신버전
+                    에디터에 대해서 나름 스스로 이미지에 대해 찾아보았습니다.
+                    (신버전 맞춤범 검사해주는게 좋았는데..)
+                  </p>
+                  <p data-ke-size="size16">
+                    일단 구버전과 신버전의 작성 완료후 가장 큰 차이는 이미지를
+                    저장하는 CDN의 주소가 다르게 설정 되어 있었습니다. 다음이
+                    카카오랑 합병이 되면서 URL 체계가 많이 변경된 것이 가장 큰
+                    원인이며 네이버의 크롤러가&nbsp;카카오의 새로운 CDN 주소를
+                    수집하지 않는 것이 가장 큰 이유로 추측 됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>CDN</b> 이란 Content Delivery Network 의 약자이며
+                    글로벌로 플랫폼을 운영하기 위해서 인프라구축의 핵심 중의
+                    하나 입니다. 이미지 파일을 가까운 지역에 두어서 캐싱해서
+                    쓰기 때문에 이미지 로딩이 빨라지는 효과가 있습니다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="824"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 246px;
+                            height: 24px;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>구버전 에디터&nbsp;URL 주소</span>
+                        </td>
+                        <td
+                          style="
+                            width: 577px;
+                            height: 24px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-top: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;https://t1.daumcdn.net</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="
+                            width: 246px;
+                            height: 24px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-left: 1px solid #cccccc;
+                          "
+                        >
+                          <span>신버전 에디터 URL 주소</span>
+                        </td>
+                        <td
+                          style="
+                            width: 577px;
+                            height: 24px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;https://k.kakaocdn.net</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">
+                    아래의 이미지는 구버전 에디터의 이미지 주소 입니다.
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="521"
+                      height="271"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/2.png" width="521" height="271" />
+                      </span>
+                      <figcaption>구버전 에디터 작성 시</figcaption>
+                    </figure>
+                  </p>
+                  <p
+                    style="text-align: center; clear: none; float: none"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p
+                    style="text-align: left; clear: none; float: none"
+                    data-ke-size="size16"
+                  >
+                    아래의 이미지는 신버전 에디터의 이미지 주소입니다.
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="642"
+                      height="208"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/3.png" width="642" height="208" />
+                      </span>
+                      <figcaption>신버전 에디터 작성 시</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    확연히 다른 것을 알 수가 있습니다. 신버전 에디터를 이용하면
+                    다음 검색엔진 시에 바로바로 적용이 되지만 구버전 에디터를
+                    사용할 경우에는 블로그 탭에는 바로 적용이 되지만 통합검색의
+                    탭에는 약 30~1시간 정도의 시간이 걸리는 것을 알 수
+                    있었습니다. 또한 제가 원하는 이미지로 썸네일이 출력 되는
+                    것도 확인 할 수 있었습니다.
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="679"
+                      height="346"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/4.png" width="679" height="346" />
+                      </span>
+                      <figcaption>
+                        약 1시간 후 다음 검색엔진 통함검색에 썸네일 노출
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="
+                      border: none;
+                      border-collapse: collapse;
+                      height: 310px;
+                    "
+                    border="0"
+                    width="551"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 195px;
+                            height: 34px;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;</span>
+                        </td>
+                        <td
+                          style="
+                            width: 269px;
+                            height: 34px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-top: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;신버전 에디터</span>
+                        </td>
+                        <td
+                          style="
+                            width: 359px;
+                            height: 34px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-top: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;구버전 에디터&nbsp;</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="
+                            width: 195px;
+                            height: 37px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-left: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;네이버 검색엔진</span>
+                        </td>
+                        <td
+                          style="
+                            width: 269px;
+                            height: 37px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;썸네일 X&nbsp;</span>
+                        </td>
+                        <td
+                          style="
+                            width: 359px;
+                            height: 37px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;썸네일 O&nbsp;</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="
+                            width: 195px;
+                            height: 65px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                            border-left: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;다음 검색엔진</span>
+                        </td>
+                        <td
+                          style="
+                            width: 269px;
+                            height: 65px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;바로 적용&nbsp;</span>
+                        </td>
+                        <td
+                          style="
+                            width: 359px;
+                            height: 65px;
+                            border-bottom: 1px solid #cccccc;
+                            border-right: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;통합검색은 약 1시간 후 적용</span
+                          ><br /><span>&nbsp;블로그 탭은 바로 적용</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <u
+                      ><b
+                        >여튼 결론을 말씀드리자면 신버전 에디터를 사용하면서
+                        네이버에 썸네일이 노출되는 티스토리는 아직 단 한 건도 본
+                        적이 없습니다. 만약에 찾으시면 댓글 부탁드립니다.</b
+                      ></u
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    네이버에 썸네일이 노출되는 티스토리는 전부 구버전에디터
+                    이었으며 썸네일 주소가(t1.daumcdn.net)으로 시작합니다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <h2 data-ke-size="size26">
+                    대표 이미지 크기를 600px 정사각형으로 만들기
+                  </h2>
+                  <p data-ke-size="size16">
+                    이미지 크기에 대해서도 여러 번 테스트를 해봤습니다. 대표
+                    이미지로 설정을 한다 하더라도 실제 검색엔진에서는
+                    대표이미지가 썸네일로 안되는 경우가 많았습니다. 왜 그런지
+                    나름 저만의 이유를 찾아보니 이미지 크기에 대한 우선순위가
+                    있었습니다. 우선순위는 아래와 같습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이미지가 크면 클수록 좋지만 에디터 본문 크기의 사이즈
+                    이상(<b>약 800 ~ 1000px</b>)을 넘어가서는 안됩니다. 저는
+                    <b>250px * 250px</b> 의 크기, <b>400px * 400px</b> 의 크기
+                    <b>600px * 600px</b> 크기를 전부사용하면서 테스트를
+                    해보았었습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    대표 이미지를 400px * 400px로 설정하고 본문 가장 최하단에 약
+                    700px * 690px 정도의 이미지가 있었는데 우선순위가 대표
+                    이미지가 썸네일이 나오는게 아니라 700px * 690px 이미지가
+                    썸네일로 되는 현상을 발견 하였습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    그리고 나서 700 * 690px 파일을 변경하고 대표 이미지를 600px
+                    * 600px로 최상단에 0.png 파일명으로 저장해서 다시 글을
+                    발행하니 제가 원하는 대표이미지가 썸네일이 되었습니다.
+                    네이버에는 현재 크롤러가 수집하기를 기다리고 있는 상태
+                    입니다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    정사각형각형 비율이 우선순위로 적용이 되며 그 다음은 이미지
+                    비율입니다.
+                  </p>
+                  <div
+                    class="txc-textbox"
+                    style="
+                      background-color: #eeeeee;
+                      padding: 10px;
+                      border: 1px solid #eeeeee;
+                    "
+                  >
+                    <p data-ke-size="size16"><b>1. 정사각형으로 만들기</b></p>
+                    <p data-ke-size="size16">
+                      <b>2. 이미지 크기 설정 600px</b> <b>&gt;</b>
+                      <b>400px &gt; 250px<br /></b>
+                    </p>
+                  </div>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="860"
+                      height="280"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/4-1.png" width="860" height="280" />
+                      </span>
+                      <figcaption>
+                        t1.daumcdn.net 주소, 약 600px 썸네일 크기
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    대표 이미지를 파일 업로드로 올리기
+                  </h2>
+                  <p data-ke-size="size16">
+                    해당 부분은 카카오의 안내 페이지에서 상세하게 설명해주고
+                    있습니다. 파일로 첨부하지 않고 복사해온 이미지나 HTML
+                    코드(base64)로 만든 이미지의 경우에는 목록에 표시 되지
+                    않는다고 하네요.
+                  </p>
+                  <div>&nbsp;</div>
+                  <h2 data-ke-size="size26">
+                    대표 이미지를 상단에 설정하고 대표 체크 하기
+                  </h2>
+                  <p data-ke-size="size16">
+                    대표이미지를 설정하지 않으면 티스토리 알고리즘이 알아서
+                    설정을 하는 것 같습니다. 대표 이미지를 체크해줘서 검색엔진엔
+                    안뜨더라도 목록에는 보이게 만들어 주는게 중요합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    서치어드바이저 웹 마스터 도구 등록하기
+                  </h2>
+                  <p data-ke-size="size16">
+                    이 부분은 네이버에 티스토리를 알리기 위한 요청 작업 입니다.
+                    보통은 네이버의 robots 이 주기적으로 알아서 수집을 해갑니다.
+                    중요 포스팅의 같은 경우에만 말이죠. 하지만 저희는 모든
+                    글들을 발행하고 알리고 싶으니 수동으로라도 등록 해줘야
+                    합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    일단 전 이렇게 계속 앞으로 설정을 할 계획 입니다. 그리고 이
+                    방법이 100%라는 보장은 해주지 않습니다. 제가 몇일 간
+                    고민해온 끝에 일시적으로 내린 결론이며 카카오나 네이버에서
+                    수집 알고리즘을 바꾸거나 kakaocdn 네트워크를 허용해주면
+                    자동으로 신버전 에디터에서도 썸네일을 보여줄 수 있을 것
+                    같습니다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    당분간은 구버전으로 계속 에디터를 사용해 볼 예정이 중간에
+                    조금씩 신버전 에디터도 같이 사용해서 테스트를 계속
+                    해보아야겠습니다
+                  </p>
+                  <p data-ke-size="size16">실험 결과 보러가기</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/271"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 다음,네이버 썸네일 노출 실험 결과(100%)</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627605561"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 다음,네이버 썸네일 이미지 노출 실험 결과(100%)"
+                    data-og-description="안녕하세요. 오렌지 셔츠입니다.&nbsp;&nbsp;티스토리에서 글을 발행할 시 다음, 네이버 썸네일 누락 및 노출에 대한 결과를 공유하려고 합니다. 많은 분들이 이 부분 때문에 포기하고 그만 두신 분들도 "
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/271"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%8B%A4%EC%9D%8C%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%85%B8%EC%B6%9C-%EC%8B%A4%ED%97%98-%EA%B2%B0%EA%B3%BC100"
+                    data-og-image="https://scrap.kakaocdn.net/dn/dVOUDv/hyWCE0c7Pn/UbeYb6n9U5QeuZHD6Disuk/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/cil9KG/hyWCAXLT45/qGPHK35OdRjCVxIjZFlrv0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/fzbMh/hyWCJHbAZJ/oebWkBjd9I5r4SNmTebYlk/img.png?width=600&amp;height=600&amp;face=0_0_600_600"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/271"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/271"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/dVOUDv/hyWCE0c7Pn/UbeYb6n9U5QeuZHD6Disuk/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/cil9KG/hyWCAXLT45/qGPHK35OdRjCVxIjZFlrv0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/fzbMh/hyWCJHbAZJ/oebWkBjd9I5r4SNmTebYlk/img.png?width=600&amp;height=600&amp;face=0_0_600_600');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 다음,네이버 썸네일 이미지 노출 실험
+                          결과(100%)
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          안녕하세요. 오렌지 셔츠입니다.&nbsp;&nbsp;티스토리에서
+                          글을 발행할 시 다음, 네이버 썸네일 누락 및 노출에 대한
+                          결과를 공유하려고 합니다. 많은 분들이 이 부분 때문에
+                          포기하고 그만 두신 분들도
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/264"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 네이버 애널리틱스 연동 추가하기</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627601510"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 네이버 애널리틱스 연동 추가하기"
+                    data-og-description="안녕하세요. 오렌지 셔츠 입니다.이번 포스팅에는 네이버 애널리틱스에 설정하는 방법에 대해서 공유 드리려고 합니다. 구글 애널리틱스도 있지만 네이버 또한 상세하게 분석하기 좋아서 많은 "
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/264"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%95%A0%EB%84%90%EB%A6%AC%ED%8B%B1%EC%8A%A4-%EC%97%B0%EB%8F%99-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bo2VQP/hyWCFdJxt9/U6DmJNhakb6Jt8pUOyBZG0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/bdNLpt/hyWCI9j6jv/MSDBT242J2iJuWBX3bVn0K/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/kgLzE/hyWCBvCjYQ/7PEH8PjJOkqhCoCXJCxz8k/img.png?width=829&amp;height=776&amp;face=0_0_829_776"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/264"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/264"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bo2VQP/hyWCFdJxt9/U6DmJNhakb6Jt8pUOyBZG0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/bdNLpt/hyWCI9j6jv/MSDBT242J2iJuWBX3bVn0K/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/kgLzE/hyWCBvCjYQ/7PEH8PjJOkqhCoCXJCxz8k/img.png?width=829&amp;height=776&amp;face=0_0_829_776');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 네이버 애널리틱스 연동 추가하기
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          안녕하세요. 오렌지 셔츠 입니다.이번 포스팅에는 네이버
+                          애널리틱스에 설정하는 방법에 대해서 공유 드리려고
+                          합니다. 구글 애널리틱스도 있지만 네이버 또한 상세하게
+                          분석하기 좋아서 많은
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/265"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 구글 애널리틱스 설정 적용 연동 추가하기</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627600685"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 구글 애널리틱스 설정 적용 연동 추가하기"
+                    data-og-description="안녕하세요. 오렌지셔츠 입니다.&nbsp;이번 포스팅에는 구글 애널리틱스를 연동하는 법을 공유 드리겠습니다. 애널리틱스를 연동하면 블로그를 최적화하는데 좀 더 도움이 되고 방문자 유입 및 사"
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/265"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B5%AC%EA%B8%80-%EC%95%A0%EB%84%90%EB%A6%AC%ED%8B%B1%EC%8A%A4-%EC%84%A4%EC%A0%95-%EC%A0%81%EC%9A%A9-%EC%97%B0%EB%8F%99-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"
+                    data-og-image="https://scrap.kakaocdn.net/dn/wgKto/hyWCL53XNa/liGR11sQKHVp1ccks1RsiK/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/coyDEw/hyWCMRsh6w/GGd91eUZQTXEtzyqpjnBe0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/MsNGU/hyWCBPVeTs/CjYmsix6n6kmDQWLKe4fU1/img.png?width=831&amp;height=775&amp;face=0_0_831_775"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/265"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/265"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/wgKto/hyWCL53XNa/liGR11sQKHVp1ccks1RsiK/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/coyDEw/hyWCMRsh6w/GGd91eUZQTXEtzyqpjnBe0/img.png?width=600&amp;height=600&amp;face=0_0_600_600,https://scrap.kakaocdn.net/dn/MsNGU/hyWCBPVeTs/CjYmsix6n6kmDQWLKe4fU1/img.png?width=831&amp;height=775&amp;face=0_0_831_775');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 구글 애널리틱스 설정 적용 연동 추가하기
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          안녕하세요. 오렌지셔츠 입니다.&nbsp;이번 포스팅에는
+                          구글 애널리틱스를 연동하는 법을 공유 드리겠습니다.
+                          애널리틱스를 연동하면 블로그를 최적화하는데 좀 더
+                          도움이 되고 방문자 유입 및 사
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/252"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구
+                      사용하기(1)</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627599716"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구 사용하기(1)"
+                    data-og-description="안녕하세요. 오렌지셔츠 입니다 들어가기 앞서 일반적으로는 좋은 콘텐츠, 정보들의 글을 작성하여 사람들이 우연히 방문하여 유용한 사이트라고 판별이 될 시에 시간이 걸리더라도 검색엔진"
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/252"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%B5%9C%EC%A0%81%ED%99%94SEO-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%9B%B9-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%8F%84%EA%B5%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B01"
+                    data-og-image="https://scrap.kakaocdn.net/dn/c8V454/hyWCMDUSi3/AuCP1eauYantqUroMoKg40/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/P7BzO/hyWCIuJTaT/BkCgpcNhawEkYxpUgWabHk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/cvhcNB/hyWCEFTX2a/KFmFgnTkAEVD8jMfEAsjzK/img.png?width=1107&amp;height=633&amp;face=0_0_1107_633"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/252"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/252"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/c8V454/hyWCMDUSi3/AuCP1eauYantqUroMoKg40/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/P7BzO/hyWCIuJTaT/BkCgpcNhawEkYxpUgWabHk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/cvhcNB/hyWCEFTX2a/KFmFgnTkAEVD8jMfEAsjzK/img.png?width=1107&amp;height=633&amp;face=0_0_1107_633');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구
+                          사용하기(1)
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          안녕하세요. 오렌지셔츠 입니다 들어가기 앞서
+                          일반적으로는 좋은 콘텐츠, 정보들의 글을 작성하여
+                          사람들이 우연히 방문하여 유용한 사이트라고 판별이 될
+                          시에 시간이 걸리더라도 검색엔진
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/253"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구
+                      사용하기(2)</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627598943"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구 사용하기(2)"
+                    data-og-description="이번 편에서는 사이트 최적화에 대해서 진행을 하겠습니다. 전편에서 사이트를 등록하시 않으신 분이라면 먼저 보고 오시길 바라겠습니다. 2020/04/26 - [알면 좋은 것/티스토리&amp;애드센스] - 티스토"
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/253"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%B5%9C%EC%A0%81%ED%99%94SEO-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%9B%B9-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%8F%84%EA%B5%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B02"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bLgJZD/hyWCCVAvmJ/AqIFOa7Z7OlyluMrd31RsK/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/l0B52/hyWCMcQaMc/DnbeJksxj1jkQQ1xalKslk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/kUf3H/hyWCHiiE1d/03k6EfqpBVoXcjk166Tc61/img.png?width=1072&amp;height=831&amp;face=0_0_1072_831"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/253"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/253"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bLgJZD/hyWCCVAvmJ/AqIFOa7Z7OlyluMrd31RsK/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/l0B52/hyWCMcQaMc/DnbeJksxj1jkQQ1xalKslk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/kUf3H/hyWCHiiE1d/03k6EfqpBVoXcjk166Tc61/img.png?width=1072&amp;height=831&amp;face=0_0_1072_831');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 블로그 최적화(SEO) 네이버 웹 마스터도구
+                          사용하기(2)
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          이번 편에서는 사이트 최적화에 대해서 진행을
+                          하겠습니다. 전편에서 사이트를 등록하시 않으신 분이라면
+                          먼저 보고 오시길 바라겠습니다. 2020/04/26 - [알면 좋은
+                          것/티스토리&amp;애드센스] - 티스토
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/254"
+                      target="_blank"
+                      rel="noopener"
+                      >티스토리 블로그 최적화(SEO) 구글 서치콘솔(rss, 사이트맵)
+                      사용하기</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1721627597737"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="티스토리 블로그 최적화(SEO) 구글 서치콘솔(rss, 사이트맵) 사용하기"
+                    data-og-description="안녕하세요. 오렌지셔츠 입니다. 이번 시간에는 구글 서치 콘솔에 등록하는 법을 공유해드리겠습니다. 대부분의 작업들은 네이버 웹 마스터 도구에 등록을 할 때 작업을 거의 다 끝내서 이번 편"
+                    data-og-host="devupbox.com"
+                    data-og-source-url="https://realmojo.tistory.com/254"
+                    data-og-url="https://devupbox.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%B5%9C%EC%A0%81%ED%99%94SEO-%EA%B5%AC%EA%B8%80-%EC%84%9C%EC%B9%98%EC%BD%98%EC%86%94rss-%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A7%B5-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"
+                    data-og-image="https://scrap.kakaocdn.net/dn/b4VEnl/hyWCAXLTGz/qOJqsYMzeUrlobEK2OsdXk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/K13kR/hyWCzR6ZIM/qY4WsDFZgrwRgATvDXLan0/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/hi9Wf/hyWCJHbzCc/KqeLKCkKBPN8rXbCthu2XK/img.png?width=676&amp;height=663&amp;face=0_0_676_663"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/254"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/254"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/b4VEnl/hyWCAXLTGz/qOJqsYMzeUrlobEK2OsdXk/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/K13kR/hyWCzR6ZIM/qY4WsDFZgrwRgATvDXLan0/img.png?width=500&amp;height=500&amp;face=0_0_500_500,https://scrap.kakaocdn.net/dn/hi9Wf/hyWCJHbzCc/KqeLKCkKBPN8rXbCthu2XK/img.png?width=676&amp;height=663&amp;face=0_0_676_663');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          티스토리 블로그 최적화(SEO) 구글 서치콘솔(rss,
+                          사이트맵) 사용하기
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          안녕하세요. 오렌지셔츠 입니다. 이번 시간에는 구글 서치
+                          콘솔에 등록하는 법을 공유해드리겠습니다. 대부분의
+                          작업들은 네이버 웹 마스터 도구에 등록을 할 때 작업을
+                          거의 다 끝내서 이번 편
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          devupbox.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

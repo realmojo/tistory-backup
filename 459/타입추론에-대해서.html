@@ -1,0 +1,87 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>타입추론에 대해서</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">타입추론에 대해서</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2022-03-26 15:51:16</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    타입추론이란 사용자가 명시적으로 타입을 적어주지 않았을 경우
+                    타입스크립트가 자체적으로 타입을 추론하는 것을 의미 한다.
+                    아래의 예제를 확인해보자.
+                  </p>
+                  <h2 data-ke-size="size26">일반 함수</h2>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 3.22.27.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    sum 이라는 함수는 인자값 b와 c의 값을 더하는 함수이다.
+                    잘보면 b는 number이고 c는 string 이다. 자바스크립트를 해보신
+                    분들은 아시겠지만 숫자+문자 = 문자로 반환되게 되어진다.
+                    그러므로 타입스크립트는 b는 숫자라고 인식하고 반환값은
+                    string이라고 사용자가 명시적으로 입력하지 않아도 알아서
+                    추론하게 된다.
+                  </p>
+                  <h2 data-ke-size="size26">인터페이스 제네릭 사용시</h2>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 3.22.56.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    제네릭을 사용할 때에도 마찬가지 이다. Dropdown&lt;T&gt;의
+                    경우 T는 선언 당시 어떤 타입인지 알 수가 없다. 아래에서
+                    객체를 생성할 때 number라고 명시적으로 선언을 해주었기
+                    때문에 인터페이스 제네릭의 T는 number라고 추론을 하게 된다.
+                  </p>
+                  <p data-ke-size="size16">인터페이스 확장할 때 사용시</p>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 3.49.53.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    value와 tag는 각각 제네릭으로 사용하였지만 extends를
+                    확장하므로서 타입이 정해진다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

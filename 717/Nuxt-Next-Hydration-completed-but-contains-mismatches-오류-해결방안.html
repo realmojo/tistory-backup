@@ -1,0 +1,238 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      Nuxt, Next) Hydration completed but contains mismatches. 오류 해결방안
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      Nuxt, Next) Hydration completed but contains mismatches.
+                      오류 해결방안
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Javascript</p>
+                      <p class="date">2025-04-07 17:36:26</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    Nuxt에서 발생하는 "Hydration completed but contains
+                    mismatches." 오류는
+                    <b
+                      >서버에서 렌더링된 HTML과 클라이언트에서 렌더링된 HTML이
+                      서로 다를 때</b
+                    >
+                    나타나는 문제입니다.<br />즉,
+                    <b>SSR(Server Side Rendering)</b> 과
+                    <b>클라이언트 렌더링(Client Side Rendering)</b> 결과가
+                    일치하지 않을 때 이 오류 메시지를 브라우저 콘솔에서 확인할
+                    수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이 문제를 해결하려면, SSR과 CSR의 출력이 왜 달라졌는지를
+                    파악해야 하며, 일반적으로는 아래와 같은 원인들이 많습니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ? 오류 메시지: Hydration completed but contains mismatches.
+                  </h2>
+                  <blockquote data-ke-style="style1">
+                    <p data-ke-size="size16">
+                      <b>"Hydration completed but contains mismatches."</b
+                      ><br />Nuxt, Vue (또는 React 등) 프레임워크에서 SSR을
+                      사용할 때, 서버 측 렌더링과 클라이언트 측 렌더링의 결과가
+                      다르면 이 메시지가 출력됩니다.
+                    </p>
+                  </blockquote>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✨ 주요 원인과 해결 방법</h2>
+                  <h3 data-ke-size="size23">
+                    1. 클라이언트 전용 코드가 SSR에도 실행될 때
+                  </h3>
+                  <h4 data-ke-size="size20">설명</h4>
+                  <p data-ke-size="size16">
+                    서버는 DOM이나 window, navigator 객체가 없습니다. 그런데
+                    이런 브라우저 전용 객체를 서버에서 접근하면 hydration
+                    mismatch가 발생합니다.
+                  </p>
+                  <h4 data-ke-size="size20">해결 방법</h4>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      process.client 또는 &lt;client-only&gt; 컴포넌트를
+                      사용해서 브라우저에서만 렌더링되도록 합니다.
+                    </li>
+                  </ul>
+                  <pre class="apache"><code>&lt;client-only&gt;
+  &lt;SomeComponentThatUsesWindow /&gt;
+&lt;/client-only&gt;
+</code></pre>
+                  <p data-ke-size="size16">
+                    또는 JavaScript 코드에서는 다음처럼 조건 분기합니다:
+                  </p>
+                  <pre class="arduino"><code>if (process.client) {
+  // window, localStorage, navigator 사용 가능
+}
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">2. 시간 기반 렌더링의 차이</h3>
+                  <h4 data-ke-size="size20">설명</h4>
+                  <p data-ke-size="size16">
+                    new Date()나 Date.now() 같은 시간 의존 데이터는 SSR 시점과
+                    CSR 시점이 다를 수 있어서 mismatch를 유발합니다.
+                  </p>
+                  <h4 data-ke-size="size20">해결 방법</h4>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      시간 기반 데이터는 SSR에서 제외하거나 onMounted() 이후에
+                      처리합니다.
+                    </li>
+                    <li>
+                      useState나 ref를 통해 상태로 관리하고, 클라이언트에서만
+                      값을 넣습니다.
+                    </li>
+                  </ul>
+                  <pre class="reasonml"><code>onMounted(() =&gt; {
+  currentTime.value = new Date().toISOString()
+})
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">3. 랜덤 값, UUID 사용</h3>
+                  <h4 data-ke-size="size20">설명</h4>
+                  <p data-ke-size="size16">
+                    Math.random() 또는 UUID 생성 등은 SSR과 CSR 결과가 달라지기
+                    쉬운 대표적인 코드입니다.
+                  </p>
+                  <h4 data-ke-size="size20">해결 방법</h4>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>랜덤 값은 클라이언트 전용으로 실행되도록 합니다.</li>
+                    <li>
+                      가능하다면 서버에서도 같은 시드를 공유하거나, 랜덤이 아닌
+                      다른 방식으로 대체합니다.
+                    </li>
+                  </ul>
+                  <pre class="apache"><code>&lt;client-only&gt;
+  &lt;RandomBasedComponent /&gt;
+&lt;/client-only&gt;
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">4. 조건부 렌더링 구조의 차이</h3>
+                  <h4 data-ke-size="size20">설명</h4>
+                  <p data-ke-size="size16">
+                    v-if나 v-show 등의 조건이 클라이언트와 서버 간에 다르면
+                    hydration이 깨집니다.
+                  </p>
+                  <h4 data-ke-size="size20">해결 방법</h4>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      조건문에 사용하는 데이터가 서버와 클라이언트에서 동일해야
+                      합니다.
+                    </li>
+                    <li>
+                      조건이 클라이언트에서만 달라질 수 있다면 process.client로
+                      감싸거나 client-only로 감쌉니다.
+                    </li>
+                  </ul>
+                  <pre class="xml"><code>&lt;template&gt;
+  &lt;div v-if="process.client &amp;&amp; isModalVisible"&gt;
+    클라이언트에서만 보여지는 모달
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 디버깅을 위한 팁</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li><b>Vue Devtools</b> 사용해서 컴포넌트 상태 추적</li>
+                    <li>console.log(process.server)로 현재 환경 체크</li>
+                    <li>브라우저 콘솔의 hydration 관련 경고 메시지 확인</li>
+                    <li>nuxt.config.js에서 ssr: false로 설정해 CSR로 테스트</li>
+                  </ul>
+                  <pre class="cpp"><code>export default {
+  ssr: true, // default
+}
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 예시 코드로 비교해보기</h2>
+                  <h3 data-ke-size="size23">❌ 문제 있는 코드</h3>
+                  <pre class="twig"><code>&lt;template&gt;
+  &lt;div&gt;{{ new Date().toLocaleTimeString() }}&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+                  <p data-ke-size="size16">
+                    이 코드는 SSR과 CSR 시점의 시간이 달라 mismatch 발생.
+                  </p>
+                  <h3 data-ke-size="size23">✅ 수정된 코드</h3>
+                  <pre class="django"><code>&lt;template&gt;
+  &lt;div&gt;{{ time }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue'
+
+const time = ref('')
+
+onMounted(() =&gt; {
+  time.value = new Date().toLocaleTimeString()
+})
+&lt;/script&gt;
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 참고자료 및 공식 문서</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a href="https://nuxt.com/docs/guide/concepts/rendering"
+                        >Nuxt 공식 문서: Rendering</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://vuejs.org/guide/scaling-up/ssr.html#hydration"
+                        >Vue 공식 문서: SSR Hydration</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://github.com/nuxt/nuxt/issues"
+                        >Nuxt GitHub Issues에서 관련 토론 보기</a
+                      >
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 마무리 정리</h2>
+                  <p data-ke-size="size16">
+                    Hydration completed but contains mismatches. 오류는
+                    흔하지만, 원인만 잘 찾으면 쉽게 해결할 수 있는
+                    문제입니다.<br />Nuxt에서 SSR을 사용할 때는 항상 서버와
+                    클라이언트의 렌더링 결과가 일치해야 한다는 점을
+                    유념하세요.<br />특히, <b>브라우저 전용 API</b>,
+                    <b>시간/랜덤값</b>, <b>조건부 렌더링</b> 등이 일치하지 않을
+                    수 있는 대표적인 요소이므로, 이 부분들을 중점적으로
+                    체크해보세요.
+                  </p>
+                  <p data-ke-size="size16">
+                    문제를 해결했거나 여전히 발생한다면 관련 코드 일부를
+                    보여주시면 더 구체적인 진단을 도와드릴게요! ?
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

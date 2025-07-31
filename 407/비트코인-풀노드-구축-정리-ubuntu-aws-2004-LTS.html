@@ -1,0 +1,464 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>비트코인 풀노드 구축 정리 (ubuntu aws 20.04 LTS)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      비트코인 풀노드 구축 정리 (ubuntu aws 20.04 LTS)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">블록체인/비트코인 프로그래밍</p>
+                      <p class="date">2021-08-29 15:16:20</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    앞으로 목표인 블록체인 익스플로러를 만들어 보기 위해
+                    비트코인 풀노드 구축을 진행해보려고 한다. 상업적인 용도가
+                    아닌 개발적인 용도이니까 1개의 풀노드만 구축해도 충분할 거
+                    같다는 생각이 들었다. prune 노드로 라이트하게 구축해볼까
+                    고민을 해보다가 책이나 문서에도 나와 있듯이 prune 버전으로
+                    설치를 하게되면 txindex 기능을 사용할 수 없다고 한다.(즉
+                    명령어로 txid 같은 조회를 할 수가 없다.)
+                  </p>
+                  <p data-ke-size="size16">
+                    참고로 prune은 이전의 오래된 블록을 삭제함으로써 디스크 공간
+                    요구치를 상당히 줄여버리는 옵션 중 하나이다. 전체 블록체인을
+                    받지 않고 최근의 블록데이터만 받아 오래된 값을 조회할 수는
+                    없나보다. 그래서 일단 시험삼아 풀노드로 설치해본다.
+                  </p>
+                  <p data-ke-size="size16">
+                    일단 현재 시간 2021.08.29 기준으로
+                    <a
+                      href="https://ycharts.com/indicators/bitcoin_blockchain_size"
+                      target="_blank"
+                      rel="noopener"
+                      >비트코인 풀노드 블록사이즈</a
+                    >는 약 361GB이다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 1.38.03.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    서버를 어떻게 만들지 고민해보니.. 일단 정답이 나오지 않아
+                    AWS로 구축을 하기로 마음먹었다. 비트코인 풀노드 최소 메모리
+                    사양은 2GB이기 때문에 약 4GB를 잡고 세팅하고 대충 적당히
+                    세팅하였다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    모든 블록을 받아야 해서 스토리지 크기는 400GB로 잡았다.
+                    HDD로 구성해도 되는데 일단 귀찮으니까 SSD로 데이터 블록을
+                    저장하기로 해본다. 월 비용은 약 68달러이며 수수료까지 하면
+                    대략 월 8만원 정도 예상해본다. 생각보다 비용이 많이나오면
+                    도중에 중단할 계획이다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    EC2 우분투 서버 생성 후 터미널 접속
+                  </h2>
+                  <p data-ke-size="size16">
+                    EC2를 가볍게 만들어주고 접속을 해본다. 서버를 만드는 방법은
+                    생략하겠다. 어차피 일반인들은 풀노드를 설치 하지 않을 것이고
+                    하고 싶지도 않을 것이다. 그분들은 트레이딩에 관심이 많을
+                    확률이 더 높고 어차피 글을 볼 필요가 없다. ssh-bitcoin은
+                    alias로 별칭을 따로 만들어 주었고 IP_ADDRESS에 서버 주소를
+                    입력하면 된다.
+                  </p>
+                  <pre
+                    id="code_1630214501736"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>alias ssh-bitcoin='ssh -i ~/Desktop/pem/bitcoin-fullnode.pem ubuntu@IP_ADDRESS'</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.20.13.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    디스크 용량이 잘 세팅되었는지 확인을 해보기 위해 df -h
+                    명령어로 확인 해본다. 대충 388GB가 잡혔으니 잘 세팅이 된거
+                    같다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.35.09.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">비트코인 코어 다운로드</h2>
+                  <p data-ke-size="size16">
+                    비트코인 공식 홈페이지에서
+                    <a
+                      href="https://bitcoin.org/ko/download"
+                      target="_blank"
+                      rel="noopener"
+                      >링크</a
+                    >를 받아서 다운로드 하면 된다. 현재 버전은 0.21.1 버전이고
+                    본인이 언제 구축하는지에 따라 버전은 계속 변경될 것이다.
+                    개인적으로 루트 권한을 좋아해서 가급적이면 루트로 실행을
+                    한다.
+                  </p>
+                  <pre
+                    id="code_1630214675832"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code># sudo -i
+# wget https://bitcoin.org/bin/bitcoin-core-0.21.1/bitcoin-0.21.1-x86_64-linux-gnu.tar.gz
+# tar -zxvf bitcoin-0.21.1-x86_64-linux-gnu.tar.gz
+# install -m 0577 -o root -g root -t /usr/local/bin bitcoin-0.21.1/bin/*</code></pre>
+                  <p data-ke-size="size16">
+                    리눅스 버전의 비트코인 코어의 용량은 32MB 정도밖에 되지
+                    않는다. 생각보다 다운로드 속도가 느려 2분씩이나 기달렸다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.31.46.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    tar 파일이라서 압축을 풀고 /usr/local/bin 에 등록을 한다.
+                    등록을 하는 이유는 어느 경로에서나 실행할 수 있게 하기
+                    위함이다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.36.19.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.36.40.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">비트코인 코어 설정파일 후 실행</h2>
+                  <p data-ke-size="size16">
+                    비트코인 풀노드 세팅을 위해 설정파일을 만들어 줘야 한다.
+                    홈디렉토리에 .bitcoin 폴더를 만든 후 bitcoin.conf 파일을
+                    만들면 된다.
+                  </p>
+                  <pre
+                    id="code_1630215554557"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code># mkdir ~/.bitcoin
+# touch ~/.bitcoin/bitcoin.conf</code></pre>
+                  <p data-ke-size="size16">
+                    bitcoin.conf 파일에 가장 간단한 설정 파일을 적용한다.
+                  </p>
+                  <pre
+                    id="code_1630215634571"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>datadir=/root/.bitcoin
+txindex=1
+rpcuser=rpcuser
+rpcpassword=rpcpassword</code></pre>
+                  <p data-ke-size="size16">
+                    설정파일을 적용한 후 비트코인을 데몬(백그라운드)으로 실행을
+                    하면된다. 나중에 실행방법을 까먹을게 분명하니 쉘파일로
+                    작성해 두기로 한다.
+                  </p>
+                  <pre
+                    id="code_1630215872817"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code># echo "bitcoind -daemon" &gt;&gt; ~/bitcoin-start.sh
+# chmod +x ~/bitcoin-start.sh
+# ./bitcoin-start.sh</code></pre>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.46.42.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    드디어 풀노드를 돌리기 시작했다. Bitcoin Core starting
+                    문구가 나오면더 백그라운드로 돌고 있다. 정상적으로 실행되고
+                    있는지 확인하기 위해서 블록카운트가 다운되고 있는지 명령어를
+                    쳐보면 된다. 우선 bitcoin-cli help로 어떤 명령어가 있는지
+                    확인해 봤다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.46.56.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    블록이 잘 수집되고 있는지 확인을 해본다.
+                  </p>
+                  <pre
+                    id="code_1630216185159"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>bitcoin-cli getblockcount</code></pre>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.47.31.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    ~/bitcoin/bitcoin.conf 파일에 경로를 지정한 곳에서 실제
+                    블록이 다운되고 있는지 확인해 보았다. 이글을 포스팅한지 약
+                    10분이 지났는데 정상적으로 풀노드가 돌아가는 것 같아보였다.
+                    근데 10분에 31GB 다운이면 생각보다 빨리 끝날 것 같은 예감이
+                    들었다. 아마 blk00000.dat 파일에는 제네시스 블록이 있겠지..?
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 2.51.02.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    왼쪽은 10분전 용량 오른쪽은 10분후 용량 차이. 387 GB -&gt;
+                    350GB로 줄은 것을 확인 할 수 있다. 윈도우로 구축하면 보통
+                    전체 블록 동기화 되는데 1~2일 걸리는데 역시 리눅스 계열이라
+                    빠른가보다.
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="918"
+                      data-origin-height="442"
+                      data-filename="스크린샷 2021-08-29 오후 2.35.09.png"
+                      style="width: 49.0388%; margin-right: 10px"
+                      data-is-animation="false"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img_2.png"
+                          data-origin-width="918"
+                          data-origin-height="442"
+                          data-filename="스크린샷 2021-08-29 오후 2.35.09.png"
+                          style="width: 49.0388%; margin-right: 10px"
+                          data-is-animation="false"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="928"
+                      data-origin-height="440"
+                      data-filename="스크린샷 2021-08-29 오후 2.53.01.png"
+                      style="width: 49.7984%"
+                      data-is-animation="false"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img_3.png"
+                          data-origin-width="928"
+                          data-origin-height="440"
+                          data-filename="스크린샷 2021-08-29 오후 2.53.01.png"
+                          style="width: 49.7984%"
+                          data-is-animation="false"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">제네시스 블록 조회</h2>
+                  <p data-ke-size="size16">
+                    사토시 나카모토가 남긴 첫번 째 흔적인 비트코인의 첫번째
+                    제네시스 블록을 조회해 보고 이 포스팅은 마친다. 중간에 보면
+                    time 이라고 있는데 이걸 우리가 알 수 있는 시간으로
+                    변환해보면 다음과 같다. <b>2009년 1월 4일 03시15분05초</b>
+                  </p>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 3.12.20.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <pre
+                    id="code_1630217476575"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code># bitcoin-cli getblockhash 0
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+# bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+{
+  "hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+  "confirmations": 368439,
+  "strippedsize": 285,
+  "size": 285,
+  "weight": 1140,
+  "height": 0,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+  "tx": [
+    "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+  ],
+  "time": 1231006505,
+  "mediantime": 1231006505,
+  "nonce": 2083236893,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "0000000000000000000000000000000000000000000000000000000100010001",
+  "nTx": 1,
+  "nextblockhash": "00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048"
+}</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-08-29 오후 3.09.45.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    이상으로 비트코인 풀노드 포스팅을 마칩니다. 생각보다
+                    쉬워서(?) 그동안의
+                    <a
+                      href="https://github.com/orgs/bitcoin/people"
+                      target="_blank"
+                      rel="noopener"
+                      >비트코인 개발자 Contibutor</a
+                    >에게 감사의 말씀을 전합니다.
+                  </p>
+                  <figure
+                    id="og_1630217700629"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="profile"
+                    data-og-title="Bitcoin"
+                    data-og-description="Bitcoin has 4 repositories available. Follow their code on GitHub."
+                    data-og-host="github.com"
+                    data-og-source-url="https://github.com/orgs/bitcoin/people"
+                    data-og-url="https://github.com/bitcoin"
+                    data-og-image="https://scrap.kakaocdn.net/dn/rgoMk/hyLqYHrJ8X/ZoullS9ik2pzUwWr4iekVK/img.png?width=128&amp;height=128&amp;face=0_0_128_128"
+                  >
+                    <a
+                      href="https://github.com/orgs/bitcoin/people"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://github.com/orgs/bitcoin/people"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/rgoMk/hyLqYHrJ8X/ZoullS9ik2pzUwWr4iekVK/img.png?width=128&amp;height=128&amp;face=0_0_128_128');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          Bitcoin Contributor
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          Bitcoin has 4 repositories available. Follow their
+                          code on GitHub.
+                        </p>
+                        <p class="og-host" data-ke-size="size16">github.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">
+                    다음은 Blockchain Explorer를 어떻게 만들어 볼지
+                    고민해봐야겠다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

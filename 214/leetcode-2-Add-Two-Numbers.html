@@ -1,0 +1,152 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>leetcode 2 - Add Two Numbers</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">leetcode 2 - Add Two Numbers</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/leetcode</p>
+                      <p class="date">2019-02-18 13:10:45</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-filename="leet.png"
+                      data-origin-width="225"
+                      data-origin-height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="leet.png"
+                          data-origin-width="225"
+                          data-origin-height="225"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <div>
+                    <blockquote>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        Given an array of integers, return&nbsp;<span
+                          style="box-sizing: border-box; font-weight: bolder"
+                          >indices</span
+                        >&nbsp;of the two numbers such that they add up to a
+                        specific target.<br />You may assume that each input
+                        would have&nbsp;<span
+                          style="box-sizing: border-box; font-weight: bolder"
+                          ><i>exactly</i></span
+                        >&nbsp;one solution, and you may not use
+                        the&nbsp;<i>same</i>&nbsp;element twice.
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        <span
+                          style="
+                            color: #000000;
+                            font-family: '맑은 고딕', sans-serif;
+                          "
+                          >주어진 정수 배열을 이용하여 두 숫자의 인덱스를
+                          반환하여 특정 대상에 합산합니다.<br /></span
+                        ><span
+                          style="
+                            color: #000000;
+                            font-family: '맑은 고딕', sans-serif;
+                          "
+                          >각 입력에는 정확히 하나의 솔루션이 있다고 가정 할 수
+                          있으며 동일한 요소를 두 번 사용할 수 없습니다.</span
+                        >
+                      </p>
+                    </blockquote>
+                  </div>
+                  <pre class="nix"><code>/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    let node = new ListNode(0);
+    let root = node;
+    var carry = 0, value = 0;
+    while(l1 !== null || l2 !== null || carry &gt; 0){
+        let val1 = (l1 === null) ? 0 : l1.val;
+        let val2 = (l2 === null) ? 0 : l2.val;
+        
+        value = val1 + val2 + carry;
+        carry = Math.floor(value / 10);
+        
+        node.next = new ListNode(value % 10);
+        
+        if(l1 != null){
+            l1 = l1.next;   
+        }
+        if(l2 != null){
+            l2 = l2.next;
+        }
+        
+        node = node.next;
+        
+    }
+    return root.next;
+};
+</code></pre>
+                  <div><code>&nbsp;</code></div>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

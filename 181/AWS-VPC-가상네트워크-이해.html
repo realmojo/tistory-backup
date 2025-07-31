@@ -1,0 +1,214 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] VPC 가상네트워크 이해</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">[AWS] VPC 가상네트워크 이해</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2024-07-23 00:41:17</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 24px"
+                      ><b>VPC ( Virtual Private Cloud )</b></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 24px"><b>&nbsp;</b></span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >가상 네트워크. 사용자의 상황에 맞게 VPC를 생성하여
+                        어러가지 형태의 네트워크를 구성할 수 있음</b
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">VPC 특징</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- EC2 인스턴스, RDS DB인스턴스 ElastiCache 캐시 등등
+                        기본적으로 사용 가능</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- VPC 안에 여러개의 서브넷을 추가</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 서브넷을 여러개로 나누면 네트워크를 격리</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 서브넷 간에 접근제어(ACL) 설정 가능</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">기본적인 VPC구성</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >공개 서브넷 - 인터넷</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >사설 서브넷 - 데이터베이스</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="808"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/VPC.png" width="900" height="808" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p
+                    style="text-align: center; clear: none; float: none"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p style="text-align: center" data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 12pt"
+                        >[VPC 기본개념도]<br /></span
+                    ></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">VPC 기본개념</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px">- 리전별로 생성해야함</span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      >- 서브넷은 가용 영역별로 생성해야함</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      >- VPC와 서브넷은 CIDR 기법으로 표시</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"><b>&nbsp;</b></span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b>CIDR ( Classless Inter-Domain Routing )</b></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      >- 급격히 부족해지는 IPv4 주소를 효율적으로 사용하기 위해
+                      CIDR 표기법을 사용</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px">- xxx.xxx.xxx.xxx / yy</span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b>x 는 도메인, y는 서브넷 마스크</b></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"><b>&nbsp;</b></span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b>192.168.0.0/24 는</b></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      >192.168.0.1 ~ 192.168.0.254</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      >192.168.0.0 : 네트워크<br />192.168.0.255 :
+                      브로드캐스트</span
+                    >
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

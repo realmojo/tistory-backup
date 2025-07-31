@@ -1,0 +1,232 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>네이버 IndexNow 프로토콜의 활용 방법과 목적</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      네이버 IndexNow 프로토콜의 활용 방법과 목적
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT 활용법/인터넷</p>
+                      <p class="date">2025-04-15 23:32:36</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <h1>네이버 IndexNow 프로토콜의 활용 방법과 목적</h1>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    네이버의 IndexNow 프로토콜은 웹사이트 소유자가 사이트의
+                    콘텐츠 변경 사항을 네이버 검색 엔진에 신속하게 알릴 수
+                    있도록 설계된 기능입니다. 이를 통해 새로운 페이지의 생성,
+                    기존 페이지의 업데이트 또는 삭제 등의 정보를 검색 엔진에
+                    즉시 전달하여 색인(indexing) 과정을 가속화할 수 있습니다.
+                    기존에는 검색 엔진의 크롤러가 주기적으로 사이트를 방문하여
+                    변경 사항을 파악했지만, IndexNow를 활용하면 이러한 대기
+                    시간을 줄이고 최신 정보를 빠르게 반영할 수 있습니다. 그러나
+                    IndexNow를 통해 정보를 전달하더라도 해당 페이지의 색인이
+                    보장되는 것은 아니며, 검색 엔진의 정책에 따라 결정됩니다.
+                  </p>
+                  <h2 data-ke-size="size26">IndexNow의 주요 기능과 장점</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>신속한 색인 요청</b>: 웹사이트의 변경 사항을 검색
+                      엔진에 즉시 알림으로써, 크롤러의 방문을 기다릴 필요 없이
+                      빠르게 색인을 요청할 수 있습니다.
+                    </li>
+                    <li>
+                      <b>다양한 검색 엔진과의 연동</b>: IndexNow를 통해 한 번의
+                      요청으로 네이버뿐만 아니라 Bing 등 다른 검색 엔진에도 변경
+                      사항을 동시에 알릴 수 있습니다.
+                    </li>
+                    <li>
+                      <b>서버 부하 감소</b>: 빈번한 크롤링으로 인한 서버 부하를
+                      줄이고, 필요한 시점에만 크롤러가 방문하도록 유도할 수
+                      있습니다.
+                    </li>
+                  </ul>
+                  <h2 data-ke-size="size26">
+                    IndexNow 사용을 위한 단계별 가이드
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      <b>API 키 생성 및 검증</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          <b>API 키 생성</b>: UTF-8 인코딩으로 최소 8자에서 최대
+                          128자의 키를 생성합니다. 키는 16진수 문자(a-f, A-F,
+                          0-9)와 하이픈(-)만을 사용하여 만들어야 합니다. 예를
+                          들어, <code>fc1e3ad82010475381daf9846e627fdd</code>와
+                          같은 형식입니다.
+                        </li>
+                        <li>
+                          <b>키 파일 업로드</b>: 생성한 키를
+                          <code>{생성한키}.txt</code> 파일로 저장한 후, 해당
+                          파일을 웹사이트의 루트 디렉토리에 업로드합니다. 예를
+                          들어, 키가
+                          <code>fc1e3ad82010475381daf9846e627fdd</code>라면,
+                          <code
+                            >https://yourdomain.com/fc1e3ad82010475381daf9846e627fdd.txt</code
+                          >
+                          경로에 파일이 위치해야 합니다.
+                        </li>
+                        <li>
+                          <b>키 검증</b>: 웹 브라우저에서 해당 파일의 URL에
+                          접근하여 정상적으로 표시되는지 확인합니다. 예를 들어,
+                          <code
+                            >https://yourdomain.com/fc1e3ad82010475381daf9846e627fdd.txt</code
+                          >에 접근하여 키 값이 제대로 표시되는지 확인합니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>페이지 갱신 요청 전송</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          <b>단일 URL 전송</b>: 특정 페이지의 변경 사항을 알리기
+                          위해 다음과 같은 GET 요청을 보냅니다.여기서
+                          <code>url</code> 파라미터에는 변경된 페이지의 URL을,
+                          <code>key</code> 파라미터에는 생성한 API 키를
+                          입력합니다.
+                        </li>
+                        <li>
+                          <code
+                            >https://searchadvisor.naver.com/indexnow?url=https://yourdomain.com/updated-page&amp;key=fc1e3ad82010475381daf9846e627fdd</code
+                          >
+                        </li>
+                        <li>
+                          <b>여러 URL 전송</b>: 한 번에 여러 페이지의 변경
+                          사항을 알리려면 POST 요청을 사용하여 JSON 형식으로
+                          데이터를 전송합니다. 예를 들어:이때,
+                          <code>keyLocation</code>은 키 파일의 정확한 URL을
+                          가리켜야 합니다.
+                        </li>
+                        <li>
+                          <code class="language-json"
+                            >{ "host": "yourdomain.com", "key":
+                            "fc1e3ad82010475381daf9846e627fdd", "keyLocation":
+                            "https://yourdomain.com/fc1e3ad82010475381daf9846e627fdd.txt",
+                            "urlList": [ "https://yourdomain.com/page1",
+                            "https://yourdomain.com/page2" ] }</code
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>워드프레스에서 IndexNow 적용</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          <b>플러그인 설치</b>: 워드프레스 사용자는 IndexNow를
+                          지원하는 플러그인을 설치하여 자동으로 색인 요청을 보낼
+                          수 있습니다. 대표적인 플러그인으로는 'Index Now'와
+                          'Rank Math'의 인스턴트 인덱싱 기능이 있습니다
+                        </li>
+                        <li>
+                          <b>설정 구성</b>: 플러그인 설치 후, 생성한 API 키를
+                          입력하고, 네이버를 포함한 원하는 검색 엔진을 선택하여
+                          설정을 완료합니다.
+                        </li>
+                        <li>
+                          <b>자동화된 색인 요청</b>: 이후 새로운 글을 게시하거나
+                          기존 글을 수정할 때마다 플러그인이 자동으로 IndexNow
+                          프로토콜을 통해 검색 엔진에 변경 사항을 알립니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                  <h2 data-ke-size="size26">IndexNow 사용 시 유의사항</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || {}).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>색인 보장 여부</b>: IndexNow를 통해 변경 사항을
+                      알리더라도, 해당 페이지의 색인 여부는 검색 엔진의 정책과
+                      판단에 따라 결정됩니다. 즉, 요청을 보냈다고 해서 반드시
+                      색인이 이루어지는 것은 아닙니다.
+                    </li>
+                  </ul>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

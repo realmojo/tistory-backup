@@ -1,0 +1,25 @@
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function removeLike() {
+    for(let j = 0 ; j < 10 ; j++) {
+      document.querySelector('body > div:nth-child(3) > div > div > div > div:nth-child(2) > div > div > div > div > div > section > main > div > article > div > div:nth-child(2) > div > div > div > div > div > div > div > div:nth-child(2) > div:nth-child(2)').click();
+      await delay(2000);
+    
+      const d = document.getElementsByTagName('img');
+      for(let i = 2 ; i < 12 ; i++) {
+        d[i].click();
+        await delay(300);
+      }
+    
+      document.querySelector('[aria-label="좋아요 취소"]').click();
+      await delay(2000);
+    
+      document.querySelector('._a9--').click();
+    
+      await delay(1000*60);
+    }
+}
+
+removeLike();

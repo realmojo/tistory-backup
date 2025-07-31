@@ -1,0 +1,243 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      Google Sheets API has not been used in project 956087464383 before or it
+      is disabled. 오류해결
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      Google Sheets API has not been used in project
+                      956087464383 before or it is disabled. 오류해결
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT 활용법/엑셀</p>
+                      <p class="date">2025-04-08 21:44:58</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        Google Sheets API has not been used in project
+                        956087464383 before or it is disabled
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    이 오류 메시지는 Google Sheets API를 사용하려고 했지만 해당
+                    프로젝트(956087464383)에서 아직
+                    <b
+                      >API가 활성화되지 않았거나 사용된 적이 없어서 발생한
+                      문제</b
+                    >입니다. 아래 내용을 참고해서 원인을 이해하고 해결할 수
+                    있습니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 오류 메시지 해석</h2>
+                  <pre
+                    class="livecodeserver"
+                  ><code>Google Sheets API has not been used in project 956087464383 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?project=956087464383 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry
+</code></pre>
+                  <p data-ke-size="size16">
+                    이 메시지는 다음과 같은 의미입니다:
+                  </p>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      <b
+                        >Google Sheets API를 현재 프로젝트에서 사용한 적이
+                        없음</b
+                      >
+                    </li>
+                    <li>또는 <b>API가 비활성화되어 있음</b></li>
+                    <li>
+                      방금 API를 활성화한 경우라면,
+                      <b>시스템에 적용되는 데 몇 분이 걸릴 수 있음</b>
+                    </li>
+                  </ol>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 해결 방법 (단계별 설명)</h2>
+                  <h3 data-ke-size="size23">
+                    1.
+                    <a
+                      href="https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?project=956087464383"
+                      >Google Cloud Console</a
+                    >
+                    접속
+                  </h3>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      위 링크를 클릭하면 Google Sheets API 개요 페이지로
+                      이동합니다.
+                    </li>
+                    <li>
+                      이동한 프로젝트가 정확히 956087464383 인지 확인하세요.
+                    </li>
+                    <li>
+                      만약 본인의 프로젝트가 아니라면, 좌측 상단의 드롭다운
+                      메뉴에서 본인의 프로젝트를 선택해야 합니다.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    2. <b>Google Sheets API 활성화하기</b>
+                  </h3>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      &ldquo;<b>Enable</b>&rdquo; 또는
+                      &ldquo;<b>활성화</b>&rdquo; 버튼이 보인다면 클릭하세요.
+                    </li>
+                    <li>
+                      이미 활성화된 경우에는 버튼이 비활성화돼 있고, &ldquo;API
+                      enabled&rdquo; 같은 문구가 보입니다.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    3. <b>OAuth 권한 및 인증 정보 확인</b>
+                  </h3>
+                  <p data-ke-size="size16">
+                    Sheets API를 사용할 때는 보통 OAuth 2.0 인증이 필요합니다.
+                    아래와 같이 인증을 준비하세요:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a
+                        href="https://console.developers.google.com/apis/credentials"
+                        >Google Cloud Console의 API 및 서비스 &gt; 사용자 인증
+                        정보</a
+                      >
+                      페이지로 이동
+                    </li>
+                    <li>
+                      OAuth 클라이언트 ID 또는 서비스 계정 키를 생성합니다.
+                    </li>
+                    <li>API 호출 시 이 인증 정보를 사용해야 합니다.</li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    4. <b>적용 지연 시간 고려하기</b>
+                  </h3>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      API를 방금 활성화한 경우, 시스템 전파까지 몇 분이 걸릴 수
+                      있습니다.
+                    </li>
+                    <li>5~10분 정도 기다린 후 다시 시도해보세요.</li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    5. <b>프로젝트 ID가 정확한지 확인</b>
+                  </h3>
+                  <p data-ke-size="size16">
+                    해당 오류가 본인의 프로젝트가 아닌,
+                    <b>다른 사람의 프로젝트 ID를 잘못 사용한 경우</b>일 수도
+                    있습니다. 예를 들어:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      project=956087464383 이 본인의 프로젝트가 아니라면, 제대로
+                      권한이 없는 상태일 수 있음.
+                    </li>
+                    <li>
+                      본인의 프로젝트 ID를 명확히 알고 있는지 확인하고, 해당
+                      프로젝트에서 API를 활성화하세요.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 추가 팁</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      Google Sheets API 사용 예제를 실행 중이라면, 코드 내에서
+                      project_id나 credentials.json 경로가 정확한지 다시
+                      점검하세요.
+                    </li>
+                    <li>
+                      특히 Python이나 Node.js에서 Google API 클라이언트를
+                      사용하는 경우, 다음 설정이 중요합니다:
+                    </li>
+                  </ul>
+                  <pre
+                    class="routeros"
+                  ><code>from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
+
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+SERVICE_ACCOUNT_FILE = 'credentials.json'
+
+credentials = Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+service = build('sheets', 'v4', credentials=credentials)
+</code></pre>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      인증 파일이 정확하고, 해당 서비스 계정이 스프레드시트에
+                      접근 권한을 가지고 있는지도 확인하세요.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 참고 링크</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a
+                        href="https://console.developers.google.com/apis/api/sheets.googleapis.com/overview"
+                        >Google Sheets API 개요 페이지</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://console.developers.google.com/apis/dashboard"
+                        >API 및 서비스 대시보드</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://developers.google.com/workspace/guides/create-credentials"
+                        >OAuth 인증 정보 생성하기 가이드</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://developers.google.com/sheets/api/quickstart/python"
+                        >공식 문서 - Google Sheets API Python Quickstart</a
+                      >
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <p data-ke-size="size16">
+                    필요하다면 사용 중인 코드나 어떤 방식으로 Google Sheets
+                    API를 호출하고 있는지 알려줘. 더 정확하게 디버깅 도와줄 수
+                    있어!
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

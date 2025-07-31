@@ -1,0 +1,864 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[Redis] Sets 명령어 설명 & 예제</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [Redis] Sets 명령어 설명 & 예제
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2022-10-17 21:25:13</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 24pt"
+                        >Sets 관련 명령어 예제</span
+                      ></b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SADD</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"><b>설명</b> :&nbsp;</span
+                    ><span
+                      style="
+                        color: #252525;
+                        font-family: '맑은 고딕', sans-serif;
+                      "
+                      ><span style="font-size: 10pt"
+                        >키에 저장된 집합에 지정된 멤버를 추가합니다. 이 집합의
+                        구성원 인 경우 지정된 멤버는 무시됩니다. key가 없으면
+                        지정된 멤버를 추가하기 전에 새 세트가
+                        만들어집니다.</span
+                      ><span style="font-size: 13.3333px"><br /></span></span
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b> : O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;
+                        <span style="color: #a366ff">SADD&nbsp;</span>key member
+                        [member ...]</b
+                      ></span
+                    >
+                  </p>
+                  <table
+                    style="border: none; border-collapse: collapse"
+                    border="1"
+                    width="784"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            line-height: normal;
+                            font-size: 13px;
+                            font-family: '맑은 고딕', sans-serif;
+                            color: #000000;
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">SADD&nbsp;</span></b
+                            >test hello world&nbsp;<br /><br />&nbsp;(integer)&nbsp;1&nbsp;<br /><br />&nbsp;redis
+                            &gt;&nbsp;<b
+                              ><span style="color: #a366ff">SADD&nbsp;</span></b
+                            >test world&nbsp;<br /><br />&nbsp;(integer)&nbsp;0&nbsp;<br /><br />&nbsp;redis&nbsp;&gt;&nbsp;<b
+                              ><span style="color: #a366ff"
+                                >SMEMBERS&nbsp;</span
+                              ></b
+                            >test&nbsp;<br /><br />&nbsp;1)&nbsp;"hello"&nbsp;<br />&nbsp;2)&nbsp;"world"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SMEMBERS</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명</b> :
+                      <span
+                        >키에 저장된 설정 값의 모든 멤버를 반환합니다.<br /></span></span
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b> : O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SMEMBERS&nbsp;</span
+                        ></b
+                      ><b>key</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            line-height: normal;
+                            font-size: 13px;
+                            font-family: '맑은 고딕', sans-serif;
+                            color: #000000;
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SMEMBERS</span> </b
+                            >test</span
+                          ><br /><span
+                            >&nbsp;1) "hello"<br />&nbsp;2) "world"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SREM</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"><b>설명</b> :&nbsp;</span
+                    ><span
+                      ><span style="font-size: 10pt"
+                        >키에 저장된 집합에서 지정된 멤버를 제거합니다. 해당
+                        집합의 구성원이 아닌 멤버는 무시됩니다. key가 없으면 빈
+                        세트로 처리되고 명령은 0을 리턴 합니다. key에 저장된
+                        값이 집합이 아닌 경우 오류가 반환됩니다.</span
+                      ><span style="font-size: 13.3333px"><br /></span></span
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b> : O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff">SREM&nbsp;</span></b
+                      ><b>key member [member ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SREM</span> </b>test
+                            hello</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SREM</span> </b>test
+                            hello</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            >&nbsp;redis &gt; SMEMBERS test</span
+                          ><br /><span>&nbsp;1)&nbsp;"world"<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SCARD</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt">설명 : </span
+                    ><span
+                      ><span style="font-size: 10pt"
+                        >키에 저장된 개수를 반환합니다.</span
+                      ><span style="font-size: 13.3333px"><br /></span></span
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도 </b>: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SCARD&nbsp;</span
+                        ></b
+                      ><b>key</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 168px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test apple</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt; SADD test banana</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SCARD</span> </b
+                            >test</span
+                          ><br /><span>&nbsp;(integer) 2<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SDIFF</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명</b> :&nbsp;<span
+                        >최초의 키 값(key1)을 기준으로 비교되는 키 값(key ...)의
+                        차집합을 리턴합니다.<br /><b>시간복잡도</b> : O(N)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SDIFF&nbsp;</span
+                        ></b
+                      ><b>key [key ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SDIFF</span> </b
+                            >test1 test2</span
+                          ><br /><span
+                            >&nbsp;1) "a"<br />&nbsp;2) "b"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SDIFFSTORE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명</b> :&nbsp;<span
+                        >SDIFF 명령어와 동일하지만 키 값을 반환하는 대신 새로운
+                        키 값에 저장한다.<br /></span></span
+                    ><b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SDIFFSTORE&nbsp;</span
+                        ></b
+                      ><b>destination key&nbsp;[key ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b
+                              ><span style="color: #a366ff"
+                                >SDIFFSTORE</span
+                              > </b
+                            >test3 test1 test2</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            >&nbsp;redis &gt; smembers test3</span
+                          ><br /><span
+                            >&nbsp;1) "a"<br />&nbsp;2) "b"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SINTER</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명 </b>: 지정된 키 값의 교집합을 리턴합니다<span
+                        >.<br /><b>시간복잡도 </b>: O(N*M)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span
+                          ><span style="color: #a366ff">SINTER</span>
+                        </span></b
+                      ><b>key [key ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test3 c f g</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SINTER</b>&nbsp;</span
+                            >test1 test2 test3</span
+                          ><br /><span>&nbsp;1) "c"<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SINTERSTORE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"><b>설명 </b>:&nbsp;</span
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >SINTER&nbsp;명령어와 동일하지만&nbsp;</span
+                    ><span style="font-size: 10pt"
+                      >키 값의 교집합을 새로운 키에 저장합니다<span
+                        >.<br /><b>시간복잡도 </b>: O(N*M)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SINTERSTORE&nbsp;</span
+                        ></b
+                      ></span
+                    ><b>destination&nbsp;</b><b>key [key ...]</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test3 c f g</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SINTERSTORE</b></span
+                            >&nbsp;test4 test1 test2 test3</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SMEMBERS test4</span
+                          ><br /><span>&nbsp;1) "c"<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SISMEMBER</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명 </b>: member가 key에 저장된 집합의 구성원인지
+                      여부를 반환. 1이면 존재, 0이면 존재하지 않음<span
+                        ><br /><b>시간복잡도 </b>: O(1)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SISMEMBER&nbsp;</span
+                        ></b
+                      ><b>key member</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 106px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>SISMEMBER </b></span
+                            >test1 a</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SISMEMBER</span> </b
+                            >test1 b</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SISMEMBER</span> </b
+                            >test1 d</span
+                          ><br /><span>&nbsp;(integer) 0<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SMOVE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >설명 : source key 에서 destination key 로 멤버가 이동. 즉
+                      source 에서는 삭제가 되고, destination에 추가<span
+                        ><br />시간복잡도 : O(1)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b>&nbsp;<span style="color: #a366ff">SMOVE</span></b
+                      ><b
+                        ><span style="color: #a366ff">&nbsp;</span>source
+                        destination member</b
+                      ><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 106px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD test2 d e f</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>SMOVE</b> </span
+                            >test1 test2&nbsp;"c"</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt; SMEMBERS test1</span
+                          ><br /><span>&nbsp;1) "a"<br />&nbsp;2) "b"</span
+                          ><br /><span>&nbsp;redis &gt; SMEMBERS test2</span
+                          ><br /><span
+                            >&nbsp;1) "c"<br />&nbsp;2) "d"<br />&nbsp;3) "e"<br />&nbsp;4)
+                            "f"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SPOP</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >설명 : 키에 설정된 값 저장소에서 하나 이상의 임의의
+                      요소를 제거하고 반환합니다.<span
+                        ><br />시간복잡도 : O(1)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff">SPOP&nbsp;</span></b
+                      ><b>key [count]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 106px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt; SADD&nbsp;test1 a b c d e f g
+                            h</span
+                          ><br /><span>&nbsp;(integer) 8</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SPOP</span> </b
+                            >test1 4</span
+                          ><br /><span
+                            >&nbsp;1) "a"<br />&nbsp;2) "d"<br />&nbsp;3) "f"<br />&nbsp;4)
+                            "h"</span
+                          ><br /><span>&nbsp;redis &gt; SMEMBERS test1</span
+                          ><br /><span
+                            >&nbsp;1) "b"<br />&nbsp;2) "c"<br />&nbsp;3) "e"<br />&nbsp;4)
+                            "g"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SUNION</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >설명 : 지정된 모든 세트의 결합으로 부터 생성된 세트의
+                      합집합을 반환합니다.<span
+                        ><br />시간복잡도 : O(N)</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span style="color: #a366ff"
+                          >SUNION&nbsp;</span
+                        ></b
+                      ><b>key [key ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 106px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD&nbsp;test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD&nbsp;test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">SUNION</span> </b
+                            >test1 test2</span
+                          ><br /><span
+                            >&nbsp;1) "c"<br />&nbsp;2) "a"<br />&nbsp;3) "d"<br />&nbsp;4)
+                            "b"<br />&nbsp;5) "e"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SUNIONSTORE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >설명 : SUNION 명령어와 동일하지만 생성된 세트의 합집합을
+                      저장합니다.<span><br />시간복잡도 : O(N)</span></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;</b
+                    ><span style="font-size: 16px"
+                      ><b
+                        >&nbsp;<span
+                          ><span style="color: #a366ff">SUNION</span>
+                        </span></b
+                      ><b>destination key [key ...]</b><br
+                    /></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 106px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SADD&nbsp;test1 a b c</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; SADD&nbsp;test2 c d e</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff">SUNIONSTORE</span>
+                            test3 test1 test2</span
+                          ><br /><span>&nbsp;(integer) 3</span><br />
+                          <div>
+                            <span>&nbsp;redis &gt; SMEMBERS test3</span
+                            ><br /><span
+                              >&nbsp;1) "d"<br />&nbsp;2) "b"<br />&nbsp;3)
+                              "c"<br />&nbsp;4) "a"<br />&nbsp;5) "e"<br /><br
+                            /></span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,305 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 나누기 함수 완벽 가이드: QUOTIENT, MOD, IFERROR로 몫과 나머지
+      계산하기
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 나누기 함수 완벽 가이드: QUOTIENT, MOD, IFERROR로
+                      몫과 나머지 계산하기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-07 01:30:25</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 나누기 함수 완벽 가이드: QUOTIENT, MOD, IFERROR로
+                        몫과 나머지 계산하기
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 데이터를 처리할 때 나누기 계산은 필수적인 작업 중
+                    하나입니다. 단순한 나눗셈부터 정수 몫만 구하거나 나머지 값을
+                    계산하는 고급 기능까지, 엑셀 나누기 함수를 활용하면 복잡한
+                    계산을 쉽게 해결할 수 있습니다. 이 글에서는 실무에서 자주
+                    사용되는 엑셀 나누기 함수들과 오류 방지 방법까지 상세히
+                    알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">엑셀 기본 나누기 연산 방법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀에서 가장 기본적인 나누기 연산은 슬래시(/) 기호를
+                    사용하는 것입니다. 예를 들어 A1 셀에 100, B1 셀에 5가
+                    입력되어 있다면 =A1/B1 수식을 입력하면 결과값 20이
+                    표시됩니다. 하지만 이 방법은 나누는 값이 0일 때 #DIV/0!
+                    오류가 발생할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>기본 나눗셈 수식: =A1/B1</li>
+                    <li>오류 방지 수식: =IFERROR(A1/B1, "오류")</li>
+                    <li>
+                      셀 참조를 통한 계산으로 데이터 변경 시 자동 업데이트
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    IFERROR 함수를 함께 사용하면 0으로 나누는 경우나 기타 오류
+                    상황에서 사용자가 원하는 메시지를 표시할 수 있어 더욱
+                    안정적인 계산이 가능합니다. 이는
+                    <a
+                      href="https://support.microsoft.com/ko-kr/office/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611"
+                      target="_blank"
+                      >마이크로소프트 공식 문서</a
+                    >에서도 권장하는 방법입니다.
+                  </p>
+                  <h2 data-ke-size="size26">QUOTIENT 함수로 정수 몫 구하기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    QUOTIENT 함수는 나누기 결과에서 정수 부분만 반환하고
+                    나머지는 버리는 함수입니다. 소수점 이하 값이 필요 없고 정수
+                    몫만 필요한 경우에 매우 유용합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    QUOTIENT 함수의 구문은 다음과 같습니다: =QUOTIENT(피제수,
+                    제수). 예를 들어 =QUOTIENT(10, 3)을 입력하면 결과는 3이
+                    됩니다. 일반적인 나눗셈 10/3=3.33과 달리 소수점 부분은
+                    자동으로 제거됩니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>재고 관리에서 박스 단위 계산 시 활용</li>
+                    <li>인원 배치 시 완전한 그룹 수 계산</li>
+                    <li>시간 계산에서 완전한 시간 단위 추출</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    실무에서는 특히 물류나 재고 관리 분야에서 QUOTIENT 함수를
+                    자주 사용합니다. 예를 들어 상품 100개를 12개들이 박스에
+                    포장할 때 몇 개의 완전한 박스를 만들 수 있는지 계산할 때
+                    =QUOTIENT(100, 12)를 사용하면 8이라는 결과를 얻을 수
+                    있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">MOD 함수로 나머지 값 계산하기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    MOD 함수는 나누기 연산에서 나머지 값만을 반환하는
+                    함수입니다. 수학에서 모듈로 연산이라고 불리는 이 기능은
+                    다양한 실무 상황에서 활용됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    MOD 함수의 기본 구문은 =MOD(피제수, 제수)입니다. 예를 들어
+                    =MOD(100, 7)을 입력하면 결과는 2가 됩니다. 이는 100을 7로
+                    나누었을 때 14번 나누어떨어지고 2가 남는다는 의미입니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      홀수/짝수 판별: =MOD(숫자, 2) 결과가 0이면 짝수, 1이면
+                      홀수
+                    </li>
+                    <li>주기적 패턴 생성: 반복되는 일정이나 순서 관리</li>
+                    <li>조건부 서식에서 교대로 색칠하기</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    MOD 함수는
+                    <a
+                      href="https://exceljet.net/functions/mod-function"
+                      target="_blank"
+                      >다양한 실무 응용</a
+                    >이 가능합니다. 특히 데이터 분석에서 특정 조건을 만족하는
+                    행을 찾거나, 교대 근무 스케줄을 만들 때, 또는 주기적인
+                    이벤트를 관리할 때 매우 유용합니다.
+                  </p>
+                  <h2 data-ke-size="size26">고급 나누기 함수 활용 팁</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 나누기 함수들을 조합하면 더욱 강력한 기능을 구현할 수
+                    있습니다. QUOTIENT와 MOD 함수를 함께 사용하면 나누기 결과를
+                    완전히 분해할 수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    예를 들어 시간 계산에서 총 분을 시간과 분으로 나눌 때,
+                    150분을 시간과 분으로 표현하려면 =QUOTIENT(150, 60)으로
+                    시간(2시간)을 구하고, =MOD(150, 60)으로 분(30분)을 구할 수
+                    있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>복합 계산: QUOTIENT와 MOD 함수 조합 활용</li>
+                    <li>조건부 서식: MOD 함수로 교대로 행 색칠하기</li>
+                    <li>데이터 검증: 나머지 값으로 데이터 유효성 확인</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    실무에서는 이러한 함수들을 IF 문과 결합하여 더욱 복잡한
+                    로직을 구현할 수 있습니다. 예를 들어 =IF(MOD(ROW(), 2)=0,
+                    "짝수행", "홀수행")과 같은 수식으로 행 번호에 따른 분류가
+                    가능합니다.
+                  </p>
+                  <h2 data-ke-size="size26">나누기 함수 오류 처리 방법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 나누기 함수를 사용할 때 가장 흔히 발생하는 오류는
+                    #DIV/0! 오류입니다. 이는 0으로 나누려고 할 때 발생하며, 이를
+                    방지하기 위한 여러 방법이 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    IFERROR 함수를 사용하면 오류 발생 시 대체 값을 표시할 수
+                    있습니다. 예를 들어 =IFERROR(A1/B1, "계산 불가")와 같이
+                    사용하면 B1이 0이거나 오류가 발생할 때 "계산 불가"라는
+                    메시지가 표시됩니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>IFERROR 함수로 오류 메시지 사용자 정의</li>
+                    <li>IF 함수로 사전 조건 확인</li>
+                    <li>ISERROR 함수로 오류 여부 판별</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    더 정교한 오류 처리를 위해서는 =IF(B1=0, "0으로 나눌 수
+                    없습니다", A1/B1)과 같이 IF 함수를 사용하여 사전에 조건을
+                    확인할 수도 있습니다. 이러한 방법은
+                    <a
+                      href="https://www.goskills.com/Excel/Resources/Divide-excel"
+                      target="_blank"
+                      >엑셀 전문가들이 권장</a
+                    >하는 모범 사례입니다.
+                  </p>
+                  <h2 data-ke-size="size26">실무 활용 예제</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 나누기 함수들의 실무 활용 사례를 살펴보면 그 유용성을
+                    더욱 명확히 이해할 수 있습니다. 급여 계산, 재고 관리, 시간
+                    관리 등 다양한 분야에서 이 함수들이 활용됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    예를 들어 월급 계산에서 시간당 임금을 계산할 때, 총
+                    근무시간을 주당 근무시간으로 나누어 주 단위로 계산하거나,
+                    초과근무 시간을 별도로 계산할 때 QUOTIENT와 MOD 함수를
+                    활용할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      재고 관리: 상품을 박스 단위로 포장할 때 완전한 박스 수와
+                      남는 개수 계산
+                    </li>
+                    <li>일정 관리: 프로젝트 기간을 주 단위와 일 단위로 분할</li>
+                    <li>성적 관리: 총점을 과목 수로 나누어 평균 계산</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    특히 데이터 분석 작업에서는 MOD 함수를 사용하여 특정 조건을
+                    만족하는 데이터를 필터링하거나, 주기적인 패턴을 찾아내는 데
+                    활용할 수 있습니다. 이러한 기능들은
+                    <a
+                      href="https://coefficient.io/excel-tutorials/excel-mod"
+                      target="_blank"
+                      >현대적인 데이터 분석</a
+                    >에서 매우 중요한 도구로 인정받고 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀 나누기 함수들을 제대로 이해하고 활용하면 복잡한 계산을
+                    간단하게 처리할 수 있으며, 오류 없는 안정적인 스프레드시트를
+                    만들 수 있습니다. 기본 나누기 연산부터 고급 함수 활용까지,
+                    상황에 맞는 적절한 함수를 선택하여 효율적인 엑셀 작업을
+                    수행해보시기 바랍니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,446 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      Vue cli 3 + vuetify + IE11 babel-polyfill 적용(Promise 해결)과 꼼수들
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      Vue cli 3 + vuetify + IE11 babel-polyfill 적용(Promise
+                      해결)과 꼼수들
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Javascript</p>
+                      <p class="date">2020-07-13 18:42:14</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    Vue cli 3에서 IE11 적용방법에 대해서 공유를 합니다. 그래도
+                    IE11까지는 지원을 하자는 마음에 babel-polyfill을 설치하여
+                    작업을 하는데 제대로 동작이 되지 않아 하루 종일 삽질을
+                    하였다. vue-excel-xlsx 라이브러리는 IE 익스플로러를 지원하지
+                    않으니 참고하면 된다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    프론트엔드를 지난 몇 년간 개발을 해오면서 ES6를 ES5로
+                    변환하기 위해(익스플로러 브라우저를 지원) 단순히
+                    babel-polyfill 만 적용하면 될 줄 알았다. 사실 프로젝트를
+                    세팅하는 초기에는 작동이 잘 되긴 한다.
+                    <b>Promise를 만나기 전</b>까지는 말이다. 그래서 대부분
+                    해결되었다는 블로그를 봐도 내 프로젝트 소스에는 작동이 되지
+                    않았다. 이미 운영서버로 배포가 되어 있는 상황이고 몇몇
+                    라이브러리를 사용하고 있었기 때문이다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        babel 설정 시 라이브러리 및 promise 충돌 예시 화면
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    vuetify 공식 문서를 찾아보면 IE11 도 babel-polyfill을
+                    설치하면 작동이 된다고 나와 있다. 아래는 공식 홈페이지
+                    링크이니 참고 <span style="color: #333333"></span
+                    ><a
+                      href="https://vuetifyjs.com/en/getting-started/browser-support/"
+                      >https://vuetifyjs.com/en/getting-started/browser-support/</a
+                    >
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption>vuetify 브라우저 지원현황</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    &nbsp;우선 공식 vuetify 공식 사이트에 나와 있는 대로 babel을
+                    설치하고 main.js 최상단에 import를 추가해준다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">babel-polyfill 설치</h2>
+                  <pre
+                    id="code_1594631735190"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>yarn add babel-polyfill</code></pre>
+                  <h2 data-ke-size="size26">main.js 파일에 import</h2>
+                  <pre
+                    id="code_1594631799671"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>import 'babel-polyfill'
+import Vue from 'vue'
+import App from './App.vue'</code></pre>
+                  <h2 data-ke-size="size26">babel-preset-env 추가 설치</h2>
+                  <pre
+                    id="code_1594631835310"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>yarn add @babel/preset-env -D</code></pre>
+                  <h2 data-ke-size="size26">.babelrc 파일 추가 후 작성</h2>
+                  <pre
+                    id="code_1594631931195"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>{
+  "presets": ["@babel/preset-env"]
+}</code></pre>
+                  <h2 data-ke-size="size26">babel.config.js 파일 작성</h2>
+                  <pre
+                    id="code_1594631978788"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>module.exports = {
+  presets: ['@babel/preset-env']
+}</code></pre>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_2.png" />
+                      </span>
+                      <figcaption>
+                        vuetify IE11, safari 적용 babel 설치 방법
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    여기까지만 설정해주면 일단은 IE11에서 잘 동작한다. 초기 세팅
+                    시에 위의 3가지만 설정해줘도 IE11은 문제없이 화면에 렌더링이
+                    되는 것을 확인할 수 있다. 하지만 Promise 가 필요로 하는
+                    라이브러리들이 나오기 시작하면서 제대로 동작이 되지 않을 수
+                    있다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    Promise 해결방법<span style="color: #333333"
+                      >(axios 포함)</span
+                    >
+                  </h2>
+                  <p data-ke-size="size16">
+                    axios를 사용한다는 건 서버에서 데이터를 가져와서 화면에
+                    조회를 하며 보통 비동기적 프로그래밍을 사용하기 위해 쓴다.
+                    그리고 axios, promise와 삼형제로 async, await까지 같이
+                    사용하면 비동기를 그나마 동기적으로 코딩을 할 수 있다.
+                  </p>
+                  <h2 data-ke-size="size26">es6-promise 설치</h2>
+                  <pre
+                    id="code_1594632188043"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>yarn add es6-promise</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_3.png" />
+                      </span>
+                      <figcaption>
+                        babel-polyfill과 es6-promise 의존성 설치
+                        package.json파일
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">babel.config.js 파일 수정</h2>
+                  <p data-ke-size="size16">
+                    위에서 작성했던 바벨의 설정파일을 수정한다. symbol 객체 또한
+                    IE에서 작동을 하지 않으니 변환을 해주어야 한다.
+                  </p>
+                  <pre
+                    id="code_1594632285939"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>module.exports = {
+  presets: [
+    ['@vue/app', {
+      polyfills: [
+        'es.promise',
+        'es.symbol'
+      ]
+    }]
+  ]
+}</code></pre>
+                  <h2 data-ke-size="size26">vue.config.js 파일 수정</h2>
+                  <p data-ke-size="size16">
+                    babel-polyfill 적용시 웹팩설정 내용이다. configureWebpack
+                    줄을 추가해 준다.
+                  </p>
+                  <pre
+                    id="code_1594632345092"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>module.exports = {
+  transpileDependencies: ["vuetify"],
+  configureWebpack: {
+    entry: ["babel-polyfill", "./src/main.js"],
+  }
+};
+</code></pre>
+                  <p data-ke-size="size16">
+                    그리고 다시 빌드를 해보면 IE에서 렌더링이 되는 것을 확인할
+                    수 있다. 그래도 안되면 안 될 리가 없다. 최소한 이렇게 만
+                    세팅을 해두고 개발을 시작해도 IE 브라우저를 호환시키는데 90%
+                    정도는 잡고 들어갈 수 있다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    그 외 라이브러리 호환시키기(vue-excel-xlsx, otplib)
+                  </h2>
+                  <h3 data-ke-size="size23">vue-excel-xlsx</h3>
+                  <p data-ke-size="size16">
+                    프로젝트에서 테이블로 뿌려진 데이터를 엑셀로 다운 받는
+                    기능을 제공해주는 라이브러리이다. 하지만 vue-excel-xlsx
+                    라이브러리는 IE에서는 먹통이 나서 IE에서 제외시켜주어야
+                    한다. 어떻게 할까 고민을 하다가 IE를 제외한 나머지
+                    브라우저에서만 import, require 해주는 방식으로
+                    해결하였다.(IE 지원 X) 참고로 import 구문은 if 문으로 제어를
+                    할 수가 없다. 그래서 require 문으로 변형시켜서 vue에
+                    바인딩을 시켜주어야 한다. 그 외 다른 라이브러리들도
+                    익스플로러와 충돌이 나면 아래와 같이 분기시켜서 작성하면
+                    된다.
+                  </p>
+                  <h3 data-ke-size="size23">IE 브라우저 감지 후 바인딩 분리</h3>
+                  <pre
+                    id="code_1594632696091"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>// main.js
+// 엑셀 라이브리러 이용시 IE화면 충돌
+let agent = navigator.userAgent.toLowerCase();
+if ( !((navigator.appName == 'Netscape' &amp;&amp; agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1))) {
+  const VueExcelXlsx = require('vue-excel-xlsx'); 
+  Vue.use(VueExcelXlsx.default);
+}</code></pre>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_4.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h3 data-ke-size="size23">otplib babel 충돌 적용</h3>
+                  <p data-ke-size="size16">
+                    공식 npm 문서에 보면 babel 설정시 const otplib =
+                    require('otplib'). deafult로 바꾸어서 사용하로고 친절히 나와
+                    있어서 그대로 적용
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_5.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_6.png" />
+                      </span>
+                      <figcaption>babel 설정 전</figcaption>
+                    </figure>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_7.png" />
+                      </span>
+                      <figcaption>babel 설정 적용 후</figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

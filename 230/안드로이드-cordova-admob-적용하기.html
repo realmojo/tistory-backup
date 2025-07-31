@@ -1,0 +1,632 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>안드로이드 cordova admob 적용하기</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      안드로이드 cordova admob 적용하기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/안드로이드</p>
+                      <p class="date">2020-04-02 17:51:12</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="600"
+                      height="600"
+                      alt="안드로이드 cordova admob 적용하기"
+                      filename="title_cordova.png"
+                      filemime="image/png"
+                      style="width: 600px; height: 600px"
+                      original="yes"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/title_cordova.png"
+                          width="600"
+                          height="600"
+                          alt="안드로이드 cordova admob 적용하기"
+                          filename="title_cordova.png"
+                          filemime="image/png"
+                          style="width: 600px; height: 600px"
+                          original="yes"
+                        />
+                      </span>
+                      <figcaption>안드로이드 cordova admob 적용하기</figcaption>
+                    </figure>
+                  </p>
+                  <p><br /></p>
+                  <p><br /></p>
+                  <p>Javascript 로 개발을 알아서 잘 하실거라고 생각하고</p>
+                  <p>&nbsp;</p>
+                  <p>
+                    앱을 개발하면서 수익을 내기 위해 admob 을 적용시키는 과정을
+                    공유드립니다.<br />제가 직접 적용했던 소스코드 및 플러그인도
+                    공유드립니다.
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="0"
+                      data-origin-height="0"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-origin-width="0"
+                          data-origin-height="0"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">필요준비물</h2>
+                  <p data-ke-size="size16">
+                    <span style="color: #333333"
+                      ><b>1. admob 사이트 가입 및 앱 ID 획득</b><br /></span
+                    >&nbsp;앱 ID ( cordova 플러그인 설치 시 필요 )<br /><span
+                      style="color: #333333"
+                      >&nbsp;배너광고 ID, 전면광고 ID, 리워드광고 ID (
+                      소스코드에 적용시 필요 )<br /></span
+                    ><span style="color: #ee2323"
+                      ><b
+                        >&nbsp;개발을 할 때는 테스트 ID로 개발을 진행해야
+                        합니다<br /></b></span
+                    ><span style="color: #000000"
+                      >&nbsp;한 번(?)이라도 실계정ID 로 테스트 하면 계정이 약
+                      1달 간 중지됩니다 </span
+                    ><a
+                      href="https://developers.google.com/admob/android/test-ads?hl=ko"
+                      >https://developers.google.com/admob/android/test-ads?hl=ko</a
+                    >
+                  </p>
+                  <p data-ke-size="size18">
+                    네이티브 광고는 cordova로 지원되지 않습니다(직접 개발하면
+                    가능할지도..)
+                  </p>
+                  <p data-ke-size="size18">&nbsp;</p>
+                  <p data-ke-size="size18">
+                    <b>2. cordova admob 플러그인 라이브러리</b>
+                  </p>
+                  <p data-ke-size="size18">
+                    <a
+                      style="letter-spacing: 0px"
+                      href="https://github.com/ratson/cordova-plugin-admob-free"
+                      >https://github.com/ratson/cordova-plugin-admob-free</a
+                    >
+                  </p>
+                  <p>&nbsp;</p>
+                  <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>자 진행해보겠습니다.</p>
+                  <h2 data-ke-size="size26">
+                    1. admob 사이트를 가입합니다. -&nbsp;<a
+                      href="https://admob.google.com/"
+                      >https://admob.google.com/</a
+                    >
+                  </h2>
+                  <figure
+                    id="og_1585814535076"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="Google AdMob: 모바일 앱 수익 창출"
+                    data-og-description="인앱 광고를 사용하여 모바일 앱에서 더 많은 수익을 창출하고, 사용이 간편한 도구를 통해 유용한 분석 정보를 얻고 앱을 성장시켜 보세요."
+                    data-og-host="admob.google.com"
+                    data-og-source-url="https://admob.google.com/"
+                    data-og-url="https://admob.google.com/intl/ko/home/"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bgb5Tb/hyFwc0eWXs/ApFzSMxkHDi6nsmZBxY34K/img.jpg?width=512&amp;height=472&amp;face=0_0_512_472,https://scrap.kakaocdn.net/dn/bxOhXb/hyFv48ZXHR/Qu2HFYyfJwRO1jA3tn5Ayk/img.jpg?width=512&amp;height=472&amp;face=0_0_512_472,https://scrap.kakaocdn.net/dn/b0Elt1/hyFwaOUJ1F/VYKT1tCPcSj56EY85ldjRk/img.jpg?width=2160&amp;height=1146&amp;face=0_0_2160_1146"
+                  >
+                    <a
+                      href="https://admob.google.com/"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://admob.google.com/"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bgb5Tb/hyFwc0eWXs/ApFzSMxkHDi6nsmZBxY34K/img.jpg?width=512&amp;height=472&amp;face=0_0_512_472,https://scrap.kakaocdn.net/dn/bxOhXb/hyFv48ZXHR/Qu2HFYyfJwRO1jA3tn5Ayk/img.jpg?width=512&amp;height=472&amp;face=0_0_512_472,https://scrap.kakaocdn.net/dn/b0Elt1/hyFwaOUJ1F/VYKT1tCPcSj56EY85ldjRk/img.jpg?width=2160&amp;height=1146&amp;face=0_0_2160_1146');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">
+                          Google AdMob: 모바일 앱 수익 창출
+                        </p>
+                        <p class="og-desc">
+                          인앱 광고를 사용하여 모바일 앱에서 더 많은 수익을
+                          창출하고, 사용이 간편한 도구를 통해 유용한 분석 정보를
+                          얻고 앱을 성장시켜 보세요.
+                        </p>
+                        <p class="og-host">admob.google.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      가입을 하고 나면 메인화면에서 좌측에 [앱 - 앱 추가]
+                      클릭하여 본인이 만들 앱 이름을 작성하고 생성해줍니다.
+                    </li>
+                    <li>
+                      <b>앱을 Google Play 또는 App Store에 게시하셨나요?</b>
+                      <ul style="list-style-type: disc">
+                        <li>
+                          우선은 [아니요] 라고 선택해서 다음을 진행합니다 ( 앱
+                          배포를 하고나서 연결이 가능합니다 )
+                        </li>
+                        <li>
+                          아래의 화면 처럼 앱이름을 적당히 작성하고
+                          [<b>추가</b>]를 선택
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="0"
+                      data-origin-height="0"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img_1.png"
+                          data-origin-width="0"
+                          data-origin-height="0"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">
+                    [앱 - 광고 단위 - 광고 단위 추가]로 들어가서 각각의 광고
+                    단위를 생성
+                  </h2>
+                  <p data-ke-size="size16">
+                    ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYYYY 등의 ID가 생성
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="0"
+                      data-origin-height="0"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img_2.png"
+                          data-origin-width="0"
+                          data-origin-height="0"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">
+                    [앱 - 앱 설정] 의 앱 ID를 잘
+                    <span style="color: #9d9d9d"><s>기억</s></span> 복사해
+                    줍니다
+                  </h2>
+                  <p>&nbsp;</p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="0"
+                      data-origin-height="0"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img_3.png"
+                          data-origin-width="0"
+                          data-origin-height="0"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">2. cordova admob 라이브러리</h2>
+                  <p data-ke-size="size16">
+                    여러 라이브러리를 찾아보던 중 아래의 오픈소스가 가장 적절
+                  </p>
+                  <p data-ke-size="size16">
+                    다른 cordova admob 라이브러리는 광고로 벌어들인 수입을
+                    원작자에게 공유하게 끔 되어 있고
+                  </p>
+                  <p data-ke-size="size16">아래의 라이브러리는 무료입니다</p>
+                  <p data-ke-size="size16">
+                    <a
+                      style="letter-spacing: 0px"
+                      href="https://github.com/ratson/cordova-plugin-admob-free"
+                      >https://github.com/ratson/cordova-plugin-admob-free</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1585816143727"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="object"
+                    data-og-title="ratson/cordova-plugin-admob-free"
+                    data-og-description="Cordova AdMob Plugin. Contribute to ratson/cordova-plugin-admob-free development by creating an account on GitHub."
+                    data-og-host="github.com"
+                    data-og-source-url="https://github.com/ratson/cordova-plugin-admob-free"
+                    data-og-url="https://github.com/ratson/cordova-plugin-admob-free"
+                    data-og-image="https://scrap.kakaocdn.net/dn/5yogB/hyFvXa0EYx/OD2SLPPO0dtoRRH2WmcJQK/img.png?width=400&amp;height=400&amp;face=0_0_400_400"
+                  >
+                    <a
+                      href="https://github.com/ratson/cordova-plugin-admob-free"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://github.com/ratson/cordova-plugin-admob-free"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/5yogB/hyFvXa0EYx/OD2SLPPO0dtoRRH2WmcJQK/img.png?width=400&amp;height=400&amp;face=0_0_400_400');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">ratson/cordova-plugin-admob-free</p>
+                        <p class="og-desc">
+                          Cordova AdMob Plugin. Contribute to
+                          ratson/cordova-plugin-admob-free development by
+                          creating an account on GitHub.
+                        </p>
+                        <p class="og-host">github.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">
+                    설치 가이드에 따라 플러그인 설치
+                  </h2>
+                  <pre
+                    id="code_1585816576934"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>cordova plugin add cordova-plugin-admob-free --save --variable ADMOB_APP_ID="앱 ID 입력"</code></pre>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <h2 data-ke-size="size26">admob.js 파일 작성</h2>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      제가 사용했던 js 파일이고(수정하셔서 사용해도 됩니다)
+                    </li>
+                    <li>앱이 실행될 때 initAd() 를 호출 해주고</li>
+                    <li>
+                      게재가 되어야 할 부분에서 showBanner() 등으로 적절하게
+                      호출하면 됩니다.
+                    </li>
+                    <li>
+                      소스파일을 빌드하게 될 때 index.html에 &lt;script
+                      src="cordova.js"&gt;&lt;/script&gt; 파일이 생성되므로
+                    </li>
+                    <li>
+                      개발 웹 브라우저에서는 작동이 되지 않고 모바일
+                      디바이스에서만 실행이 됩니다.
+                    </li>
+                    <li>
+                      <b
+                        ><span style="color: #ee2323"
+                          >개발시에는 테스트 ID 로만 실행하셔야 합니다. 실제
+                          ID값 테스트하면 계정정지 당합니다.</span
+                        ></b
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      아래와 같이 모바일 디바이스에서 이벤트핸들러를 등록해주고
+                      사용
+                    </li>
+                  </ol>
+                  <table
+                    style="border-collapse: collapse; width: 100%"
+                    border="1"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="width: 100%">
+                          document.addEventListener("deviceready",&nbsp;function()&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initAd();
+                          <br />});
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>&nbsp;</p>
+                  <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <table
+                    style="border-collapse: collapse; width: 100%"
+                    border="1"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="width: 100%">
+                          var&nbsp;admob&nbsp;=&nbsp;null;
+                          <br /><br />//&nbsp;실제
+                          <br />//&nbsp;var&nbsp;admobId&nbsp;=&nbsp;{
+                          <br />//&nbsp;&nbsp;&nbsp;android:&nbsp;{
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interstitial:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewardvideo:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;},
+                          <br />//&nbsp;&nbsp;&nbsp;ios:&nbsp;{
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interstitial:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewardvideo:&nbsp;'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyy',
+                          <br />//&nbsp;&nbsp;&nbsp;} <br />//&nbsp;}
+                          <br /><br />//&nbsp;테스트
+                          <br />var&nbsp;admobId&nbsp;=&nbsp;{
+                          <br />&nbsp;&nbsp;android:&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;banner:&nbsp;'ca-app-pub-3940256099942544/6300978111',
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;interstitial:&nbsp;'ca-app-pub-3940256099942544/1033173712',
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;rewardvideo:&nbsp;'ca-app-pub-3940256099942544/5224354917',
+                          <br />&nbsp;&nbsp;}, <br />&nbsp;&nbsp;ios:&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;banner:&nbsp;'ca-app-pub-3940256099942544/6300978111',
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;interstitial:&nbsp;'ca-app-pub-3940256099942544/1033173712',
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;rewardvideo:&nbsp;'ca-app-pub-3940256099942544/5224354917',
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br /><br />export&nbsp;function&nbsp;initAd()&nbsp;{
+                          <br />&nbsp;&nbsp;admob&nbsp;=&nbsp;<a
+                            href="window.plugins.admob"
+                            target="_blank"
+                            rel="noopener"
+                            >window.plugins.admob</a
+                          >&nbsp;||&nbsp;<a
+                            href="window.admob;"
+                            target="_blank"
+                            rel="noopener"
+                            >window.admob;</a
+                          >
+                          <br />&nbsp;&nbsp;if&nbsp;(/(android)/i.test(navigator.userAgent)&nbsp;&amp;&amp;&nbsp;admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;배너
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;<a
+                            href="admobId.android.banner,"
+                            target="_blank"
+                            rel="noopener"
+                            >admobId.android.banner,</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.prepare();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.prepare();</a
+                          >
+                          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;전면
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.interstitial.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.interstitial.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;admobId.android.interstitial,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.interstitial.prepare();
+                          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;리워드
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.rewardvideo.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.rewardvideo.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;admobId.android.rewardvideo,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.rewardvideo.prepare();
+                          <br /><br />&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(/(ipod|iphone|ipad)/i.test(navigator.userAgent)&nbsp;&amp;&amp;&nbsp;admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;배너
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;<a
+                            href="admobId.ios.banner,"
+                            target="_blank"
+                            rel="noopener"
+                            >admobId.ios.banner,</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.prepare();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.prepare();</a
+                          >
+                          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;전면
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.interstitial.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.interstitial.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;<a
+                            href="admobId.ios.interstitial,"
+                            target="_blank"
+                            rel="noopener"
+                            >admobId.ios.interstitial,</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.interstitial.prepare();
+                          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;리워드
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.rewardvideo.config("
+                            target="_blank"
+                            rel="noopener"
+                            >admob.rewardvideo.config(</a
+                          >{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;<a
+                            href="admobId.ios.rewardvideo,"
+                            target="_blank"
+                            rel="noopener"
+                            >admobId.ios.rewardvideo,</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoShow:&nbsp;false,
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.rewardvideo.prepare();
+                          <br />&nbsp;&nbsp;}
+                          <br /><br />&nbsp;&nbsp;let&nbsp;interstitialEvent&nbsp;=&nbsp;['LOAD_FAIL',&nbsp;'CLOSE',&nbsp;'EXIT_APP'];
+                          <br />&nbsp;&nbsp;interstitialEvent.forEach((v)&nbsp;=&gt;&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener(`<a
+                            href="admob.interstitial.events.$"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.interstitial.events.$</a
+                          >{v}`,&nbsp;function&nbsp;()&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;admob.interstitial.prepare();
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;}) <br />&nbsp;&nbsp;})
+                          <br /><br />&nbsp;&nbsp;let&nbsp;rewardvideoEvent&nbsp;=&nbsp;['LOAD_FAIL',&nbsp;'CLOSE',&nbsp;'EXIT_APP',&nbsp;'REWARD'];
+                          <br />&nbsp;&nbsp;rewardvideoEvent.forEach((v)&nbsp;=&gt;&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener(`<a
+                            href="admob.rewardvideo.events.$"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.rewardvideo.events.$</a
+                          >{v}`,&nbsp;function&nbsp;()&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;admob.rewardvideo.prepare();
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;}) <br />&nbsp;&nbsp;})
+                          <br />}
+                          <br /><br />export&nbsp;function&nbsp;showBanner()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.show();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.show();</a
+                          >
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br />export&nbsp;function&nbsp;removeBanner()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.remove();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.remove();</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(()&nbsp;=&gt;&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.banner.prepare()"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.banner.prepare()</a
+                          >
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;100)
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br />export&nbsp;function&nbsp;prepareInterstitial()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.interstitial.prepare();
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br />export&nbsp;function&nbsp;showInterstitial()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.interstitial.show();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.interstitial.show();</a
+                          >
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br />export&nbsp;function&nbsp;prepareRewardVideo()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;admob.rewardvideo.prepare();
+                          <br />&nbsp;&nbsp;} <br />}
+                          <br />export&nbsp;function&nbsp;showRewardVideo()&nbsp;{
+                          <br />&nbsp;&nbsp;if&nbsp;(admob)&nbsp;{
+                          <br />&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="admob.rewardvideo.show();"
+                            target="_blank"
+                            rel="noopener"
+                            >admob.rewardvideo.show();</a
+                          >
+                          <br />&nbsp;&nbsp;} <br />}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p><br /></p>
+                </div>
+                <br />
+                <div class="tags">
+                  #Android #적용 #plugin #안드로이드 #AdMob #cordova
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

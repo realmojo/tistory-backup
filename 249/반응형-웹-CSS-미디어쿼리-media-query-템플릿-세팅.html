@@ -1,0 +1,193 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>반응형 웹 CSS 미디어쿼리 media query 템플릿 세팅</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      반응형 웹 CSS 미디어쿼리 media query 템플릿 세팅
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/CSS</p>
+                      <p class="date">2021-10-18 17:52:52</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="225"
+                      height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/css.png" width="225" height="225" />
+                      </span>
+                      <figcaption>반응형 웹 CSS 미디어쿼리</figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">반응형 웹</h2>
+                  <p data-ke-size="size16">
+                    반응형 웹은 PC, 태블릿, 모바일(가로, 세로) 등을 모두 지원할
+                    수 있게끔 설정 해주는 템플릿을 의믜한다. 일반적으로는 CSS의
+                    미디어쿼리를 이용하여 분기처리를 하지만 적응형 웹으로도
+                    사용할 수가 있다. 기기 장치에 따라 CSS 템플릿을 다르게
+                    적재해서 사용하는 것을 의미
+                  </p>
+                  <p data-ke-size="size16">
+                    몇 년 전만 해도 모바일의 가로 크기는 보통 480px 이하로
+                    작성했는데
+                    <span style="color: #333333"
+                      >노트 플러스, 아이폰 플러스 등의 비교적 큰 화면의
+                      스마트폰이 나오기 시작하면서 모바일의 가로크기가 점점
+                      커지기 시작했다</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    그리고 PC의 화면은 아직까지는 1920px로 유효하다. 가끔 27인치
+                    이상의 모니터에서는 가로크기를 2500px을 넘기는게 간혹 있긴
+                    한데 아직까지는 크게 신경쓰지 않아도 될 부분이다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    CSS 반응형 웹 작성시 필수적인 기본 미디어쿼리
+                  </h2>
+                  <pre
+                    id="code_1587798786495"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>/* 모바일 세로 화면 */
+@media (max-width: 575.98px) {
+  /* 코드 작성 */
+}
+
+/* 모바일 가로 화면 */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* 코드 작성 */
+}
+
+/* 태블릿(갤럭시 탭, 아이패드) 화면 */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* 코드 작성 */
+}
+
+/* PC 화면 1200px 이하 */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* 코드 작성 */
+}
+
+/* PC 화면 1200px 이상 1920px 이하 */
+@media (min-width: 1200px) and (max-width: 1919.99px) {
+  /* 코드 작성 */
+}
+
+/* PC 화면 1920px 이상 */
+@media (min-width: 1920px) {
+  /* 코드 작성 */
+}</code></pre>
+                  <h2 data-ke-size="size26">그 외</h2>
+                  <p data-ke-size="size16">
+                    그 외에도 print, tv, speech, screen 등의 미디어로 분기 시킬
+                    수는 있지만 대체적으로는 all을 많이 사용한다
+                  </p>
+                  <table
+                    style="border-collapse: collapse; width: 100%"
+                    border="1"
+                    data-ke-style="style8"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="width: 50%">미디어 타입</td>
+                        <td style="width: 50%">설명</td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%">all</td>
+                        <td style="width: 50%">전부</td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%">print</td>
+                        <td style="width: 50%">출력 장치(프린터)</td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%">screen</td>
+                        <td style="width: 50%">모니터, 모바일 디바이스</td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%">tv</td>
+                        <td style="width: 50%">고화질 tv</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">
+                    좀 더 자세하게 알고 싶으면 mozilla 페이지를 이용
+                  </p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://developer.mozilla.org/ko/docs/Web/CSS/@media"
+                      >https://developer.mozilla.org/ko/docs/Web/CSS/@media</a
+                    >
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags">
+                  #css #Media #query #미디어쿼리 #반응형 웹
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

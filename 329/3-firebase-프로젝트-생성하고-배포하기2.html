@@ -1,0 +1,210 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>3. firebase 프로젝트 생성하고 배포하기(2)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      3. firebase 프로젝트 생성하고 배포하기(2)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/firebase</p>
+                      <p class="date">2020-06-26 11:02:05</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    파이어베이스 프로젝트 호스팅에 배포하는 법을 이어서
+                    알아보겠습니다. 저는 Vue를 주로 이용하여 vue를 사용하여
+                    예제를 진행한겠습니다. React도 비슷합니다.
+                  </p>
+                  <h2 data-ke-size="size26">1. 프론트엔드 소스를 빌드한다.</h2>
+                  <p data-ke-size="size16">
+                    각자 프로젝트에 맞게 빌드를 진행합니다.
+                  </p>
+                  <pre
+                    id="code_1593135979957"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>yarn build
+or
+npm build</code></pre>
+                  <h2 data-ke-size="size26">2. dist 파일 생성 확인</h2>
+                  <p data-ke-size="size16">
+                    빌드 폴더를 다르게 진행한다면 다르게 나올 수도 있습니다.
+                    기본은 dist 폴더로 생성되니 이걸로 확인
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">3. firebase init</h2>
+                  <p data-ke-size="size16">
+                    프로젝트 준비가 되었느냐? Y 입력 후 엔터
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    키보드 아래로 내려서 Hosting 을 스페이스로 선택 후 엔터
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_2.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    Use an existing Project 선택 -&gt; 이전에 만든 프로젝트 선택
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_3.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    배포 디렉토리 설정 기본은 public으로 되지만 우리는 dist
+                    폴더를 배포할 예정이니 dist 입력 후 엔터
+                  </p>
+                  <p data-ke-size="size16">
+                    SPA 사용할거냐 안할거냐 여부 ( SPA -&gt; Y, 그외 전부 -&gt;
+                    N )
+                  </p>
+                  <p data-ke-size="size16">
+                    dist/index.html 파일이 이미 존재합니다. 덮어쓸까요? -&gt; No
+                    ( 여기서 Yes로 하면 파이어베이스에서 제공하는 기본
+                    index.html 파일이 덮어씌워진다)
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_4.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    4. firebase login ( 최초 1회만 )
+                  </h2>
+                  <p data-ke-size="size16">
+                    로그인을 해야 한다면 최초 1회만 한다. 아래의 명령어를 치면
+                    구글 로그인 창이 나오는데 가볍게 인증 해주면 된다.
+                  </p>
+                  <pre
+                    id="code_1593136604922"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>firebase login</code></pre>
+                  <h2 data-ke-size="size26">5. firebase deploy</h2>
+                  <p data-ke-size="size16">
+                    배포를 시작하면 약 10초 내외로 진행이 완료된다. 용량이 크면
+                    더 오래 걸릴 수는 있다.
+                  </p>
+                  <pre
+                    id="code_1593136835592"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>firebase deploy</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_5.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    아래에 생성된 URL로 접속하면 내가 만든 페이지가 배포 된다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

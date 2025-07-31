@@ -1,0 +1,316 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 색깔 카운트 완전 정복 가이드: 빨간색 노란색 셀 개수 세는 방법 모음집
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 색깔 카운트 완전 정복 가이드: 빨간색 노란색 셀 개수
+                      세는 방법 모음집
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-06 00:46:52</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 색깔 카운트 완전 정복 가이드: 빨간색 노란색 셀 개수
+                        세는 방법 모음집
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀로 데이터를 관리하다 보면 셀 배경색으로 상태를 구분하는
+                    경우가 많습니다. 승인은 초록색, 보류는 노란색, 반려는
+                    빨간색처럼 시각적으로 구분할 때 색깔 카운트가 필요한데요.
+                    엑셀의 기본 함수로는 색상을 직접 카운트할 수 없어 별도의
+                    방법이 필요합니다. 이 글에서는 엑셀에서 색깔별로 셀을 세는
+                    다양한 방법을 상세히 알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    필터 기능으로 색깔 카운트하는 방법
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    가장 간단하고 직관적인 방법은 엑셀의 자동 필터 기능을
+                    활용하는 것입니다. 데이터 탭에서 필터를 적용한 후 원하는
+                    색상으로 필터링하면 됩니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      표의 상단 셀을 선택하고 데이터 메뉴에서 필터를 클릭합니다
+                    </li>
+                    <li>
+                      드롭다운 메뉴에서 색 필터를 선택하고 원하는 색상을
+                      고릅니다
+                    </li>
+                    <li>
+                      필터링된 결과에서 SUBTOTAL 함수를 사용하여 개수를 확인할
+                      수 있습니다
+                    </li>
+                    <li>하단 상태표시줄에서도 자동으로 개수가 표시됩니다</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 방법은 실시간으로 변하는 데이터를 확인할 때 유용하며,
+                    수식 없이도 빠르게 색깔 카운트를 할 수 있습니다. 특히
+                    <a
+                      href="https://support.microsoft.com/office/filter-data-in-a-range-or-table-01832226-31b5-4568-8806-38c37dcc180e"
+                      target="_blank"
+                      >마이크로소프트 공식 필터 가이드</a
+                    >를 참고하면 더 자세한 정보를 얻을 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    GET.CELL 함수를 활용한 색깔 카운트
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    GET.CELL은 엑셀의 레거시 Macro4 함수로, 셀의 배경색 코드를
+                    반환할 수 있습니다. 이름 관리자를 통해 정의된 범위를 만들어
+                    활용하는 방법입니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    수식 탭에서 이름 정의를 클릭하여 새 이름 메뉴를 열고,
+                    ColorCode라는 이름으로
+                    =GET.CELL(63,OFFSET(INDIRECT(ADDRESS(ROW(),COLUMN())),0,-1))
+                    공식을 입력합니다. 이후 COUNTIF 함수와 함께 사용하여 특정
+                    색상의 셀 개수를 카운트할 수 있습니다. 이 방법은 동적으로
+                    업데이트되지만 매크로 4 기능이므로 향후 지원이 중단될
+                    가능성이 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">VBA 코드로 색깔별 셀 개수 세기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    VBA를 활용하면 사용자 정의 함수를 만들어 색깔 카운트를
+                    자동화할 수 있습니다. Alt+F11을 눌러 Visual Basic Editor를
+                    열고 새 모듈을 삽입합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    Function CountColorCells(ColorRange As Range, DataRange As
+                    Range) As Long 코드를 작성하여 특정 색상의 셀 개수를
+                    반환하는 함수를 만들 수 있습니다. 이 함수는 첫 번째 인수로
+                    기준 색상 셀을, 두 번째 인수로 카운트할 범위를 받습니다. VBA
+                    방법은
+                    <a
+                      href="https://docs.microsoft.com/office/vba/api/excel.range.interior"
+                      target="_blank"
+                      >엑셀 VBA 공식 문서</a
+                    >에서 자세한 속성을 확인할 수 있으며, 매우 정확하고 유연한
+                    결과를 제공합니다.
+                  </p>
+                  <h2 data-ke-size="size26">조건부 서식 기반 카운트 방법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    셀 색상이 조건부 서식으로 지정된 경우, 해당 조건을 이용해
+                    간접적으로 색깔 카운트를 할 수 있습니다. 조건부 서식의
+                    논리를 파악하여 COUNTIF 함수에 동일한 조건을 적용하는
+                    방식입니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      값이 70 미만이면 빨간색으로 표시되는 경우:
+                      =COUNTIF(B2:B100, "<70")
+                    </li>
+                    <li>
+                      값이 90 이상이면 초록색으로 표시되는 경우:
+                      =COUNTIF(B2:B100, ">=90")
+                    </li>
+                    <li>
+                      특정 텍스트가 포함되면 노란색으로 표시되는 경우:
+                      =COUNTIF(A2:A100, "*보류*")
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 방법은 색상 자체를 카운트하는 것은 아니지만, 색상이
+                    부여된 조건을 통해 정확한 카운트를 얻을 수 있습니다.
+                    <a
+                      href="https://support.microsoft.com/office/use-conditional-formatting-to-highlight-information-fed60dfa-1d3f-4e13-9ecb-f1951ff89d7f"
+                      target="_blank"
+                      >조건부 서식 활용법</a
+                    >을 참고하면 더 다양한 활용이 가능합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    도우미 열을 활용한 수동 색깔 분류
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    자동화가 어려운 상황에서는 도우미 열을 만들어 수동으로
+                    분류값을 부여하는 방법도 효과적입니다. 색상이 있는 셀 옆에
+                    별도의 열을 만들어 승인, 보류, 반려 등의 텍스트를
+                    입력합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이후 COUNTIF 함수를 사용하여 각 상태별 개수를 계산할 수
+                    있습니다. 예를 들어 =COUNTIF(D2:D100, "보류")와 같이
+                    작성하면 보류 상태의 셀 개수를 얻을 수 있습니다. 비록
+                    자동화는 아니지만, 색깔 기준 분류 작업을 정리한 후에는
+                    정확한 개수 파악이 쉬워지고, 향후 조건부 서식으로 대체하여
+                    자동화할 수도 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    찾기 및 바꾸기 기능으로 색깔 셀 찾기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀의 찾기 및 바꾸기 기능을 활용하면 특정 서식의 셀을 찾아
+                    개수를 확인할 수 있습니다. Ctrl+F를 눌러 찾기 대화상자를
+                    열고, 서식 버튼을 클릭하여 원하는 색상을 선택합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    셀에서 서식 선택 옵션을 사용하면 기준이 되는 색상 셀을 직접
+                    클릭하여 지정할 수 있습니다. 모두 찾기를 클릭하면 해당
+                    색상을 가진 모든 셀이 나열되고, 하단에 총 개수가 표시됩니다.
+                    이 방법은
+                    <a
+                      href="https://support.microsoft.com/office/find-and-replace-text-and-numbers-on-a-worksheet-0e304ca5-ecef-4808-b90f-fdb42f892e90"
+                      target="_blank"
+                      >엑셀 찾기 기능</a
+                    >의 고급 활용법으로, 일회성 카운트에는 매우 유용합니다.
+                  </p>
+                  <h2 data-ke-size="size26">색깔 카운트 시 주의사항과 팁</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀에서 색깔 카운트를 할 때 알아두면 좋은 몇 가지 팁이
+                    있습니다. VBA 함수는 조건부 서식으로 칠해진 색상을 인식하지
+                    못하므로, 조건부 서식이 적용된 셀은 별도의 방법을 사용해야
+                    합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      VBA 함수 사용 시 파일을 .xlsm 형식으로 저장해야 합니다
+                    </li>
+                    <li>
+                      색상이 변경되면 F9키를 눌러 강제로 재계산을 실행해야 할 수
+                      있습니다
+                    </li>
+                    <li>
+                      많은 셀을 대상으로 할 때는 성능상 필터 방법이 더
+                      효율적입니다
+                    </li>
+                    <li>
+                      정확한 색상 매칭을 위해서는 RGB 값이나 ColorIndex를
+                      확인하는 것이 좋습니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    실무에서는 색깔보다는 조건부 서식의 근본 조건을 활용하여
+                    카운트하는 것이 더 안정적이고 정확한 결과를 얻을 수
+                    있습니다. 색깔 카운트가 필요한 상황에서는 처음부터 도우미
+                    열을 만들어 체계적으로 관리하는 것을 권장합니다.
+                  </p>
+                </div>
+
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

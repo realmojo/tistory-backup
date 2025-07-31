@@ -1,0 +1,185 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>같은 그림 찾기 개발 후 플레이스토어 등록 회고</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      같은 그림 찾기 개발 후 플레이스토어 등록 회고
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/안드로이드</p>
+                      <p class="date">2020-04-03 16:46:25</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    스도쿠를 가볍게 만들고 난 후 뭘 해볼까 고민후에 같은 그림
+                    찾기를 만들어보기 시작했다.
+                  </p>
+                  <p>
+                    RPG, FPS 같은 게임들은.. 일단 내 취향도 아니면서 unity를
+                    해야할 이유가 없었기 때문에<br />한 판에 3분이 넘어가지 않는
+                    퍼즐게임이 내게는 중독성이 더 있어서 개발을 해보기로 하였다
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>모든 건 Vue, Javascript 로 만들었음..!..</p>
+                  <p>
+                    터치 반응 속도가 네이티브랑 크게 차이가 없는 듯 한데 0.1
+                    초.. 정도 뭔가 다른 느낌이 있다.
+                  </p>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      터치 라이브러리 vue2-hammer<br /><a
+                        href="https://www.npmjs.com/package/vue2-hammer"
+                        >https://www.npmjs.com/package/vue2-hammer</a
+                      >
+                    </li>
+                    <li>
+                      이미지는 pixabay 를 이용했고 퍼블릭 도메인 기준으로 저작권
+                      없는 이미지만 사용
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <p>기획 단계</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      가볍게 플레이 할 수 있는 방안을 모색 후 개발( 클릭, 진동,
+                      사운드, 이미지 )
+                    </li>
+                    <li>좀 더 어렵게 할 수 있는 난이도를 적용</li>
+                    <li>
+                      플레이 했던 내용을 토대로 메인페이지를 간단하게 적용
+                    </li>
+                    <li>
+                      반응형 디자인을 적용해서 (PC, Mobile, Tablet) 호환 할 수
+                      있게 적용
+                    </li>
+                    <li>여러번의 테스트 후에 빌드 후 배포</li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <p>
+                    개발 자체는 몇시간도(?) 걸리지 않았는데 이미지를 수집하고
+                    가공하는데 꽤 오랜시간이 걸렸었다.
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>일단 같은그림찾기는 간단하다!</p>
+                  <p>
+                    같은그림을 동시에 2개만 찾으면 되는 거고, 시간 기준이 있는
+                    것과 없는 것으로 구분해서 나누고<br />이미지 2개를 틀리게
+                    찾으면 다시 원점!!...
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>
+                    만들고 나서 사람들이 조금씩 해준 덕분에 한 달 정도만에
+                    드디어 플레이스토어에서 [<span style="color: #ee2323"
+                      ><b>같은그림찾기</b></span
+                    >]로 검색을 하면 검색이 되기 시작했다!!! 감격 ㅜㅜ<br />다운로드
+                    수는 아직 미미하다 ㅜㅜ...
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-origin-width="0"
+                      data-origin-height="0"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-origin-width="0"
+                          data-origin-height="0"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.f5game.memory"
+                      >https://play.google.com/store/apps/details?id=com.f5game.memory</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1585898920299"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="브레인 게임 - 같은 그림 찾기(기억력) - Google Play 앱"
+                    data-og-description="같은그림찾기 게임은 두뇌를 훈련하고 두뇌의 활동력을 유지하며 치매에 예방되고 어린아이의 교육에도 우수한 방법입니다. 각각의 그림을 암기하고 각 레벨별로 등록된된 10 개 이상의 쌍을 찾습니다. 이 메모리 게임은 어린이와 성인을 대상으로하며 어린 아이들을 위해 특별히 설계된 아름다운 그림이 포함되어 있습니다. 사용하기 쉽고, 카드를 누르고, 암기하고, 쌍을 찾으면, 아이들은 두뇌를 사용하면서 자신을 즐겁게 할 수 있습니다. 지능을 측정하는 재미를주기 위해 "
+                    data-og-host="play.google.com"
+                    data-og-source-url="https://play.google.com/store/apps/details?id=com.f5game.memory"
+                    data-og-url="https://play.google.com/store/apps/details?id=com.f5game.memory&amp;hl=ko"
+                    data-og-image="https://scrap.kakaocdn.net/dn/b3i8Wx/hyFxeiJnMQ/M6iEQR6gtKA4KCJTmDUEIK/img.png?width=512&amp;height=250&amp;face=0_0_512_250,https://scrap.kakaocdn.net/dn/bvUaXz/hyFxfu9I7h/ktOnjDJnK1S6NIRNepoRC0/img.png?width=600&amp;height=300&amp;face=0_0_600_300"
+                  >
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.f5game.memory"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://play.google.com/store/apps/details?id=com.f5game.memory"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/b3i8Wx/hyFxeiJnMQ/M6iEQR6gtKA4KCJTmDUEIK/img.png?width=512&amp;height=250&amp;face=0_0_512_250,https://scrap.kakaocdn.net/dn/bvUaXz/hyFxfu9I7h/ktOnjDJnK1S6NIRNepoRC0/img.png?width=600&amp;height=300&amp;face=0_0_600_300');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">
+                          브레인 게임 - 같은 그림 찾기(기억력) - Google Play 앱
+                        </p>
+                        <p class="og-desc">
+                          같은그림찾기 게임은 두뇌를 훈련하고 두뇌의 활동력을
+                          유지하며 치매에 예방되고 어린아이의 교육에도 우수한
+                          방법입니다. 각각의 그림을 암기하고 각 레벨별로
+                          등록된된 10 개 이상의 쌍을 찾습니다. 이 메모리 게임은
+                          어린이와 성인을 대상으로하며 어린 아이들을 위해 특별히
+                          설계된 아름다운 그림이 포함되어 있습니다. 사용하기
+                          쉽고, 카드를 누르고, 암기하고, 쌍을 찾으면, 아이들은
+                          두뇌를 사용하면서 자신을 즐겁게 할 수 있습니다. 지능을
+                          측정하는 재미를주기 위해
+                        </p>
+                        <p class="og-host">play.google.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>웹으로 해보기</p>
+                  <p>
+                    <a href="https://f5game.co.kr/game/memory/index.html"
+                      >https://f5game.co.kr/game/memory/index.html</a
+                    >&nbsp;
+                  </p>
+                </div>
+                <br />
+                <div class="tags">
+                  #개발 #안드로이드 #퍼즐게임 #같은그림찾기 #하이브리드앱
+                  #cordova #토이프로젝트
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

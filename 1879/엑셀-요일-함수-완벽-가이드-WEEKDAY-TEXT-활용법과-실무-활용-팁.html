@@ -1,0 +1,248 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 요일 함수 완벽 가이드 - WEEKDAY TEXT 활용법과 실무 활용 팁
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 요일 함수 완벽 가이드 - WEEKDAY TEXT 활용법과 실무
+                      활용 팁
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-25 00:43:48</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 요일 함수 완벽 가이드 - WEEKDAY TEXT 활용법과 실무
+                        활용 팁
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀로 문서를 작성하다 보면 특정 날짜가 무슨 요일인지
+                    헷갈리는 경우가 종종 있습니다. 이럴 때 엑셀의 요일 함수를
+                    활용하면 간단하게 해결할 수 있어요. 날짜 데이터를 다룰 때
+                    요일 정보는 업무 스케줄링, 프로젝트 계획, 데이터 분석 등
+                    다양한 상황에서 필수적입니다. 오늘은 엑셀에서 날짜로부터
+                    요일을 구하는 다양한 방법을 알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">WEEKDAY 함수 기본 사용법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    WEEKDAY 함수는 엑셀에서 가장 기본적인 요일 함수입니다. 이
+                    함수는 주어진 날짜에 대해 1부터 7까지의 숫자를 반환하며,
+                    기본적으로 1은 일요일, 2는 월요일, 그리고 7은 토요일을
+                    의미합니다. 사용법은 =WEEKDAY(날짜)이며, 예를 들어 2025년
+                    5월 1일이 목요일이라면 함수는 5를 반환합니다. 이 숫자 결과는
+                    다른 함수와 결합하여 더 유용한 정보로 변환할 수 있습니다.
+                    WEEKDAY 함수는
+                    <a
+                      href="https://support.microsoft.com/en-us/office/weekday-function-60e44483-2ed1-439f-8bd0-e404c190949a"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 공식 지원 페이지</a
+                    >에서 자세한 정보를 확인할 수 있어요.
+                  </p>
+                  <h2 data-ke-size="size26">TEXT 함수로 요일 이름 표시하기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    숫자로 된 요일보다는 텍스트로 된 요일 이름이 더 직관적이고
+                    이해하기 쉽습니다. TEXT 함수를 사용하면 날짜를 원하는 요일
+                    형태로 변환할 수 있어요. =TEXT(날짜, "dddd") 공식을 사용하면
+                    완전한 요일 이름(예: "Monday")을 얻을 수 있고, =TEXT(날짜,
+                    "ddd")를 사용하면 축약된 요일 이름(예: "Mon")을 얻을 수
+                    있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      dddd 형식: 완전한 요일 이름 표시 (Monday, Tuesday,
+                      Wednesday...)
+                    </li>
+                    <li>ddd 형식: 축약된 요일 이름 표시 (Mon, Tue, Wed...)</li>
+                    <li>
+                      한글 환경에서는 "월요일", "화요일" 등으로 표시됩니다
+                    </li>
+                    <li>
+                      TEXT 함수는 원본 날짜 데이터를 유지하면서 표시 형태만
+                      변경합니다
+                    </li>
+                  </ul>
+                  <h2 data-ke-size="size26">WEEKDAY 함수의 다양한 반환 타입</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    WEEKDAY 함수는 두 번째 인수로 반환 타입을 지정할 수 있어서
+                    다양한 요일 체계에 맞춰 사용할 수 있습니다. 이는 국가별 또는
+                    업무 환경별로 다른 주의 시작일을 적용할 때 매우 유용합니다.
+                  </p>
+                  <table
+                    class="app-table"
+                    style="width: 100%"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <th>반환 타입</th>
+                        <th>설명</th>
+                        <th>비고</th>
+                      </tr>
+                      <tr>
+                        <td>1 (기본값)</td>
+                        <td>일요일=1, 토요일=7</td>
+                        <td>미국식 주 체계</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>월요일=1, 일요일=7</td>
+                        <td>유럽식 주 체계</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>월요일=0, 일요일=6</td>
+                        <td>개발자 친화적 체계</td>
+                      </tr>
+                      <tr>
+                        <td>11-17</td>
+                        <td>다양한 주 시작일 조합</td>
+                        <td>Excel 2010 이후 지원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2 data-ke-size="size26">
+                    CHOOSE 함수와 결합한 맞춤형 요일 표시
+                  </h2>
+                  <p data-ke-size="size16">
+                    때로는 기본 요일 형식이 아닌 사용자 정의 형태로 요일을
+                    표시하고 싶을 때가 있습니다. CHOOSE 함수와 WEEKDAY 함수를
+                    결합하면 원하는 형태로 요일을 표시할 수 있어요. 예를 들어
+                    =CHOOSE(WEEKDAY(A1), "일","월","화","수","목","금","토")처럼
+                    사용하면 한글로 요일을 표시할 수 있습니다. 이 방법은
+                    <a
+                      href="https://exceljet.net/formulas/get-day-name-from-date"
+                      target="_blank"
+                      rel="noopener"
+                      >Exceljet</a
+                    >에서 소개된 고급 기법으로, 다국어 환경이나 특별한 표기법이
+                    필요한 경우에 매우 유용합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    CHOOSE 함수는 WEEKDAY가 반환하는 숫자를 인덱스로 사용하여
+                    미리 정의된 목록에서 해당 값을 선택합니다. 이를 통해 영어
+                    축약형(Sun, Mon), 한글(일, 월), 또는 완전히 사용자 정의된
+                    라벨을 사용할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    조건부 서식을 활용한 요일별 시각화
+                  </h2>
+                  <p data-ke-size="size16">
+                    요일 함수와 조건부 서식을 결합하면 데이터를 더욱 시각적으로
+                    표현할 수 있습니다. 예를 들어 주말과 평일을 다른 색상으로
+                    구분하거나, 특정 요일만 강조 표시하는 것이 가능해요.
+                    WEEKDAY($A2,1)&gt;5 조건을 사용하면 토요일과 일요일을 구분할
+                    수 있고, WEEKDAY($A2,1)&lt;6 조건으로는 평일을 구분할 수
+                    있습니다. 이런 시각화 기능은 프로젝트 일정 관리나 업무
+                    계획에서 매우 실용적입니다.
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-weekday-function/"
+                      target="_blank"
+                      rel="noopener"
+                      >Ablebits</a
+                    >에서 제공하는 고급 활용법을 참고하면 더욱 다양한 조건부
+                    서식을 적용할 수 있어요.
+                  </p>
+                  <p data-ke-size="size16">
+                    조건부 서식은 데이터의 패턴을 빠르게 파악할 수 있게
+                    도와주며, 특히 대량의 날짜 데이터를 다룰 때 그 효과가
+                    극대화됩니다. 월별 일정표나 연간 계획표에서 주말을 자동으로
+                    구분하여 표시하면 업무 효율성이 크게 향상됩니다.
+                  </p>
+                  <h2 data-ke-size="size26">실무에서의 요일 함수 활용 팁</h2>
+                  <p data-ke-size="size16">
+                    실제 업무에서 요일 함수를 활용할 때는 몇 가지 유용한 팁이
+                    있습니다. 첫째, 빈 셀에 대한 처리를 위해 IF 함수와 결합하여
+                    =IF(A1&lt;&gt;"",TEXT(A1,"dddd"),"") 형태로 사용하면 빈 셀일
+                    때 오류를 방지할 수 있어요. 둘째, 대량의 데이터를 처리할
+                    때는 셀 서식을 직접 변경하는 것이 함수를 사용하는 것보다
+                    성능상 유리할 수 있습니다. 셋째, 다른 날짜 함수들(TODAY,
+                    NOW, DATE 등)과 결합하면 더욱 강력한 기능을 구현할 수
+                    있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    특히 프로젝트 관리에서는 WORKDAY 함수와 함께 사용하여 주말을
+                    제외한 업무일만 계산하거나, NETWORKDAYS 함수로 두 날짜
+                    사이의 실제 근무일수를 계산하는 등의 응용이 가능합니다.
+                    <a
+                      href="https://www.exceldemy.com/excel-display-day-of-week-from-date/"
+                      target="_blank"
+                      rel="noopener"
+                      >ExcelDemy</a
+                    >에서는 이러한 실무 활용 사례들을 상세히 소개하고 있어요.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

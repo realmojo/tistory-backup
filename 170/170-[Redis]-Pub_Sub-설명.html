@@ -1,0 +1,553 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[Redis] Pub/Sub 설명</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">[Redis] Pub/Sub 설명</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2022-10-17 21:23:52</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >PUB/SUB 설명</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >레디스를 사용하는 가장 큰 이유가 속도는 물론&nbsp;아마
+                      pub/sub 기능 때문이 아닐 까 싶다.<br
+                    /></span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>SUBSCRIBE, UNSUBSCRIBE, PUBLISH</b>는 게시자/구독자의
+                      메시지 패러다임을 구현한다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >게시된 메시지는 구독자가 무엇인지에 대한 지식없이 채널로
+                      특징이 지어진다. 구독자(SUBSCRIBE)는 하나 이상의 채널에
+                      관심을 표명하고 해당 게시자가 누구인지에 대해 알 필요가
+                      없고 관심있는 메시지만 수신을 한다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >이렇게 게시자와 구독자를 분리하면 확장성이 향상되고 보다
+                      동적인 네트워크 토폴로지가 가능해진다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      >특정 채널을 구독하는 방법은 다음과 같이 아주
+                      간단하다.</span
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 58px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp; redis &gt;
+                            <b>SUBSCRIBE</b>
+                            channel&nbsp;[channel&nbsp;...]</span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    위와 같이 간단하게 구독이 가능하며 발행자는 다른
+                    클라이언트가 이 채널로 메시지를 보내면 현재 구독을 하고 있는
+                    모든 클라이언트로 푸쉬가 된다.<span style="font-size: 10pt"
+                      ><br
+                    /></span>
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    간단한 예제를 보자
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    2개의 레디스 쉘 커맨드를 띄운다.<br /><br /><b
+                      >좌측 커맨드(SUBSCRIBE)<br />우측 커맨드(PUBLISH)</b
+                    >
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="820"
+                      height="401"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/1.png" width="820" height="401" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p
+                    style="
+                      line-height: 1.5;
+                      text-align: left;
+                      clear: none;
+                      float: none;
+                    "
+                    data-ke-size="size16"
+                  >
+                    좌측 커맨드는 간단하게 test1과 test2의 채널을 구독하겠다고
+                    명시를 하였다.<br />우측 커맨드는 아무런 활동을 하지 않았다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p
+                    style="
+                      line-height: 1.5;
+                      text-align: left;
+                      clear: none;
+                      float: none;
+                    "
+                    data-ke-size="size16"
+                  >
+                    우측 커맨드(발행자)에서 구독한 클라이언트에게 메시지를
+                    보내면 좌측 커맨드(구독자)들은 누가 보냈는지는 신경쓰지도
+                    않고 자신이 구독한 채널에 메시지만 받게 된다.<br />test3
+                    채널은 구독을 하지 않았으므로 수신을 받지 못하고 test1과
+                    test2채널은 구독을 하여 수신을 받는다.
+                  </p>
+                  <p
+                    style="
+                      line-height: 1.5;
+                      text-align: left;
+                      clear: none;
+                      float: none;
+                    "
+                    data-ke-size="size16"
+                  >
+                    하나 이상의 채널에 가입한 클라이언트(좌측커맨드)는 다른
+                    채널을 구독하고 탈퇴 할 수 있지만 구독중에는 명령을 보낼
+                    수는 없다.
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">&nbsp;</p>
+                  <p style="line-height: 1.5" data-ke-size="size16">&nbsp;</p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 24pt"
+                        >푸시된 메시지의 포맷 형식</span
+                      ></b
+                    >
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    모든 메시지들은 배열 형식으로 받으며 첫 번째 요소의 메시지의
+                    종류는 3가지가 있다.
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    <b>subscribe </b>: 응답의 두 번째 요소로 된 채널에
+                    성공적으로 가입이 되었다는 것을 의미한다. 3번째 변수는 현재
+                    구동중인 채널을 의미
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 93px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp; 1) "subscribe" &nbsp;<span
+                              style="color: #2f9d27"
+                              >// 두 번째 요소(test1) 채널에 성공적으로 가입이
+                              되었음을 의미</span
+                            ><br />&nbsp; 2) "test1" &nbsp; &nbsp; &nbsp;
+                            &nbsp;<span style="color: #2f9d27"
+                              >// 가입한 채널명</span
+                            ><br />&nbsp; 3) (integer) 1 &nbsp;&nbsp;<span
+                              style="color: #2f9d27"
+                              >// 현재 구독중인 채널수</span
+                            ></span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    <b>&lt; 구독을 하였을 때 응답 형식의 간단한 형식&nbsp;</b
+                    >&gt;
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    <b>unsubscribe&nbsp;</b>: 구독중인 채널을 탈퇴하였을 경우를
+                    의미
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 93px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp; 1) "unsubscribe" &nbsp;&nbsp;<span
+                              style="color: #2f9d27"
+                              >// 두 번째 요소(test1)의 채널을 성공적으로 탈퇴
+                              되었음을&nbsp;의미</span
+                            ><br />&nbsp; 2) "test1" &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp;<span style="color: #2f9d27"
+                              >// 탈퇴한 채널명</span
+                            ><br />&nbsp; 3) (integer) 0 &nbsp; &nbsp; &nbsp;
+                            <span style="color: #2f9d27"
+                              >// 현재 구독중인 채널수</span
+                            ></span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    <b
+                      >&lt; 메시지를 수신&nbsp;하였을 때 응답 형식의 간단한
+                      형식</b
+                    >
+                    &gt;
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p style="line-height: 1.5" data-ke-size="size16">
+                    <b>message&nbsp;</b>: 다른 클라이언트가 발행한 publish
+                    명령의 결과로 수신된 메시지
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 93px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp; 1) "message" &nbsp;&nbsp;<span
+                              style="color: #2f9d27"
+                              >// 두 번째 요소(test1)로 특정 메시지가
+                              수신되었음을 의미</span
+                            ><br />&nbsp; 2) "test1" &nbsp; &nbsp; &nbsp;
+                            &nbsp;<span style="color: #2f9d27"
+                              >// 가입한 채널명</span
+                            ><br />&nbsp; 3) "hello" &nbsp; &nbsp; &nbsp;
+                            &nbsp;<span style="color: #2f9d27"
+                              >// 발행된 메시지</span
+                            ></span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    <b
+                      >&lt; 메시지를 수신&nbsp;하였을 때 응답 형식의 간단한
+                      형식&nbsp;</b
+                    >&gt;
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: center"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <b
+                      ><span style="font-size: 24pt"
+                        >데이터베이스 &amp; 스코프</span
+                      ></b
+                    >
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <span style="font-size: 10pt"
+                      >PUB/SUB는 키 공간과 관련이 없으며 데이터베이스 번호를
+                      포함하여 어떤 레벨에서도 방해하지 않도록 설계되어 있다.<br />즉
+                      db10번의 데이터베이스에서 발행을 하여도 db1번에서 구독자가
+                      메시지를 수신할 수 있다.</span
+                    >
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <span style="font-size: 13.3333px"
+                      >무슨 말인지 이해가 되지 않으면 직접 해보길 바란다.</span
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 86px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp; redis &gt; select 10<br />&nbsp; redis &gt;
+                            subscribe test1 test2&nbsp;</span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    &nbsp;
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <b><span style="font-size: 10pt">&nbsp;</span></b>
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <b><span style="font-size: 10pt">&nbsp;</span></b>
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <b><span style="font-size: 10pt">&nbsp;</span></b>
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <b><span style="font-size: 24pt">패턴매칭 구독</span></b>
+                  </p>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <span style="font-size: 10pt"
+                      >Redis의 Pub/Sub 구현은 패턴 일치를 지원합니다.
+                      클라이언트는 주어진 패턴과 일치하는 채널 이름으로 전송 된
+                      모든 메시지를 수신하기 위해 glob 스타일 패턴에 가입 할 수
+                      있습니다.</span
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 58px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; PSUBSCRIBE news.*</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p
+                    style="line-height: 1.5; text-align: left"
+                    data-ke-size="size16"
+                  >
+                    <span style="font-size: 13.3333px"
+                      >ex) news.sport , news.politic , news.music , news.article
+                      , news.entertainment 등등 패턴 매칭으로 한 번에 구독이
+                      가능하다.</span
+                    >
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

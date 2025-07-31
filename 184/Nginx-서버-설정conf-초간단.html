@@ -1,0 +1,43 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Nginx 서버 설정(conf) 초간단</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Nginx 서버 설정(conf) 초간단</h2>
+                                <div class="box-info">
+                                    <p class="category">Web 프로그래밍/Unix & Linux</p>
+                                    <p class="date">2017-07-25 00:06:44</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Nginx Conf 파일 설정</p><p><br /></p><p>기본적으로는 nginx.conf 파일을 설정해야 하지만 해당 경로 안에<br />Include 경로가 있기 때문에 보통은 다른 파일을 설정 한다.</p><table class="txc-table" width="864" cellspacing="0" cellpadding="0" border="0" style="border:none;border-collapse:collapse;;font-family:" 맑은="" 고딕",="" sans-serif;font-size:13px"=""><tbody><tr><td style="width: 864px; height: 24px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); background-color: rgb(246, 246, 246);"><p>&nbsp;<span style="background-color: rgb(154, 165, 234);"></span>server {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; listen 80; &nbsp;// 80 번 포트를 연다</p><p>&nbsp; &nbsp; &nbsp; &nbsp; location / { &nbsp;// &nbsp;루트 경로로 들어왔을 때 이동을 함</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; proxy_pass http://127.0.0.1:8000; &nbsp; // 80번으로 들어오면 8000번 포트로 이동을 하겠다고 선언</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; proxy_http_version 1.1;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; proxy_set_header Connection "";</p><p>&nbsp; &nbsp; &nbsp; &nbsp; }</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; location ~ ^/static/ {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; root /root/static; &nbsp;// &nbsp;/static 경로로 들어온 거는 해당 경로로 포워딩</p><p>&nbsp; &nbsp; &nbsp; &nbsp; }</p><p>}</p></td>
+</tr>
+</tbody></table><p><br /></p><p><br /></p><div>프록시 패스를 사용하지 않은 경우엔</div><div>root 변수를 이용하여 경로를 지정해 주면 된다.</div><p><br /></p><p><br /></p><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

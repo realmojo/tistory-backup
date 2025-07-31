@@ -1,0 +1,339 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 평균 함수 완벽 가이드 AVERAGE AVERAGEIF AVERAGEIFS 조건별 계산법 상세
+      활용
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 평균 함수 완벽 가이드 AVERAGE AVERAGEIF AVERAGEIFS
+                      조건별 계산법 상세 활용
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-18 21:17:50</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 평균 함수 완벽 가이드 AVERAGE AVERAGEIF AVERAGEIFS
+                        조건별 계산법 상세 활용
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 데이터 분석 작업을 할 때 평균값 계산은 가장
+                    기본적이면서도 중요한 작업입니다. 단순히 숫자를 더하고
+                    나누는 것보다 엑셀의 평균 함수를 활용하면 정확하고 빠르게
+                    결과를 얻을 수 있습니다. 특히 대량의 데이터나 복잡한 조건이
+                    있는 경우에는 엑셀 평균 함수의 진가가 발휘됩니다. 이번
+                    글에서는 기본적인 AVERAGE 함수부터 조건부 평균을 구하는
+                    AVERAGEIF, AVERAGEIFS 함수까지 실무에서 바로 활용할 수 있는
+                    모든 방법을 상세히 알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    엑셀 AVERAGE 함수 기본 사용법과 핵심 원리
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    AVERAGE 함수는 엑셀에서 가장 기본적인 통계 함수 중 하나로,
+                    선택한 범위의 숫자들에 대한 산술 평균을 계산합니다. 함수의
+                    기본 문법은 =AVERAGE(number1, [number2], ...)로 매우
+                    간단합니다. 첫 번째 인수는 필수이고, 나머지는 선택사항으로
+                    최대 255개까지 인수를 포함할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      기본 사용법: =AVERAGE(A1:A10)과 같이 범위를 지정하면 해당
+                      범위의 모든 숫자에 대한 평균값이 계산됩니다.
+                    </li>
+                    <li>
+                      빈 셀 처리: AVERAGE 함수는 빈 셀과 텍스트가 포함된 셀은
+                      자동으로 무시하고 계산하지만, 0이 입력된 셀은 계산에
+                      포함됩니다.
+                    </li>
+                    <li>
+                      다양한 형태의 인수: 직접 숫자를
+                      입력하거나(=AVERAGE(10,20,30)), 셀 참조나 범위를 혼합해서
+                      사용할 수 있습니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    AVERAGE 함수를 사용할 때 주의해야 할 점은
+                    <a
+                      href="https://support.microsoft.com/en-us/office/average-function-047bac88-d466-426c-a32b-8f33eb960cf6"
+                      target="_blank"
+                      rel="noopener"
+                      >Microsoft 공식 문서</a
+                    >에서 언급하듯이 논리값(TRUE/FALSE)과 텍스트 형태의 숫자는
+                    계산에서 제외된다는 것입니다. 만약 이러한 값들도 포함해서
+                    계산하고 싶다면 AVERAGEA 함수를 사용해야 합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    AVERAGEIF 함수로 특정 조건 만족하는 평균 구하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    실무에서는 전체 데이터의 평균보다는 특정 조건을 만족하는
+                    데이터만의 평균을 구해야 하는 경우가 많습니다. 이럴 때
+                    AVERAGEIF 함수가 매우 유용합니다. 이 함수는 지정된 조건에
+                    맞는 셀들만 선별해서 평균을 계산해줍니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    AVERAGEIF 함수의 문법은 =AVERAGEIF(range, criteria,
+                    [average_range])입니다. 여기서 range는 조건을 확인할 범위,
+                    criteria는 평균을 구할 조건, average_range는 실제 평균을
+                    계산할 범위입니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      숫자 조건 예시: =AVERAGEIF(A1:A10, "&gt;60")는 A1:A10
+                      범위에서 60보다 큰 값들의 평균을 계산합니다.
+                    </li>
+                    <li>
+                      텍스트 조건 예시: =AVERAGEIF(B1:B10, "사과", C1:C10)는
+                      B열에서 "사과"인 행에 해당하는 C열 값들의 평균을 구합니다.
+                    </li>
+                    <li>
+                      셀 참조 조건: =AVERAGEIF(A1:A10, "&gt;"&amp;D1)처럼 셀
+                      참조를 조건으로 사용할 수도 있습니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    AVERAGEIF 함수의 강력한 기능은
+                    <a
+                      href="https://www.w3schools.com/excel/excel_averageif.php"
+                      target="_blank"
+                      rel="noopener"
+                      >다양한 비교 연산자</a
+                    >와 와일드카드를 지원한다는 점입니다. &gt;, &lt;, &gt;=,
+                    &lt;=, &lt;&gt;, = 등의 연산자와 *와 ? 같은 와일드카드를
+                    사용해서 복잡한 조건도 간단하게 처리할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    AVERAGEIFS 함수 다중 조건으로 정교한 평균 계산
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    하나의 조건만으로는 부족하고 여러 조건을 동시에 만족하는
+                    데이터의 평균을 구해야 할 때는 AVERAGEIFS 함수를 사용합니다.
+                    이 함수는 AND 논리로 여러 조건을 결합해서 더 정교한 데이터
+                    분석을 가능하게 합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    AVERAGEIFS 함수의 문법은 =AVERAGEIFS(average_range,
+                    criteria_range1, criteria1, [criteria_range2, criteria2],
+                    ...)입니다. 첫 번째 인수는 평균을 계산할 범위이고, 그
+                    다음부터는 조건 범위와 조건을 쌍으로 지정합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      실용적인 예시: =AVERAGEIFS(D1:D100, A1:A100, "영업팀",
+                      B1:B100, "&gt;50", C1:C100, "완료")는 A열이 "영업팀"이고,
+                      B열이 50보다 크며, C열이 "완료"인 행들의 D열 평균을
+                      계산합니다.
+                    </li>
+                    <li>
+                      날짜 조건 활용: =AVERAGEIFS(매출, 날짜,
+                      "&gt;="&amp;DATE(2024,1,1), 날짜,
+                      "&lt;"&amp;DATE(2025,1,1))처럼 날짜 범위 조건도 설정할 수
+                      있습니다.
+                    </li>
+                    <li>
+                      복합 조건 전략: 여러 조건을 조합할 때는 각 조건이 AND
+                      관계임을 기억하고, OR 조건이 필요하면 여러 AVERAGEIFS
+                      함수의 결과를 조합해야 합니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://corporatefinanceinstitute.com/resources/excel/advanced-excel-formulas-must-know/"
+                      target="_blank"
+                      rel="noopener"
+                      >고급 엑셀 활용법</a
+                    >에 따르면, AVERAGEIFS는 대용량 데이터 분석에서 특히 강력한
+                    성능을 발휘하며, 복잡한 비즈니스 로직을 구현할 때 필수적인
+                    함수입니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    엑셀 평균 함수 활용 시 주의사항과 최적화 방법
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 평균 함수를 효과적으로 사용하기 위해서는 몇 가지 중요한
+                    주의사항과 최적화 방법을 알아두어야 합니다. 특히 대용량
+                    데이터를 다룰 때나 복잡한 조건을 적용할 때는 이러한 팁들이
+                    매우 유용합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      데이터 타입 일관성: 평균을 계산할 범위에 숫자와 텍스트가
+                      섞여 있으면 예상과 다른 결과가 나올 수 있습니다. 데이터
+                      정제를 먼저 수행하는 것이 좋습니다.
+                    </li>
+                    <li>
+                      절대 참조와 상대 참조: 수식을 복사할 때 범위가 의도치 않게
+                      변경되는 것을 방지하기 위해 적절히 절대 참조($)를 사용해야
+                      합니다.
+                    </li>
+                    <li>
+                      성능 최적화: AVERAGEIFS 함수에서 가장 선별적인 조건을 첫
+                      번째로 배치하면 계산 속도를 향상시킬 수 있습니다.
+                    </li>
+                    <li>
+                      오류 처리: IFERROR 함수와 조합해서
+                      =IFERROR(AVERAGEIF(범위, 조건), "조건에 맞는 데이터
+                      없음")처럼 오류를 처리할 수 있습니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    또한
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-average-function/"
+                      target="_blank"
+                      rel="noopener"
+                      >전문가들이 권장하는 방법</a
+                    >에 따르면, 동적 범위를 사용할 때는 OFFSET이나 INDEX/MATCH
+                    함수와 조합해서 더 유연한 평균 계산 시스템을 구축할 수
+                    있습니다. 특히 데이터가 지속적으로 추가되는 환경에서는
+                    이러한 동적 접근법이 매우 효과적입니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    고급 평균 계산 기법과 실무 응용 사례
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀의 평균 함수는 다른 함수들과 조합해서 더욱 강력한 기능을
+                    구현할 수 있습니다. 실무에서 자주 사용되는 고급 기법들을
+                    살펴보면, 가중 평균, 이동 평균, 상위 N개 값의 평균 등 다양한
+                    분석이 가능합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    가중 평균은 SUMPRODUCT와 SUM 함수를 조합해서
+                    =SUMPRODUCT(값범위, 가중치범위)/SUM(가중치범위)로 계산할 수
+                    있습니다. 이는 각 데이터의 중요도가 다를 때 매우 유용합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      이동 평균 계산: OFFSET 함수와 조합해서
+                      =AVERAGE(OFFSET(A1,ROW()-5,0,5,1))처럼 동적인 이동 평균을
+                      구현할 수 있습니다.
+                    </li>
+                    <li>
+                      상위 값 평균: LARGE 함수와 결합해서
+                      =AVERAGE(LARGE(범위,{1;2;3}))처럼 상위 3개 값의 평균을
+                      계산할 수 있습니다.
+                    </li>
+                    <li>
+                      조건부 가중 평균: SUMPRODUCT와 조건 함수를 조합해서 복잡한
+                      가중 평균도 구현 가능합니다.
+                    </li>
+                    <li>
+                      배열 수식 활용: Ctrl+Shift+Enter로 배열 수식을 만들어 더
+                      복잡한 조건부 평균을 계산할 수 있습니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    실무에서는 이러한 고급 기법들이 재무 분석, 성과 평가, 품질
+                    관리 등 다양한 분야에서 활용됩니다. 예를 들어, 매출
+                    데이터에서 계절성을 고려한 이동 평균을 구하거나, 직원
+                    평가에서 부서별 가중 평균을 계산하는 등의 용도로 사용됩니다.
+                    <a
+                      href="https://www.goskills.com/Excel/Resources/How-to-calculate-average-in-Excel"
+                      target="_blank"
+                      rel="noopener"
+                      >전문가 가이드</a
+                    >에서도 언급하듯이, 이러한 고급 기법들을 마스터하면 데이터
+                    분석의 정확성과 효율성을 크게 향상시킬 수 있습니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

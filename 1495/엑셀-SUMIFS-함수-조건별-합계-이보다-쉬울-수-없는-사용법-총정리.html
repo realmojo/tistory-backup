@@ -1,0 +1,199 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 SUMIFS 함수 조건별 합계, 이보다 쉬울 수 없는 사용법 총정리
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 SUMIFS 함수 조건별 합계, 이보다 쉬울 수 없는 사용법
+                      총정리
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-18 23:53:46</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 SUMIFS 함수 조건별 합계, 이보다 쉬울 수 없는 사용법
+                        총정리
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 조건에 맞는 데이터를 합산할 때 가장 유용한 함수 중
+                    하나가 바로 <b>SUMIFS 함수</b>입니다. 이 함수는 여러 조건을
+                    만족하는 값들의 합계를 구할 수 있어 보고서 작성, 매출 분석,
+                    재고 파악 등 다양한 업무에서 활용됩니다. 이 글에서는 엑셀
+                    SUMIFS 함수의 기본적인 사용법부터 실무 예제, 자주 하는
+                    실수와 해결법까지 쉽고 명확하게 설명합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    SUMIFS 함수의 기본 문법과 구성 요소
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    SUMIFS 함수는 조건을 여러 개 설정할 수 있는 함수로, 기본
+                    구문은
+                    <code
+                      >=SUMIFS(sum_range, criteria_range1, criteria1,
+                      [criteria_range2, criteria2], ...)</code
+                    >
+                    형식입니다. sum_range는 합계를 구할 대상 범위이고,
+                    criteria_range는 조건을 검사할 범위, criteria는
+                    조건값입니다. 예를 들어 제품별 매출에서 특정 제품과 월을
+                    기준으로 합계를 구할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무에서 자주 쓰이는 SUMIFS 함수 예제
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      예제 1:
+                      <code
+                        >=SUMIFS(C2:C100, A2:A100, "=사과", B2:B100,
+                        "=1월")</code
+                      >
+                      &rarr; A열에 '사과', B열에 '1월'이 있는 행들의 C열 값을
+                      합산합니다.
+                    </li>
+                    <li>
+                      예제 2:
+                      <code
+                        >=SUMIFS(D2:D50, B2:B50, "&gt;100", C2:C50,
+                        "&lt;500")</code
+                      >
+                      &rarr; 조건 범위 내에서 특정 구간에 해당하는 값을
+                      합산합니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이처럼 SUMIFS는 범위를 유연하게 설정하여 다양한 조건을
+                    동시에 만족시키는 계산이 가능해 재무 보고서나 영업 실적 분석
+                    등에 적합합니다. 더 많은 예제는
+                    <a
+                      href="https://support.microsoft.com/ko-kr/office/sumifs-%ED%95%A8%EC%88%98-%EC%97%B0%EA%B2%B0%EB%90%9C-%EC%A1%B0%EA%B1%B4%EC%97%90-%EB%9C%A8%EB%A6%AC%EB%8A%94-%EA%B0%92%EC%9D%98-%ED%95%A9-9dd442d1-2f21-47a8-89ef-69e9b0b6d4d0"
+                      target="_self"
+                      >MS 공식 문서</a
+                    >에서도 확인할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    SUMIFS 함수 사용 시 자주 하는 실수와 주의사항
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    SUMIFS 함수는 매우 유용하지만 다음과 같은 실수를 주의해야
+                    합니다. 첫째, 조건 범위와 합계 범위의 행 수가 일치하지
+                    않으면 오류가 발생합니다. 둘째, 조건값에 텍스트나 날짜를
+                    사용할 경우 따옴표 사용에 주의해야 하며, 셋째, 와일드카드
+                    문자(*, ?) 사용 시 오용하지 않도록 해야 합니다. 넷째, 숨겨진
+                    셀이나 필터링된 값들도 SUMIFS에서는 계산된다는 점도 유의해야
+                    합니다. 이러한 오류를 방지하려면 항상 조건 범위와 합계
+                    범위의 크기를 체크하고, 수식 입력 전에 데이터 정합성을
+                    점검하는 습관이 중요합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    SUMIFS 함수의 활용 팁과 고급 기능
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    고급 사용자들은 SUMIFS 함수를 다른 함수와 결합하여 더욱
+                    강력하게 활용합니다. 예를 들어, TODAY 함수와 함께 사용하면
+                    오늘 날짜 기준으로 조건을 설정할 수 있고, INDIRECT 함수와
+                    함께 동적 범위를 지정할 수도 있습니다. 또한 배열 수식과
+                    결합하면 조건부 합계의 범위를 자동으로 변경하는 등 고급
+                    분석도 가능합니다. 실무에서 필요한 다차원 조건을 쉽게 처리할
+                    수 있어 데이터 분석 효율성을 높입니다. 관련 고급 사용법은
+                    <a
+                      href="https://exceljet.net/excel-functions/excel-sumifs-function"
+                      target="_self"
+                      >ExcelJet 사이트</a
+                    >에서도 참고할 수 있습니다. 또한
+                    <a
+                      href="https://trumpexcel.com/sumifs-function-excel/"
+                      target="_self"
+                      >TrumpExcel</a
+                    >
+                    블로그에서는 SUMIFS의 트러블슈팅 사례들을 실무 중심으로 잘
+                    정리해 놓았습니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

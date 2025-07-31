@@ -1,0 +1,210 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>linked list</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">linked list</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/hackrank</p>
+                      <p class="date">2019-08-26 23:20:22</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>&nbsp;</p>
+                  <table
+                    style="border-collapse: collapse; width: 100%"
+                    border="1"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="width: 100%">
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000"> node = </span
+                            ><span>new</span
+                            ><span style="color: #000000"> </span
+                            ><span>DoublyLinkedListNode</span
+                            ><span style="color: #000000">();</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              node.data = data;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>if</span
+                            ><span style="color: #000000"> (head == </span
+                            ><span>null</span
+                            ><span style="color: #000000">) {</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span
+                            ><span>return</span
+                            ><span style="color: #000000"> node;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> } </span
+                            ><span>else</span
+                            ><span style="color: #000000"> </span><span>if</span
+                            ><span style="color: #000000">
+                              (data &lt;= head.data) {</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              node.next = head;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              head.prev = node;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span
+                            ><span>return</span
+                            ><span style="color: #000000"> node;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> } </span
+                            ><span>else</span
+                            ><span style="color: #000000"> {</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000">
+                              rest = sortedInsert(head.next, data);</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              head.next = rest;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              rest.prev = head;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span
+                            ><span>return</span
+                            ><span style="color: #000000"> head;</span>
+                          </p>
+                          <p><span style="color: #000000"> }</span></p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>
+                            <span>function</span
+                            ><span style="color: #000000">
+                              insertNodeAtPosition(head, data, position) {</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000"> curr = head;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000"> prev = </span
+                            ><span>null</span
+                            ><span style="color: #000000">;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000"> node = </span
+                            ><span>new</span
+                            ><span style="color: #000000"> </span
+                            ><span>SinglyLinkedListNode</span
+                            ><span style="color: #000000">();</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              node.data = data;</span
+                            >
+                          </p>
+                          <p>&nbsp;</p>
+                          <p>
+                            <span style="color: #000000"> </span><span>var</span
+                            ><span style="color: #000000"> i = </span
+                            ><span>0</span><span style="color: #000000">;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span
+                            ><span>while</span
+                            ><span style="color: #000000">
+                              (i &lt; position) {</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> prev = curr;</span>
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              curr = curr.next;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span><span>if</span
+                            ><span style="color: #000000"> (curr == </span
+                            ><span>null</span
+                            ><span style="color: #000000">) { </span
+                            ><span>break</span
+                            ><span style="color: #000000">;}</span>
+                          </p>
+                          <p><span style="color: #000000"> i++;</span></p>
+                          <p><span style="color: #000000"> }</span></p>
+                          <p>
+                            <span style="color: #000000">
+                              node.next = curr;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000">
+                              prev.next = node;</span
+                            >
+                          </p>
+                          <p>
+                            <span style="color: #000000"> </span
+                            ><span>return</span
+                            ><span style="color: #000000"> head;</span>
+                          </p>
+                          <p><span style="color: #000000">}</span></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

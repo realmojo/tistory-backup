@@ -1,0 +1,858 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] EC2 가상서버 인스턴스 만들기</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [AWS] EC2 가상서버 인스턴스 만들기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2017-04-09 02:38:17</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="560"
+                      height="330"
+                      filename="img1.daumcdn.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img1.daumcdn.png"
+                          width="560"
+                          height="330"
+                          filename="img1.daumcdn.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p><br /></p>
+                  <p>
+                    <b
+                      ><span style="font-size: 24pt"
+                        >아마존 웹 서비스에 EC2 가상서버 인스턴스 만들기</span
+                      ></b
+                    >
+                  </p>
+                  <p>
+                    <b
+                      ><span style="font-size: 24pt"><br /></span
+                    ></b>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"
+                      >아마존 서버를 이용하는 가장 큰 이유는 저렴하고 필요할
+                      때만 잠깐 만들어서 사용이 가능하며 글로벌로 서비스를
+                      오픈할 때 아주 유용하다. 아마존에 대한 첫 포스팅은 가장
+                      기본적인 EC2 서버를 띄우고 접속까지의 과정을
+                      설명한다.</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"
+                      ><b
+                        >1.&nbsp;<a
+                          href="https://aws.amazon.com/ko/"
+                          target="_blank"
+                          class="tx-link"
+                          >https://aws.amazon.com/ko/</a
+                        >&nbsp;접속하고 가입을 한다. 가입절차는 생략..</b
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"
+                      ><b><br /></b
+                    ></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"
+                      ><b
+                        >2. 로그인을 하고 메인화면에 있는 [콘솔에 로그인] 노란색
+                        버튼을 클릭 후 콘솔에 진입한다.</b
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"
+                      >여기서부턴 이미지와 설명을 같이 첨부!</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="855"
+                      height="678"
+                      filename="1.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/1.png"
+                          width="855"
+                          height="678"
+                          filename="1.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b>3. 좌측 상단에 Services를 클릭하여 EC2를 선택</b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="354"
+                      filename="2.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/2.png"
+                          width="900"
+                          height="354"
+                          filename="2.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >4. EC2 Dashboard에 진입!! 리전을 Seoul로 하고(지역이
+                      가까우니까..)&nbsp;Launch Instance 클릭</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="500"
+                      filename="3.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/3.png"
+                          width="900"
+                          height="500"
+                          filename="3.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >5. Linux 서버를 아무거나 선택 위에서는 SUSE Linux로
+                      선택함</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="501"
+                      filename="4.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/4.png"
+                          width="900"
+                          height="501"
+                          filename="4.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >6. 서버의 크기와 용도에 따라 CPU와 Memory를 선택할 수
+                      있지만 일단 무료로 사용 할 수 있는 크기를 선택</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="505"
+                      filename="5.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/5.png"
+                          width="900"
+                          height="505"
+                          filename="5.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >7. 인스턴스 상세 설정을 하는 것인데 아직은 아무것도
+                      몰라도 되므로 다음으로 넘어감</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="503"
+                      filename="6.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/6.png"
+                          width="900"
+                          height="503"
+                          filename="6.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >8. 인스턴스의 볼륨을 설정하는 것인데 일단은 알 필요 없음.
+                      다음으로 넘어감</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="499"
+                      filename="7.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/7.png"
+                          width="900"
+                          height="499"
+                          filename="7.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >9. 인스턴스의 태그(별칭)를 설정. 설정해도 되고 안해도 됌.
+                      설정 후 다음 넘어감</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="500"
+                      filename="8.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/8.png"
+                          width="900"
+                          height="500"
+                          filename="8.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >10. putty ssh로&nbsp;접속하기 위해 기본적으로 22번 포트를
+                      열어둠. 웹 서버로 사용하려면 80번 포트를 열어야함</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="499"
+                      filename="9.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/9.png"
+                          width="900"
+                          height="499"
+                          filename="9.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b>11. 인스턴스 시작전 리뷰를 확인하고 Launch 버튼 클릭</b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="707"
+                      height="522"
+                      filename="10.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/10.png"
+                          width="707"
+                          height="522"
+                          filename="10.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >12. 인스턴스를 접속하기 위해 비밀번호 따위는 필요없고 ssh
+                      키 인증으로 접속을 해야 한다.<br />Create a new key pair를
+                      선택 후<br />Key pair name에 적당한 이름을 입력후 Download
+                      Key Pair 버튼을 눌러 키를 받는다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b>그리고 Launch Instances 클릭</b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="466"
+                      filename="11.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/11.png"
+                          width="900"
+                          height="466"
+                          filename="11.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >13. 인스턴스가 시작되었다는 페이지 View Instances 눌러
+                      넘어감</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="479"
+                      height="468"
+                      filename="12.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/12.png"
+                          width="479"
+                          height="468"
+                          filename="12.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >14. putty 접속을 위해 12번에서 키를 받았던 것을 ppk 로
+                      변형해야 한다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      ><a
+                        href="https://the.earth.li/~sgtatham/putty/latest/w64/puttygen.exe"
+                        target="_blank"
+                        class="tx-link"
+                        >https://the.earth.li/~sgtatham/putty/latest/w64/puttygen.exe</a
+                      ><br
+                    /></b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >puttygen 으로 변형을 해야 한다 위의 링크로 받을 수
+                      있다.(홈페이지 링크임 바이러스 ㄴㄴ)</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >puttygen을 실행시켜 [Conversions] - [Import key] -
+                      [keypairname.pem] 선택</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="482"
+                      height="476"
+                      filename="13.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/13.png"
+                          width="482"
+                          height="476"
+                          filename="13.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >15. Save private key 를 클릭하여 keypairname.ppk 파일로
+                      받는다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="377"
+                      filename="14.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/14.png"
+                          width="900"
+                          height="377"
+                          filename="14.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >16. EC2 인스턴스 접속을 위해 EC2 Dashboard 에서<br />DNS
+                      혹은 public ip를 복사한다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="452"
+                      height="438"
+                      filename="15.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/15.png"
+                          width="452"
+                          height="438"
+                          filename="15.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >17. HostName에
+                      <font color="#ff0000">user_name</font>@<font
+                        color="#ff0000"
+                        >public_dns_name&nbsp;</font
+                      >를 입력한다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    리눅스, 유닉스 OS에 따라 기본 user_name이 조금씩 다르다.<br />위의
+                    테스트에서는 SUSE로 만들었기 때문에 ec2-user로 입력
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b><br /></b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="807"
+                      height="252"
+                      filename="19.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/19.png"
+                          width="807"
+                          height="252"
+                          filename="19.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b>[OS에 따른 기본 user_name 설명]<br /></b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="452"
+                      height="438"
+                      filename="16.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/16.png"
+                          width="452"
+                          height="438"
+                          filename="16.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                    <br /><br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >18. [Connection] - [SSH] - [Auth] - [Browse] -
+                      [keypairname.ppk] 파일 선택 후 Open 버튼으로 접속!!</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="661"
+                      height="419"
+                      filename="17.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/17.png"
+                          width="661"
+                          height="419"
+                          filename="17.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      >19. 접속 완료!!<br />sudo -i 명령어를 통해 root 권한으로
+                      접속할 수 있다.</b
+                    >
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b><br /></b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b>그리고 이제 마음껏 가상서버를 사용하면 된다.</b>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="251"
+                      filename="18.png"
+                      filemime="image/jpeg"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/18.png"
+                          width="900"
+                          height="251"
+                          filename="18.png"
+                          filemime="image/jpeg"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <br />
+                  </p>
+                  <p style="text-align: center; clear: none; float: none">
+                    <b
+                      ><span style="color: rgb(255, 0, 0)"
+                        >20. 테스트를 모두 마친 후에는 Terminate&nbsp;시켜줘야
+                        과금이 발생하지 않는다!</span
+                      ></b
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 13.3333px"><br /></span>
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 ROUNDDOWN 함수 완벽 가이드 원단위 절사 방법부터 다양한 활용법까지 한
+      번에 정리
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 ROUNDDOWN 함수 완벽 가이드 원단위 절사 방법부터
+                      다양한 활용법까지 한 번에 정리
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-07 12:34:25</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 ROUNDDOWN 함수 완벽 가이드 원단위 절사 방법부터
+                        다양한 활용법까지 한 번에 정리
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 수치 데이터를 다룰 때 원단위 절사는 매우 중요한
+                    기능입니다. 특히 회계업무나 재무제표 작성, 세금 계산 등의
+                    업무에서 ROUNDDOWN 함수를 활용한 원단위 절사 기법은 필수적인
+                    스킬이라고 할 수 있습니다. 이 글에서는 엑셀 ROUNDDOWN 함수의
+                    기본 사용법부터 실무에서 활용할 수 있는 고급 기법까지 상세히
+                    알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">ROUNDDOWN 함수 기본 개념과 원리</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수는 엑셀에서 제공하는 수학함수 중 하나로,
+                    지정된 자릿수에서 숫자를 무조건 아래로 버림하는 기능을
+                    수행합니다. 일반적인 반올림과는 달리 소수점 이하의 값이
+                    얼마나 크든 상관없이 항상 0쪽으로 내림을 진행합니다. 함수의
+                    기본 구문은 =ROUNDDOWN(숫자, 자릿수) 형태로 구성되며, 여기서
+                    숫자는 절사할 대상 값이고 자릿수는 몇 번째 자리에서
+                    절사할지를 나타내는 정수입니다. 자릿수에 음수를 입력하면
+                    소수점 왼쪽 자리에서 절사가 이루어지며, 양수를 입력하면
+                    소수점 오른쪽 자리에서 절사가 실행됩니다. 예를 들어
+                    ROUNDDOWN(12345, -3)을 입력하면 결과값은 12000이 되며, 이는
+                    천의 자리 아래 모든 숫자를 버린 결과입니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/rounddown-function-2ec94c73-241f-4b01-8c6f-17e6d7968f53"
+                      target="_blank"
+                      >마이크로소프트 공식 문서</a
+                    >에서도 확인할 수 있듯이 이 함수는 다양한 버전의 엑셀에서
+                    지원되며 매우 안정적인 성능을 보여줍니다.
+                  </p>
+                  <h2 data-ke-size="size26">원단위 절사 실무 적용 방법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      원단위 절사를 위해서는 자릿수 인수에 -3을 입력하면 됩니다.
+                      예를 들어 57,899원을 원단위로 절사하려면 =ROUNDDOWN(57899,
+                      -3)을 사용하여 57,000원의 결과를 얻을 수 있습니다.
+                    </li>
+                    <li>
+                      십원단위 절사의 경우 자릿수에 -1을 입력하고, 백원단위
+                      절사는 -2를 입력하면 됩니다. 이러한 방식으로 필요에 따라
+                      다양한 단위로 절사를 수행할 수 있습니다.
+                    </li>
+                    <li>
+                      회계업무에서는 주로 천원단위나 만원단위 절사가 많이
+                      사용되는데, 이때는 각각 -3, -4를 자릿수로 설정하면 됩니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    실제 업무에서 원단위 절사가 필요한 경우는 매우 다양합니다.
+                    예산 편성 시 세부 항목들을 정리할 때나 매출액을 보고서용으로
+                    정리할 때, 또는 세무 신고용 자료를 작성할 때 등이 대표적인
+                    사례입니다.
+                    <a
+                      href="https://exceljet.net/functions/rounddown-function"
+                      target="_blank"
+                      >엑셀젯 가이드</a
+                    >에서 제시하는 바와 같이 ROUNDDOWN 함수는 항상 0 방향으로
+                    절사를 수행하므로 음수에 대해서도 일관된 결과를 제공합니다.
+                    이러한 특성 때문에 재무 분석이나 회계 업무에서 신뢰할 수
+                    있는 도구로 활용되고 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">다양한 자릿수 설정과 활용 사례</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수의 강력한 점은 자릿수 매개변수를 조정하여
+                    다양한 절사 작업을 수행할 수 있다는 것입니다. 자릿수가 0인
+                    경우에는 소수점 이하를 모두 제거하여 정수로 만들고, 양수인
+                    경우에는 지정된 소수점 자릿수까지만 유지합니다. 예를 들어
+                    =ROUNDDOWN(3.789, 1)의 경우 3.7이라는 결과를 얻게 됩니다.
+                    반대로 음수를 사용하면 정수 부분에서 절사가 이루어지는데,
+                    이는 큰 숫자를 간소화할 때 매우 유용합니다. 특히 매출액이나
+                    예산 같은 큰 금액을 다룰 때 =ROUNDDOWN(1234567, -4)와 같이
+                    사용하면 1230000이라는 깔끔한 숫자를 얻을 수 있습니다.
+                    이러한 방식은 프레젠테이션용 자료나 요약 보고서 작성 시
+                    가독성을 크게 향상시킵니다. 또한
+                    <a
+                      href="https://corporatefinanceinstitute.com/resources/excel/rounddown-function/"
+                      target="_blank"
+                      >CFI 재무 교육 자료</a
+                    >에서 강조하는 바와 같이 재무 분석가들이 데이터를 정리하고
+                    모델링할 때 필수적으로 사용하는 기능이기도 합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    다른 반올림 함수와의 차이점 비교
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      ROUND 함수는 일반적인 반올림 규칙을 따라 5 이상은 올림, 5
+                      미만은 내림을 수행하지만, ROUNDDOWN은 항상 내림만
+                      실행합니다.
+                    </li>
+                    <li>
+                      ROUNDUP 함수는 ROUNDDOWN과 정반대로 항상 올림을 수행하며,
+                      작은 소수점 값이라도 무조건 다음 자릿수로 올립니다.
+                    </li>
+                    <li>
+                      TRUNC 함수는 ROUNDDOWN과 유사하게 절사를 수행하지만, 음수
+                      자릿수를 지원하지 않아 활용도가 제한적입니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    각 함수의 특성을 이해하면 상황에 맞는 적절한 함수를 선택할
+                    수 있습니다. 예를 들어 보수적인 추정이 필요한 경우에는
+                    ROUNDDOWN을, 여유 있는 계획이 필요한 경우에는 ROUNDUP을
+                    사용하는 것이 좋습니다. 특히 재무 계획이나 예산 편성에서는
+                    이러한 차이가 중요한 의미를 가질 수 있습니다. INT 함수와
+                    FLOOR 함수도 비슷한 기능을 제공하지만, ROUNDDOWN이 가장
+                    직관적이고 유연한 사용법을 제공합니다.
+                  </p>
+                  <h2 data-ke-size="size26">실무에서의 고급 활용 기법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수를 다른 함수와 조합하여 사용하면 더욱 강력한
+                    기능을 구현할 수 있습니다. 예를 들어 IF 함수와 결합하여
+                    조건부 절사를 수행하거나, SUM 함수와 함께 사용하여 합계를
+                    계산한 후 절사하는 방식으로 활용할 수 있습니다.
+                    =ROUNDDOWN(SUM(A1:A10), -2)와 같은 수식을 사용하면 여러 값의
+                    합계를 백원단위로 절사할 수 있습니다. 또한
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-round-functions/"
+                      target="_blank"
+                      >에이블비츠의 종합 가이드</a
+                    >에서 제시하는 바와 같이 배열 수식과 함께 사용하면 대량의
+                    데이터를 한 번에 처리할 수 있어 작업 효율성을 크게 향상시킬
+                    수 있습니다. 셀 서식과 함께 활용하면 시각적으로도 깔끔한
+                    결과를 얻을 수 있는데, 특히 통화 형식이나 회계 형식과
+                    조합하여 사용하면 전문적인 보고서를 작성할 수 있습니다.
+                    ROUNDDOWN 함수의 결과를 참조하는 다른 수식들도 정확한 계산을
+                    수행하므로, 복잡한 재무 모델에서도 안정적으로 사용할 수
+                    있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">주의사항과 오류 해결 방법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      첫 번째 인수에 텍스트나 논리값을 입력하면 #VALUE! 오류가
+                      발생하므로 반드시 숫자 형태의 데이터를 사용해야 합니다.
+                    </li>
+                    <li>
+                      자릿수 매개변수를 잘못 설정하면 예상과 다른 결과가 나올 수
+                      있으므로, 음수와 양수의 의미를 정확히 이해하고 사용해야
+                      합니다.
+                    </li>
+                    <li>
+                      큰 숫자에 과도한 절사를 적용하면 데이터의 정확성이 크게
+                      떨어질 수 있으므로 적절한 수준의 절사를 적용하는 것이
+                      중요합니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수 사용 시 가장 주의해야 할 점은 원본 데이터의
+                    정확성을 유지하면서도 필요한 수준의 간소화를 달성하는
+                    것입니다. 과도한 절사는 누적 오차를 발생시킬 수 있으므로,
+                    전체적인 계산 체계를 고려하여 적절한 절사 수준을 결정해야
+                    합니다.
+                    <a
+                      href="https://www.thebricks.com/resources/how-to-use-the-rounddown-function-in-excel-a-step-by-step-guide"
+                      target="_blank"
+                      >더브릭스 튜토리얼</a
+                    >에서 권장하는 바와 같이 함수 적용 전후의 결과를 비교
+                    검토하여 의도한 대로 동작하는지 확인하는 것이 좋습니다. 또한
+                    다른 사용자와 파일을 공유할 때는 어떤 절사 규칙을 적용했는지
+                    명확히 문서화하여 혼란을 방지해야 합니다. 정기적으로 함수의
+                    결과를 검증하고, 필요시 다른 반올림 함수와의 결과를 비교하여
+                    최적의 방법을 선택하는 것이 바람직합니다.
+                  </p>
+                </div>
+
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

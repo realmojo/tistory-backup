@@ -1,0 +1,321 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] ELB 로드밸런싱 개념 및 이해</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [AWS] ELB 로드밸런싱 개념 및 이해
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2024-07-23 00:40:50</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.getWindowCleintWidth() >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                    <script>
+                      if (window.getWindowCleintWidth() >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.getWindowCleintWidth() < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 24px"
+                      ><b>ELB ( Elastic Load Balancing )</b></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 24px"><b>&nbsp;</b></span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 12pt"
+                        >ELB는 부하 분산과 고가용성을 제공하는 서비스</span
+                      ></b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">ELB 특징</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- L4/L7 장비를 구입하거나 소프트웨어로 서버를 구축하지
+                        않아도 부하 분산 기능을 사용할 수 있고 고가용성 서비스를
+                        구축</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 한 곳에 집중되는 HTTP, TCP, SSL 트래픽을 여러 EC2
+                        인스턴스로 분산처리</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 서버가 정상적으로 가동 중인지 확인(Health
+                        Check)</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 일부 EC2 인스턴스가 중지되더라도 트래픽을 정상 EC2로
+                        보냄</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        >- 리전별로 생성 해야함</span
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="849"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/ELB개념도.png"
+                          width="900"
+                          height="849"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center" data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 12pt"
+                        >[ELB 기본개념도]<br /></span
+                    ></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 12pt">ELB 기본개념</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>L4(OSI Layer 4): </b
+                        ><span style="font-size: 11pt"
+                          >OSI 레이어에서 4번째 전송계층을 뜻함. TCP, UDP 등의
+                          프로토콜이 대표적이며 포트 번호로 구분한다. 보통 OSI
+                          레이어에서 3번째 네트워크 계층의 IP와 묶어서 처리. L4
+                          로드 밸런싱이라고 하면 IP 주소와 포트 번호를 기준으로
+                          트래픽을 분배</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>L7(OST Layer 7): </b
+                        ><span style="font-size: 11pt"
+                          >OSI 레이어에서 7번째 애플리케이션 계층을 뜻함. HTTP
+                          프로토콜이 대표적이며 L7 로드 밸런싱이라고 하면 HTTP
+                          헤더의 내용을 기준으로 트래픽을 분배</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>로드밸런싱 알고리즘: </b
+                        ><span style="font-size: 11pt"
+                          >트래픽을 각 EC2 인스턴스로 분배할 때 사용하는
+                          알고리즘. ELB는 라운드 로빈(Round Robin) 방식의
+                          알고리즘을 사용하며 우선 순위를 두지 않고 순서대로
+                          분배</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>헬스 체크(Health Check): </b
+                        ><span style="font-size: 11pt"
+                          >EC2 인스턴스가 정상적으로 가동 중인지 확인하는 기능.
+                          EC2 인스턴스가 중단되었다고 판단되면 해당
+                          EC2인스턴스는 트래픽 분배에서 제외</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>Connection Draining: </b
+                        ><span style="font-size: 11pt"
+                          >Auto Scaling이 사용자의 요청을 처리 중인 EC2
+                          인스턴스를 바로 삭제하지 못하도록 방지하는 기능. 예를
+                          들어 사용자 수가 줄어들면 Auto Scaling에 의해 EC2
+                          인스턴스를 삭제하는데. 마침 사용자가 해당 인스턴스에서
+                          파일을 다운로드하는데 인스턴스가 삭제되면 파일이 끊킴.
+                          즉 삭제하기전에 요청을 처리 할 수 있도록 지정한
+                          시간만큼 기다림.</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>Sticky Sessions: </b
+                        ><span style="font-size: 11pt"
+                          >사용자의 세션을 확인하여 적절한 EC2 인스턴스로
+                          트래픽을 분배하는 기능. HTTP 쿠키를 이용한 세션이며
+                          L7의 로드 밸런싱 기능.</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>Latency: </b
+                        ><span style="font-size: 11pt"
+                          >ELB 로드 밸런서와 EC2 인스턴스 간의 지연시간</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>HTTP 2XX, 4XX, 5XX: </b
+                        ><span style="font-size: 11pt"
+                          >EC2 인스턴스에서 리턴한 HTTP Response Code</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>ELB HTTP 4XX, 5XX: </b
+                        ><span style="font-size: 11pt"
+                          >ELB 로드 밸런서에서 리턴한 HTTP Error Code</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>Surge Queue Length: </b
+                        ><span style="font-size: 11pt"
+                          >ELB 로드 밸런서에서 EC2 인스턴스로 전달되지 못하고
+                          큐에 남아 있는 요청의 개수</span
+                        ></span
+                      ></span
+                    ><b><span style="font-size: 12pt"></span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"
+                        ><b>Spillover Count: </b
+                        ><span style="font-size: 11pt"
+                          >서지 큐가 꽉 차서 ELB 로드 밸런서가 거부한 요청의
+                          개수&nbsp;</span
+                        ></span
+                      ></span
+                    >
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

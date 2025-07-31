@@ -1,0 +1,82 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>타입스크립트 함수 옵셔널 파라미터</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      타입스크립트 함수 옵셔널 파라미터
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2022-03-24 13:22:58</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    자바스크립트에서 함수에 인자값을 전달할 때 함수에서 받는
+                    인자값과 함수를 호출할 때 인자값이 일치하지 않아도 문법상
+                    오류가 나지는 않는다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-24 오후 1.18.39.png" />
+                      </span>
+                      <figcaption>자바스크립트 함수 사용 예시</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    하지만 타입스크립트에서는 위와 같이 사용할 경우 에러를
+                    내뿜는다. 함수의 인자값을 맞춰주어야 한다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-24 오후 1.20.39.png" />
+                      </span>
+                      <figcaption>타입스크립트 함수 사용 예시</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    위의 처럼 함수를 호출할 때와 함수를 받는 곳에서 인자값이
+                    일치하지 않는다면 오류가 난다. 컴파일 하지 말라는 뜻이다.
+                    하지만 개발을 하다보면 인자값이 필요할 때도 있고 필요없을
+                    때도 있기 마련
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-24 오후 1.20.53.png" />
+                      </span>
+                      <figcaption>타입스크립트 옵셔널 파라미터</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    위의 이미지처럼 변수명 옆에 물음표(?)를 넣음으로써 해당
+                    인자값은 있어도 되고 없어도 된다는 뜻이 된다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

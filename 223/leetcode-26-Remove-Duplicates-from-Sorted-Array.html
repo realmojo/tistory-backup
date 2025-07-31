@@ -1,0 +1,227 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>leetcode 26 - Remove Duplicates from Sorted Array</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      leetcode 26 - Remove Duplicates from Sorted Array
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/leetcode</p>
+                      <p class="date">2019-02-25 11:34:54</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-filename="leet.png"
+                      data-origin-width="225"
+                      data-origin-height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="leet.png"
+                          data-origin-width="225"
+                          data-origin-height="225"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <div>
+                    <blockquote>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        Given a sorted array&nbsp;<i>nums</i>, remove the
+                        duplicates&nbsp;<a
+                          style="
+                            box-sizing: border-box;
+                            background-color: transparent;
+                            color: #607d8b;
+                            outline: none;
+                            cursor: pointer;
+                            transition: border-bottom-color 0.3s ease 0s;
+                            touch-action: manipulation;
+                            pointer-events: auto;
+                            padding-bottom: 1px;
+                            border-bottom-style: solid;
+                            border-bottom-color: transparent;
+                          "
+                          href="https://en.wikipedia.org/wiki/In-place_algorithm"
+                          target="_blank"
+                          rel="noopener"
+                          ><span
+                            style="box-sizing: border-box; font-weight: bolder"
+                            >in-place</span
+                          ></a
+                        >&nbsp;such that each element appear
+                        only&nbsp;<i>once</i>&nbsp;and return the new length.
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        Do not allocate extra space for another array, you must
+                        do this by&nbsp;<span
+                          style="box-sizing: border-box; font-weight: bolder"
+                          >modifying the input array&nbsp;<a
+                            style="
+                              box-sizing: border-box;
+                              background-color: transparent;
+                              color: #607d8b;
+                              outline: none;
+                              cursor: pointer;
+                              transition: border-bottom-color 0.3s ease 0s;
+                              touch-action: manipulation;
+                              pointer-events: auto;
+                              padding-bottom: 1px;
+                              border-bottom-style: solid;
+                              border-bottom-color: transparent;
+                            "
+                            href="https://en.wikipedia.org/wiki/In-place_algorithm"
+                            target="_blank"
+                            rel="noopener"
+                            >in-place</a
+                          ></span
+                        >&nbsp;with O(1) extra memory.
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        <span
+                          style="box-sizing: border-box; font-weight: bolder"
+                          >Example 1:</span
+                        >
+                      </p>
+                      <pre
+                        class="ada"
+                        style="
+                          box-sizing: border-box;
+                          font-family: SFMono-Regular, Consolas,
+                            'Liberation Mono', Menlo, Courier, monospace;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          overflow: auto;
+                          background: #f7f9fa;
+                          padding: 10px 15px;
+                          color: #263238;
+                          line-height: 1.6;
+                          border-radius: 3px;
+                          white-space: pre-wrap;
+                        "
+                      ><code>Given nums = [1,1,2],
+
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.</code></pre>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        <span
+                          style="box-sizing: border-box; font-weight: bolder"
+                          >Example 2:</span
+                        >
+                      </p>
+                      <pre
+                        class="lsl"
+                        style="
+                          box-sizing: border-box;
+                          font-family: SFMono-Regular, Consolas,
+                            'Liberation Mono', Menlo, Courier, monospace;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          overflow: auto;
+                          background: #f7f9fa;
+                          padding: 10px 15px;
+                          color: #263238;
+                          line-height: 1.6;
+                          border-radius: 3px;
+                          white-space: pre-wrap;
+                        "
+                      ><code>Given nums = [0,0,1,1,1,2,2,3,3,4],
+
+Your function should return length = 5, with the first five elements of nums being modified to&nbsp;0, 1, 2, 3, and&nbsp;4 respectively. It doesn't matter what values are set beyond&nbsp;the returned length.</code></pre>
+                    </blockquote>
+                  </div>
+                  <pre class="zephir"><code>/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+  var len = nums.length;
+  for(let i = len-1 ; i &gt;= 0 ; i--){
+      if(i == len-1){continue;}
+      if(nums[i] == nums[i+1]){
+          nums.splice(i, 1);
+      }        
+  }
+  return nums.length;
+};
+</code></pre>
+                  <div><code>&nbsp;</code></div>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

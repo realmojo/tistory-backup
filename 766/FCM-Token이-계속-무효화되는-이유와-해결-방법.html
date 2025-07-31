@@ -1,0 +1,397 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>FCM Token이 계속 무효화되는 이유와 해결 방법</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      FCM Token이 계속 무효화되는 이유와 해결 방법
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Javascript</p>
+                      <p class="date">2025-05-22 01:19:58</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <code>FCM(Firebase Cloud Messaging)</code>에서 발급되는
+                    <code>fcmToken</code>이 계속
+                    <b>무효화되거나 사라지는 현상</b>은 다양한 이유로 발생할 수
+                    있습니다. 아래에 <b>주요 원인과 해결 방법</b>을 구체적으로
+                    정리해 드릴게요.
+                  </p>
+                  <h3 data-ke-size="size23">
+                    ? 1. 앱이 삭제되거나 재설치된 경우
+                  </h3>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>원인</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          사용자가 앱을 삭제하거나 재설치하면 기존
+                          <code>fcmToken</code>은 무효화됩니다.
+                        </li>
+                        <li>
+                          이는 FCM의 보안 정책에 따라 토큰 재발급이 강제되기
+                          때문입니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>해결 방법</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          앱이 실행될 때마다 <code>getToken()</code>으로 새
+                          토큰을 받아와 백엔드에 업데이트하는 로직을 구현해야
+                          합니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <pre
+                    class="javascript"
+                  ><code>import { getToken, onMessage } from "firebase/messaging";
+
+async function fetchAndUpdateToken(messaging) {
+  try {
+    const token = await getToken(messaging, { vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
+    if (token) {
+      // 서버에 토큰 전송
+      await fetch('/api/store-fcm-token', {
+        method: 'POST',
+        body: JSON.stringify({ token }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  } catch (err) {
+    console.error('FCM 토큰 가져오기 실패', err);
+  }
+}</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">? 2. VAPID 키 오류 혹은 누락</h3>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>원인</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          브라우저 환경에서는 VAPID 키가 없으면 토큰 발급이
+                          실패하거나 짧은 시간 내 만료될 수 있습니다.
+                        </li>
+                        <li>
+                          <code>firebase.initializeApp()</code> 이후
+                          <code>getToken()</code> 호출 시
+                          <code>vapidKey</code> 파라미터가 필수입니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>해결 방법</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          Firebase 콘솔 &gt; 프로젝트 설정 &gt; Cloud Messaging
+                          &gt; Web Push 인증 키 &gt; 공개 키를 확인하세요.
+                        </li>
+                        <li>
+                          이 키를 <code>getToken()</code>에 반드시 명시해야
+                          합니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    ?
+                    <a
+                      href="https://firebase.google.com/docs/cloud-messaging/js/client#configure_web_credentials_with_fcm"
+                      >VAPID Key 설명 공식 문서</a
+                    >
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    ? 3. 토큰 주기적 갱신 (Token Rotation)
+                  </h3>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>원인</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          FCM은 보안을 위해 토큰을 주기적으로 재발급합니다. 이
+                          주기는 수일~수주 단위로 자동 갱신될 수 있습니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>해결 방법</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          <code>onTokenRefresh()</code> 또는 Firebase v9
+                          이후에는 이벤트 핸들링 방식으로 갱신 감지 로직을
+                          구현해야 합니다.
+                        </li>
+                        <li>
+                          <code>onBackgroundMessage()</code>와
+                          <code>onMessage()</code>는 알림 수신만 담당하며, 토큰
+                          갱신에는 관여하지 않습니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <pre
+                    class="dart"
+                  ><code>import { onTokenRefresh } from "firebase/messaging";
+
+onTokenRefresh(messaging, async () =&gt; {
+  const newToken = await getToken(messaging, { vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
+  // 백엔드에 다시 저장
+});</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    ⚠️ 4. 푸시 권한이 해제되었거나 차단된 경우
+                  </h3>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>원인</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          브라우저 또는 앱 수준에서 알림 권한을 차단한 경우,
+                          토큰이 비정상적으로 작동하거나 발급 자체가 안될 수
+                          있습니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>해결 방법</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          사용자에게 푸시 권한 요청을 다시 해야 하며, 다음과
+                          같은 코드로 권한 확인이 가능합니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <pre
+                    class="coffeescript"
+                  ><code>Notification.requestPermission().then((permission) =&gt; {
+  if (permission === 'granted') {
+    console.log('푸시 권한 허용됨');
+  } else {
+    console.warn('푸시 권한 차단됨');
+  }
+});</code></pre>
+                  <p data-ke-size="size16">
+                    ?
+                    <a
+                      href="https://firebase.google.com/docs/cloud-messaging/js/client#request_permission_to_receive_messages"
+                      >FCM 브라우저 권한 문제 해결 가이드</a
+                    >
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h3 data-ke-size="size23">
+                    ? 5. 로컬 저장소 캐시 삭제 또는 프라이빗 모드 사용
+                  </h3>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>원인</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          사용자가 브라우저 캐시/쿠키/로컬 저장소를 지우거나
+                          프라이빗 모드를 사용하는 경우 토큰이 삭제되거나
+                          저장되지 않을 수 있습니다.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <b>해결 방법</b>
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          매번 앱 실행 시 토큰을 다시 요청하고 백엔드에 비교 후
+                          업데이트하세요.
+                        </li>
+                        <li>
+                          일정 주기로 클라이언트 측에서 유효성을 검사하거나
+                          백엔드에서 유효하지 않은 토큰을 필터링하는 로직도
+                          필요합니다.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ? 디버깅 팁: fcmToken이 안 살아나는 경우 확인할 것들
+                  </h2>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      <code>getToken()</code> 호출 시 오류 로그
+                      (<code>console.error</code>)를 반드시 확인
+                    </li>
+                    <li>
+                      Firebase 콘솔의 <b>푸시 전송 결과 로그</b>에서
+                      <code>"Invalid registration token"</code> 메시지 확인
+                    </li>
+                    <li>브라우저에서 푸시 권한 상태를 수동 점검</li>
+                    <li>
+                      iOS의 경우, 시뮬레이터에서는 FCM 푸시가 정상 동작하지 않음
+                    </li>
+                  </ol>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 참고 링크</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a
+                        href="https://firebase.google.com/docs/cloud-messaging/js/client"
+                        >공식 FCM 웹 클라이언트 가이드</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://firebase.google.com/docs/cloud-messaging/js/client#configure_web_credentials_with_fcm"
+                        >VAPID 키 설정 공식 문서</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://firebase.google.com/docs/reference/js/messaging"
+                        >Firebase JS SDK 레퍼런스</a
+                      >
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 결론</h2>
+                  <p data-ke-size="size16">
+                    <code>fcmToken</code>이 자주 무효화되는 가장 흔한 원인은 앱
+                    삭제/재설치, 권한 차단, 토큰 갱신 미처리입니다. FCM을
+                    안정적으로 운영하려면 아래를 꼭 챙기세요:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      앱 실행 시마다 <code>getToken()</code>으로 최신 토큰을
+                      받아 백엔드에 저장
+                    </li>
+                    <li>
+                      <code>onTokenRefresh</code> 혹은 Firebase v9 방식의 갱신
+                      감지 로직 구현
+                    </li>
+                    <li>푸시 권한 여부 사전 확인 및 안내 UX 제공</li>
+                    <li>백엔드에서 무효 토큰은 주기적으로 삭제 처리</li>
+                  </ul>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

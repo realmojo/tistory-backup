@@ -1,0 +1,396 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>엑셀 TEXT 함수 완벽 가이드: 숫자와 날짜 형식 변환의 모든 것</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 TEXT 함수 완벽 가이드: 숫자와 날짜 형식 변환의 모든
+                      것
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-22 16:29:34</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 TEXT 함수 완벽 가이드: 숫자와 날짜 형식 변환의 모든
+                        것
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 데이터를 다룰 때 숫자나 날짜를 특정 형식으로
+                    변환해야 하는 경우가 자주 발생합니다. 20250315처럼 숫자의
+                    나열로만 입력한 값을 '2025-03-15'처럼 보기 좋게 변환하고
+                    싶을 때 TEXT 함수를 활용하면 되는데요. 이 강력한 TEXT 함수는
+                    엑셀에서 숫자나 날짜 데이터를 사용자가 원하는 형식으로
+                    변환할 수 있도록 도와주는 핵심 기능입니다. 보고서 작성이나
+                    데이터 정리 시 매우 유용한 이 함수의 모든 것을 상세히
+                    알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    엑셀 TEXT 함수의 기본 구조와 사용법
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 간단한 구조로 되어 있어서 누구나 쉽게 사용할 수
+                    있습니다. 기본적인 형태는 TEXT(value, format_text)인데,
+                    변환할 숫자나 날짜 데이터를 첫 번째 인자로 넣고, 적용할
+                    형식을 따옴표 안에 입력하면 됩니다. 이 함수의 핵심은
+                    value(값)와 format_text(형식 코드) 두 개의 매개변수로
+                    구성되어 있다는 점입니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>Value: 변환하려는 숫자, 날짜 또는 셀 참조</li>
+                    <li>
+                      Format_text: 원하는 형식을 나타내는 형식 코드(따옴표로
+                      감싸야 함)
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 Excel for Microsoft 365, Excel 2021, Excel 2019,
+                    Excel 2016 등 모든 버전에서 사용 가능하며, 특히 보고서
+                    작성이나 대시보드 제작 시 데이터의 가독성을 높이는 데
+                    필수적인 도구입니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무에서 활용하는 TEXT 함수 숫자 형식 변환
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    실무에서 TEXT 함수는 특히 숫자 형식 변환에서 그 진가를
+                    발휘합니다. 매출 장표에서 금액 단위를 자동으로 변환하고
+                    싶다면 TEXT(A2, "#,##0원")을 입력하면 됩니다. 그러면 9638527
+                    같은 숫자가 '9,638,527원'처럼 변환되면서 가독성이 훨씬
+                    좋아집니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    다양한 숫자 형식 코드들을 살펴보면:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>"#,##0": 천 단위 구분 쉼표 추가</li>
+                    <li>"#,##0.00": 소수점 둘째 자리까지 표시</li>
+                    <li>"$#,##0.00": 달러 통화 형식</li>
+                    <li>"0%": 백분율 형식</li>
+                    <li>"0.0%": 소수점 한 자리 백분율</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    Excel은 선행 0이 포함된 숫자를 자동으로 제거하지만, TEXT
+                    함수를 사용하면 이런 0들을 유지할 수 있습니다. 예를 들어,
+                    제품 코드나 전화번호 같은 데이터에서 선행 0이 중요한 경우
+                    "00000" 형식을 사용하여 원하는 자릿수를 유지할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    TEXT 함수로 날짜와 시간 형식 완벽 변환하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    날짜와 시간 변환은 TEXT 함수의 또 다른 핵심 기능입니다.
+                    TEXT(today(), "yyyy-mm-dd")를 사용하면 '2025-03-15'처럼 오늘
+                    날짜가 원하는 형식으로 변환되어 날짜를 한눈에 알아볼 수 있게
+                    됩니다.
+                  </p>
+                  <p data-ke-size="size16">주요 날짜 형식 코드들:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>"yyyy-mm-dd": 2025-03-15 형식</li>
+                    <li>"mm/dd/yyyy": 03/15/2025 형식</li>
+                    <li>"dddd, mmmm d, yyyy": Friday, March 15, 2025 형식</li>
+                    <li>"dd-mmm-yy": 15-Mar-25 형식</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    시간 표시는 "H"는 시간, "M"은 분, "S"는 초를 의미하며,
+                    "AM/PM"을 추가하면 12시간 형식으로 표시됩니다. 이를 생략하면
+                    24시간 형식으로 표시됩니다. 예를 들어 TEXT(NOW(), "hh:mm:ss
+                    AM/PM")은 현재 시간을 12시간 형식으로 보여줍니다.
+                  </p>
+                  <h2 data-ke-size="size26">통화 형식과 특수 문자 활용법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    통화 형식에서는 Currency 형식이 통화 기호를 값 옆에 정렬하는
+                    반면, Accounting 형식은 통화 기호를 셀의 왼쪽에, 값을
+                    오른쪽에 정렬합니다. 이런 차이점을 이해하고 적절한 형식을
+                    선택하는 것이 중요합니다.
+                  </p>
+                  <p data-ke-size="size16">다양한 통화 형식 예시:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>"$#,##0.00": 달러 통화 형식</li>
+                    <li>"&euro;#,##0.00": 유로 통화 형식</li>
+                    <li>"￥#,##0": 엔화 통화 형식</li>
+                    <li>"#,##0원": 원화 통화 형식</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    형식 코드에서 쉼표는 천 단위 구분자로 사용되며, 지역 설정에
+                    따라 미국에서는 쉼표(,)를, 다른 지역에서는 마침표(.)를
+                    사용할 수 있습니다. 이런 지역별 차이점을 고려하여 글로벌
+                    보고서를 작성할 때 특히 주의해야 합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    텍스트 연결과 TEXT 함수의 고급 활용
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 단독으로 사용되는 경우가 드물고, 대부분 다른
+                    요소와 함께 사용됩니다. 예를 들어 "Report Printed on:
+                    03/14/12" 또는 "Weekly Revenue: $66,348.72"와 같이 텍스트와
+                    숫자 값을 결합하고 싶을 때 사용됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    TEXT 함수와 CONCATENATE 함수를 결합한 실제 예시:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>=CONCATENATE("매출액: ", TEXT(A1, "#,##0원"))</li>
+                    <li>
+                      =CONCATENATE("보고서 작성일: ", TEXT(TODAY(),
+                      "yyyy-mm-dd"))
+                    </li>
+                    <li>=CONCATENATE("할인율: ", TEXT(B1, "0%"))</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    Excel은 내부적으로 날짜를 숫자로 저장하고 숫자 형식에
+                    의존하여 날짜로 표시하기 때문에, 수식에서 TEXT 함수를
+                    사용하여 날짜나 숫자를 특정 숫자 형식의 텍스트로 변환할 수
+                    있습니다. 이는 복잡한 보고서나 대시보드를 만들 때 매우
+                    유용한 기능입니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    TEXT 함수 vs 셀 서식: 언제 무엇을 사용할까?
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 변환된 결과를 문자로 처리하기 때문에, 계산을
+                    해야 하는 경우에는 사용이 제한될 수 있습니다. 이는 TEXT
+                    함수와 일반 셀 서식 간의 가장 중요한 차이점 중 하나입니다.
+                  </p>
+                  <p data-ke-size="size16">TEXT 함수 사용이 적합한 경우:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>텍스트와 숫자를 결합해야 할 때</li>
+                    <li>보고서나 문서에서 읽기 쉬운 형식이 필요할 때</li>
+                    <li>특정 형식의 문자열을 생성해야 할 때</li>
+                  </ul>
+                  <p data-ke-size="size16">셀 서식이 더 적합한 경우:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>숫자로 연산을 계속 수행해야 할 때</li>
+                    <li>단순히 표시 형식만 변경하고 싶을 때</li>
+                    <li>자동 계산이 필요한 셀에서</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    일반적으로 숫자 값을 그대로 유지하면서 표준 숫자 계산에
+                    사용할 수 있도록 먼저 일반 숫자 형식을 사용해야 합니다. TEXT
+                    함수는 실제로 숫자를 텍스트로 변환하므로 TEXT로 반환된
+                    숫자는 숫자 계산에 사용할 수 없습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무 프로젝트에서의 TEXT 함수 응용 사례
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    실제 업무에서 TEXT 함수는 다양한 방식으로 활용됩니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/text-function-20d5ac4d-7b94-49fd-bb38-93d29371225c"
+                      target="_blank"
+                      rel="noopener"
+                      >Microsoft Excel 공식 문서</a
+                    >에 따르면, 특히 동적 보고서 생성이나 자동화된 문서 작성에서
+                    그 가치가 빛납니다.
+                  </p>
+                  <p data-ke-size="size16">마케팅 보고서 자동화 예시:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      =CONCATENATE("이번 달 매출: ", TEXT(SUM(A1:A30),
+                      "#,##0원"), ", 전월 대비 ",
+                      TEXT((SUM(A1:A30)-SUM(B1:B30))/SUM(B1:B30), "0%"), "
+                      증가")
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">재무 보고서에서의 활용:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      =TEXT(A1, "#,##0") &amp; "원 (" &amp; TEXT(A1/1000,
+                      "#,##0") &amp; "천원)"
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 언어별로 다르며, 지역별 날짜 및 시간 형식 코드를
+                    사용해야 합니다. 글로벌 회사에서 다국적 보고서를 작성할 때는
+                    이런 지역별 차이점을 반드시 고려해야 합니다.
+                    <a
+                      href="https://exceljet.net/functions/text-function"
+                      target="_blank"
+                      rel="noopener"
+                      >Exceljet의 TEXT 함수 가이드</a
+                    >에서는 이런 고급 활용법들을 더욱 자세히 설명하고 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    TEXT 함수 사용 시 주의사항과 문제 해결
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    TEXT 함수를 사용할 때 주의해야 할 몇 가지 중요한 사항들이
+                    있습니다. TEXT 함수는 숫자를 텍스트로 변환하므로 나중에
+                    계산에서 참조하기 어려울 수 있습니다. 원래 값을 한 셀에
+                    유지하고 다른 셀에서 TEXT 함수를 사용하는 것이 가장
+                    좋습니다.
+                  </p>
+                  <p data-ke-size="size16">일반적인 오류와 해결방법:</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      형식 코드에 따옴표를 빼먹는 경우: 반드시 "" 안에 형식 코드
+                      입력
+                    </li>
+                    <li>
+                      지역 설정과 맞지 않는 형식 사용: 사용자의 지역 설정 확인
+                      필요
+                    </li>
+                    <li>
+                      날짜 형식에서 M과 m 혼동: 월(Month)은 M, 분(Minute)은 m
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    m 또는 mm 코드는 h 또는 hh 코드 바로 뒤에 나타나거나 ss 코드
+                    바로 앞에 나타나야 합니다. 그렇지 않으면 Excel은 분 대신
+                    월을 표시합니다. 이런 세부적인 규칙들을 숙지하면 TEXT 함수를
+                    더욱 정확하게 활용할 수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-text-function-formula-examples/"
+                      target="_blank"
+                      rel="noopener"
+                      >Ablebits의 TEXT 함수 예제 모음</a
+                    >에서는 더 많은 실용적인 예시와 문제 해결 방법을 확인할 수
+                    있습니다. 또한
+                    <a
+                      href="https://corporatefinanceinstitute.com/resources/excel/excel-text-function/"
+                      target="_blank"
+                      rel="noopener"
+                      >CFI의 Excel TEXT 함수 가이드</a
+                    >에서는 금융 업무에서의 활용법을 상세히 다루고 있어
+                    실무진에게 특히 유용합니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

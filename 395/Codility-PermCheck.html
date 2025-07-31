@@ -1,0 +1,169 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Codility - PermCheck</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">Codility - PermCheck</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Codility</p>
+                      <p class="date">2021-04-24 20:22:08</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    Codility - PermCheck 순열 체크하는 문제
+                  </p>
+                  <pre
+                    id="code_1619263081021"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>A non-empty array A consisting of N integers is given.
+
+A permutation is a sequence containing each element from 1 to N once, and only once.
+
+For example, array A such that:
+
+    A[0] = 4
+    A[1] = 1
+    A[2] = 3
+    A[3] = 2
+is a permutation, but array A such that:
+
+    A[0] = 4
+    A[1] = 1
+    A[2] = 3
+is not a permutation, because value 2 is missing.
+
+The goal is to check whether array A is a permutation.
+
+Write a function:
+
+function solution(A);
+
+that, given an array A, returns 1 if array A is a permutation and 0 if it is not.
+
+For example, given array A such that:
+
+    A[0] = 4
+    A[1] = 1
+    A[2] = 3
+    A[3] = 2
+the function should return 1.
+
+Given array A such that:
+
+    A[0] = 4
+    A[1] = 1
+    A[2] = 3
+the function should return 0.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [1..1,000,000,000].</code></pre>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">Solution</p>
+                  <pre
+                    id="code_1619263119682"
+                    class="javascript"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-thickness: initial;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="javascript"
+                    data-ke-type="codeblock"
+                  ><code>function solution(A) {
+    const len = A.length;
+    if(len &lt; 1 || len &gt; 100000) {
+        return 0;
+    }
+    const aSum = len*(len+1) / 2; // 현재 A의 길이의 대한 총합
+    const distinctA = new Set(A); // 중복제거(순열이라면 1 ~ N 까지 한 번만 있을것)
+    const aRealSum = [...distinctA].reduce((acc, cur) =&gt; acc + cur); // 중복 제거후 각 요소에 대한 전체 합
+    return aSum === aRealSum ? 1 : 0;
+}</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

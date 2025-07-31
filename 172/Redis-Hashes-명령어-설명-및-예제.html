@@ -1,0 +1,787 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[Redis] Hashes 명령어 설명 및 예제</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [Redis] Hashes 명령어 설명 및 예제
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2017-04-05 23:30:08</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >Hashes 관련 명령어 예제</span
+                    >
+                  </p>
+                  <div>
+                    <span style="font-size: 32px; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </div>
+                  <div>
+                    <span style="font-size: 12pt; font-weight: bold"
+                      >HSET 하나의 객체에 여러개의 변수를 담을 수 있는 구조 라고
+                      생각하면 편하겠다.</span
+                    >
+                  </div>
+                  <div>
+                    <span style="font-size: 12pt; font-weight: bold"
+                      >Man이라는 객체가 있다면</span
+                    >
+                  </div>
+                  <div>
+                    <span style="font-size: 12pt; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </div>
+                  <div>
+                    <span style="font-size: 32px; font-weight: bold"
+                      ><span style="font-size: 32px; font-weight: bold"
+                        ><br /></span
+                    ></span>
+                    <table
+                      class="txc-table"
+                      style="border: none; border-collapse: collapse"
+                      border="0"
+                      width="864"
+                      cellspacing="0"
+                      cellpadding="0"
+                      data-ke-align="alignLeft"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              width: 864px;
+                              height: 24px;
+                              background-color: #eaeaea;
+                              border: 1px solid #cccccc;
+                            "
+                          >
+                            <span
+                              ><b>&nbsp;</b
+                              ><span style="font-size: 32px"
+                                ><b>Man.age = 30</b></span
+                              ></span
+                            ><br /><span
+                              ><span style="font-size: 32px"
+                                ><b>&nbsp;Man.name = Jung</b></span
+                              ></span
+                            ><br /><span
+                              ><span style="font-size: 32px"
+                                ><b>&nbsp;Man.gender = M</b></span
+                              ></span
+                            ><br /><span
+                              ><span style="font-size: 32px"
+                                ><b>&nbsp;Man.job = developer</b></span
+                              ></span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p data-ke-size="size16">
+                      <span style="font-size: 12pt"
+                        >Man이 <span style="color: #a366ff">key</span></span
+                      ><br /><span style="font-size: 12pt"
+                        >age, name, gender, job ... =
+                        <span style="color: #a366ff">filed </span>와 비슷한
+                        구조라고 보면된다.</span
+                      >
+                    </p>
+                  </div>
+                  <div>
+                    <span style="font-size: 32px; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </div>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HSET, HGET</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HSET</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 해시 필드를 설정합니다.<br /><b
+                        >설명(<span style="color: #a366ff">HGET</span>)&nbsp;</b
+                      >: key filed에 저장된 값을 불러온다</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span
+                        ><span style="color: #a366ff">HSET</span>&nbsp;</span
+                      >key field value</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HGET&nbsp;</span
+                      >key field</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSET&nbsp;</b></span
+                            >man age 30</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HGET&nbsp;</b></span
+                            >man age</span
+                          ><br /><span>&nbsp;"30"<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HMSET, HMGET</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HMSET</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 해시 필드를 여러개 설정합니다.<br /><b
+                        >설명(<span style="color: #a366ff">HMGET</span
+                        >)&nbsp;</b
+                      >: key filed에 저장된 값을 여러개 불러온다</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HMSET&nbsp;</span
+                      >key field value [field value ...]</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span
+                        ><span style="color: #a366ff">HMGET</span>&nbsp;</span
+                      >key field [field ...]</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HMSET&nbsp;</b></span
+                            >man age 30 name "jung" gender "M" job
+                            "developer"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HMGET&nbsp;</b></span
+                            >man age name gender job</span
+                          ><br /><span
+                            >&nbsp;1) "30"<br />&nbsp;2) "jung"<br />&nbsp;3)
+                            "M"<br />&nbsp;4) "developer"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HSETNX</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HSETNX</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 필드가 아직 존재하지 않는 경우에만
+                      저장합니다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HSETNX&nbsp;</span
+                      >key field value [field value ...]</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSETNX&nbsp;</b></span
+                            >man age 30</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSETNX&nbsp;</b></span
+                            >man age 30</span
+                          ><br /><span>&nbsp;(integer) 0<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 18pt"
+                        >- HKEYS, HVALS, HGETALL</span
+                      ></b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HKEYS</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 모든 필드명을 가져온다.<br /></span
+                    ><b>설명(<span style="color: #a366ff">HVALS</span>)&nbsp;</b
+                    ><span style="font-size: 13.3333px"
+                      >: key에 저장된 모든 값을 가져온다<br /></span
+                    ><b
+                      >설명(<span style="color: #a366ff">HGETALL</span
+                      >)&nbsp;</b
+                    ><span style="font-size: 13.3333px"
+                      >: key에 저장된 모든 필드와 값을 가져온다</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HKEYS&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HVALS&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span
+                        ><span style="color: #a366ff">HGETALL</span>&nbsp;</span
+                      >key<br /><br
+                    /></b>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HMSET&nbsp;</b></span
+                            >man age 30 name "jung" gender "M"&nbsp;job
+                            "developer"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HKEYS&nbsp;</b></span
+                            >man</span
+                          ><br /><span
+                            >&nbsp;1) "age"<br />&nbsp;2) "name"<br />&nbsp;3)
+                            "gender"<br />&nbsp;4) "job"<br /><br />&nbsp;redis
+                            &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HVALS&nbsp;</b></span
+                            >man</span
+                          ><br /><span
+                            >&nbsp;1) "30"<br />&nbsp;2) "jung"<br />&nbsp;3)
+                            "M"<br />&nbsp;4) "developer"</span
+                          ><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HGETALL&nbsp;</b></span
+                            >man</span
+                          ><br /><span
+                            >&nbsp;1) "age"<br />&nbsp;2) "30"<br />&nbsp;3)
+                            "name"<br />&nbsp;4) "jung"<br />&nbsp;5)
+                            "gender"<br />&nbsp;6) "M"<br />&nbsp;7) "job"<br />&nbsp;8)
+                            "developer"<br /><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HLEN, HSTRLEN</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HLEN</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 필드의 개수를 리턴한다.<br /><b
+                        >설명(<span style="color: #a366ff">HSTRLEN</span
+                        >)&nbsp;</b
+                      >: key 필드에&nbsp;저장된 value의 길이를 리턴한다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HLEN&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HSTRLEN&nbsp;</span
+                      >key field</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">HMSET</span
+                              >&nbsp;</b
+                            >man age 30 name "jung" gender "M"&nbsp;job
+                            "developer"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HLEN&nbsp;</b></span
+                            >man</span
+                          ><br /><span
+                            >&nbsp;(integer) 4<br /><br />&nbsp;redis
+                            &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSTRLEN&nbsp;</b></span
+                            >man name</span
+                          ><br /><span>&nbsp;(integer) 4</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSTRLEN&nbsp;</b></span
+                            >man job</span
+                          ><br /><span>&nbsp;(integer) 9<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HDEL</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HDEL</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 필드의 값을 삭제한다.</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HDEL&nbsp;</span
+                      >key field [field ...]</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HMSET&nbsp;</b></span
+                            >man age 30 name "jung" gender "M"&nbsp;job
+                            "developer"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HDEL&nbsp;</b></span
+                            >man age</span
+                          ><br /><span
+                            >&nbsp;(integer) 1<br /><br />&nbsp;redis
+                            &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HDEL&nbsp;</b></span
+                            >man name</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HDEL&nbsp;</b></span
+                            >man address</span
+                          ><br /><span>&nbsp;(integer) 0<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- HEXISTS</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HEXISTS</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 필드의 값의 유무를 판단한다. 있으면
+                      1리턴 없거나 키가 존재하지 않으면 0리턴</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HEXISTS&nbsp;</span
+                      >key field</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HMSET&nbsp;</b></span
+                            >man age 30 name "jung" gender "M"&nbsp;job
+                            "developer"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HEXISTS&nbsp;</b></span
+                            >man age</span
+                          ><br /><span
+                            >&nbsp;(integer) 1<br /><br />&nbsp;redis
+                            &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HEXISTS</b><b>&nbsp;</b></span
+                            >man address</span
+                          ><br /><span>&nbsp;(integer) 0<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 18pt"
+                        >- HINCRBY, HINCRBYFLOAT</span
+                      ></b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">HINCRBY</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 필드의 값을 증가 혹은 감소
+                      시킨다.<br /></span
+                    ><b
+                      >설명(<span style="color: #a366ff">HINCRBYFLOAT</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: key에 저장된 필드의 값을 증가 혹은 감소
+                      시킨다.(소수점)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span
+                        ><span style="color: #a366ff">HINCRBY</span>&nbsp;</span
+                      >key field increment</b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >HINCRBYFLOAT&nbsp;</span
+                      >key field increment</b
+                    >
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HSET&nbsp;</b></span
+                            >man age 30</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HINCRBY&nbsp;</b></span
+                            >man age 4</span
+                          ><br /><span
+                            >&nbsp;(integer) 34<br /><br />&nbsp;redis
+                            &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HINCRBY&nbsp;</b></span
+                            >man age -5</span
+                          ><br /><span>&nbsp;(integer) 29</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>HINCRBYFLOAT&nbsp;</b></span
+                            >man age 3.3</span
+                          ><br /><span>&nbsp;(integer) 32.3</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    다음은 제가 요새 듣고 있는 노래 인데 커버곡을 잘 불러서
+                    퍼왔습니다! 한 번 들어보세요
+                  </p>
+                  <p>
+                    <iframe
+                      src="https://www.youtube.com/embed/OtckW2WXElM?autoplay=1&amp;mute=1&amp;start=1"
+                      width="560"
+                      height="315"
+                      frameborder="0"
+                      allowfullscreen=""
+                    ></iframe>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

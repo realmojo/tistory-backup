@@ -1,0 +1,90 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>leetcode 7번 - Reverse Integer</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      leetcode 7번 - Reverse Integer
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/leetcode</p>
+                      <p class="date">2019-02-18 13:11:27</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-filename="leet.png"
+                      data-origin-width="225"
+                      data-origin-height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="leet.png"
+                          data-origin-width="225"
+                          data-origin-height="225"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <div>
+                    <blockquote>
+                      Given a 32-bit signed integer, reverse digits of an
+                      integer.<br />- 주어진 32 비트 부호있는 정수, 정수의 역
+                      자릿수.
+                    </blockquote>
+                  </div>
+                  <pre class="http"><code>
+
+/**
+ * @param {number} x
+ * @return {number}
+ */
+
+var reverse = function(x) {
+    var max = Math.pow(2, 31) -1, min = -1*(Math.pow(2, 31));
+    var r = 0, s = '', signed = 1;
+    if(x &gt;= max || x &lt;= min){
+        return 0;
+    }
+    
+    s = String(x).split("").reverse();
+    if(s[s.length-1] == '-'){
+        signed *= -1;
+        s.pop();
+    }
+    
+    r = signed*Number(s.join(''));
+    return (r &gt;= max || r &lt;= min) ? 0 : r;
+};
+
+</code></pre>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

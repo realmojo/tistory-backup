@@ -1,0 +1,66 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] 볼륨 마운트하기 mount, 포맷 mkfs</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">[AWS] 볼륨 마운트하기 mount, 포맷 mkfs</h2>
+                                <div class="box-info">
+                                    <p class="category">Web 프로그래밍/AWS</p>
+                                    <p class="date">2017-04-14 23:45:46</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>AWS에서 볼륨을 증설 마운트 하려면 우선 볼륨을 생성해야 한다. 생성하는 법은 섹시한 뇌와 마우스를 클릭 할 수 있는 손가락만 있으면 누구나 볼륨을 추가 할 수 있다.</p><p><br /></p><p>[Volumes] - [Create Volume] 클릭</p><p>Volume Types은 General Purpose SSD. 디폴트 값을 사용하자. 다른 목적이 있다면 다른 것으로 해도 가능</p><p>10 Gib 생성이 되면 우클릭 해서 [Attach Volume] 으로 클릭 하고 EC2 인스턴스에 추가 하면 끝</p><p>그러면 State 가 available -&gt; in-use 로 변경 된다.</p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="652" height="472" filename="7.png" filemime="image/jpeg" style="""">
+    <span data-lightbox="lightbox">
+        <img src="./img/7.png" width="652" height="472" filename="7.png" filemime="image/jpeg" style="""" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p><br /></p><p><br /></p><p><br /></p><p>윈도우 계열은 USB를 꼽으면 자동으로 마운트가 되지만</p><p>리눅스/유닉스 계열은 USB를 꼽으면 해당 장치를 찾은다음 마운트 해야 사용 가능</p><p><b>마운트 : 연결 시킬&nbsp;볼륨(장치)을 해당 계정에 폴더로 연결해서 사용</b></p><p><br /></p><p>※ 장치가 있는지 확인 ( /dev 가 장치(볼륨)폴더 SSD, HDD, USB 등이 연결 되면 /dev 폴더에 새롭게 뜬다 )</p><p><b>[root@~]# </b>ls /dev/sdf -al&nbsp;</p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="440" height="51" filename="2.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/2.png" width="440" height="51" filename="2.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p style="text-align: left; clear: none; float: none;"><br /></p><p style="text-align: left; clear: none; float: none;"><br /></p><p style="text-align: left; clear: none; float: none;"><br /></p><p style="text-align: left; clear: none; float: none;"><span style="color: rgb(255, 0, 0);">// AWS 에서 볼륨을 추가할 때는 꼭 포맷을 먼저 해야 한다.</span><br /><span style="color: rgb(255, 0, 0);">// 포맷을 하지 않으면 다음과 같은 에러가 난다.</span></p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="499" height="93" filename="6.png" filemime="image/jpeg" style="""">
+    <span data-lightbox="lightbox">
+        <img src="./img/6.png" width="499" height="93" filename="6.png" filemime="image/jpeg" style="""" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p style="text-align: left; clear: none; float: none;"><br /></p><p style="text-align: left; clear: none; float: none;">※ 볼륨 포맷</p>볼륨을 마운트하기전에 새로운 볼륨(장치) 포맷을 하려면 mkfs 명령어를 사용<p><b>[root@~]#&nbsp;</b>mkfs -t ext4 /dev/sdf</p><h4><span style="font-weight: normal;">mkfs -t [장치명]</span></h4><p>-t : 만들어질 파티션 종류 지정<br />-c : 만들기 전에 베드섹터 검사</p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="563" height="203" filename="4.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/4.png" width="563" height="203" filename="4.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p style="text-align: left; clear: none; float: none;"><br /></p><p style="text-align: left; clear: none; float: none;">※ 마운트&nbsp;</p><p style="text-align: left; clear: none; float: none;"><b>[root@~]#&nbsp;</b>mount /dev/sdf /mnt</p><p style="text-align: left; clear: none; float: none;"><b>[root@~]# </b>df -h</p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="390" height="160" filename="5.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/5.png" width="390" height="160" filename="5.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

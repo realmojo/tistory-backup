@@ -1,0 +1,136 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      [Redis] Protected Mode (DENIED Redis is running in protected mode because
+      protected...)
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [Redis] Protected Mode (DENIED Redis is running in
+                      protected mode because protected...)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2017-05-31 23:51:28</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/redis.jpg" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    레디스를 사용하다보면<span
+                      style="
+                        background-color: #f1f1f1;
+                        color: #222222;
+                        font-family: 'Noto Serif', serif;
+                        font-size: 13.65px;
+                        font-style: italic;
+                      "
+                      >DENIED Redis is running in protected mode because
+                      protected</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">다음과 같은 에러를 볼 수 있는데</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    Redis 3.2 부터인가 보안 모드가 추가되어서 패치되었다고 한다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    주로 원격에서 레디스 서버로 접속할 때 에러가 뜬다.
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    2가지 방법이 있는데 레디스 서버에서&nbsp;
+                  </p>
+                  <p data-ke-size="size16">1) 직접 입력</p>
+                  <p data-ke-size="size16">
+                    <b>127.0.0.1:6379&gt; config set protected-mode no</b>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    2) config 파일 수정 보통 /etc/redis/redis.conf ( 파일 설정
+                    하는 곳마다 위치가 다르다 )
+                  </p>
+                  <p data-ke-size="size16">protected-mode와 bind를 수정한다.</p>
+                  <p data-ke-size="size16">
+                    #protected-mode yes<br />protected-mode no
+                  </p>
+                  <p data-ke-size="size16">#bind</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    그리고 레디스 서버 재시작 하면 접속이 잘 되는 것을 확인 할
+                    수 있다.
+                  </p>
+                  <p data-ke-size="size16">
+                    참고 :&nbsp;<span
+                      style="
+                        color: #666666;
+                        font-family: Dotum, Verdana, AppleGothic, sans-serif;
+                        font-size: 12px;
+                      "
+                      >https://redis.io/topics/security</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

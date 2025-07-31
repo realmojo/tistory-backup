@@ -1,0 +1,281 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      React, nextjs 콘솔로그 모바일 브라우저에서 실시간으로 확인하는 방법 (콘솔
+      오버레이 구현하기)?
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      React, nextjs 콘솔로그 모바일 브라우저에서 실시간으로
+                      확인하는 방법 (콘솔 오버레이 구현하기)?
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2025-04-22 23:50:10</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        콘솔로그 모바일 브라우저에서 실시간으로 확인하는 방법
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    모바일 웹 앱을 개발하다 보면,
+                    <b
+                      >모바일 브라우저에서 <code>console.log()</code> 출력값을
+                      확인하는 것이 매우 불편</b
+                    >합니다.<br />특히 Android나 iOS 환경에서는 USB 디버깅 없이
+                    로그를 보는 것이 어려운데요, 오늘은
+                    <b
+                      >React에서 콘솔 로그를 화면에 직접 출력해주는 오버레이
+                      컴포넌트</b
+                    >를 만드는 방법을 소개합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이 방법은 <b>Next.js, React SPA 모두에 적용 가능</b>하며,
+                    Chrome 개발자 도구 없이도 콘솔 로그를 쉽게 확인할 수
+                    있습니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ✅ 콘솔 로그가 모바일에서 보이지 않는 이유
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <code>console.log()</code>는 기본적으로 브라우저 개발자
+                      도구(DevTools) 콘솔에서만 확인할 수 있습니다.
+                    </li>
+                    <li>
+                      모바일 크롬에서는 콘솔을 볼 수 있는 DevTools UI가 없기
+                      때문에 <b>디버깅이 어렵습니다.</b>
+                    </li>
+                    <li>
+                      <code>chrome://inspect</code>는 USB 연결이 필요하며,
+                      번거롭습니다.
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    따라서 우리는 React 앱 안에서 직접
+                    <code>console.log()</code>를 가로채고,
+                    <b>화면에 실시간으로 출력</b>하는 오버레이 뷰어를 만들어
+                    사용할 수 있습니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ? React에서 콘솔 로그를 화면에 출력하는 오버레이 컴포넌트
+                    만들기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5477921564"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    다음은 콘솔 로그를 가로채서 화면 하단에 출력하는 React
+                    컴포넌트입니다. <code>useEffect</code>를 이용해
+                    <code>console.log</code>를 오버라이딩하고, 최근 30개의
+                    로그를 출력합니다.
+                  </p>
+                  <pre class="javascript"><code>'use client';
+
+import { useEffect, useState } from 'react';
+
+export default function ConsoleOverlay() {
+  const [logs, setLogs] = useState&lt;string[]&gt;([]);
+
+  useEffect(() =&gt; {
+    const originalLog = console.log;
+
+    console.log = (...args: any[]) =&gt; {
+      originalLog(...args); // 원래 로그는 유지
+      const logString = args.map(a =&gt; typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+      setLogs(prev =&gt; [...prev.slice(-30), logString]); // 최근 30개 로그 유지
+    };
+
+    return () =&gt; {
+      console.log = originalLog; // cleanup
+    };
+  }, []);
+
+  return (
+    &lt;div style={{
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      maxHeight: '200px',
+      backgroundColor: 'rgba(0,0,0,0.85)',
+      color: 'lime',
+      fontSize: '12px',
+      overflowY: 'auto',
+      padding: '8px',
+      zIndex: 9999
+    }}&gt;
+      {logs.map((log, idx) =&gt; (
+        &lt;div key={idx}&gt;{log}&lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ✅ 적용 방법 (Next.js / React 앱 어디서든)
+                  </h2>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>
+                      위 <code>ConsoleOverlay</code> 컴포넌트를
+                      <code>components/ConsoleOverlay.tsx</code>에 저장
+                    </li>
+                    <li>
+                      <code>app/layout.tsx</code> 또는
+                      <code>pages/_app.tsx</code>에
+                      <code>&lt;ConsoleOverlay /&gt;</code>를 추가
+                    </li>
+                    <li>
+                      이제 모바일에서도 <code>console.log()</code>가 화면 하단에
+                      표시됩니다
+                    </li>
+                  </ol>
+                  <p data-ke-size="size16">예:</p>
+                  <pre class="routeros"><code>export default function App() {
+  return (
+    &lt;&gt;
+      &lt;ConsoleOverlay /&gt;
+      &lt;YourMainApp /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 사용 시 주의사항</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      이 컴포넌트는 개발 전용으로만 사용하는 것이 좋습니다.
+                    </li>
+                    <li>
+                      프로덕션에서는 조건부로 렌더링하거나, 로그 레벨에 따라
+                      제한하는 것이 좋습니다.
+                    </li>
+                    <li>
+                      터치가 필요한 UI 요소들과 겹치지 않도록 위치를 조정할 수도
+                      있습니다.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 확장 아이디어</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      로그를 레벨별로 색상 구분 (<code>info</code>,
+                      <code>error</code>, <code>warn</code>)
+                    </li>
+                    <li>로그 필터 입력창 추가</li>
+                    <li>
+                      <code>console.error</code>, <code>console.warn</code> 등도
+                      가로채서 시각화
+                    </li>
+                    <li>로그를 서버에 전송해 저장 (간단한 Logger 만들기)</li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 결론</h2>
+                  <p data-ke-size="size16">
+                    모바일에서의 디버깅은 제한적이지만, React에서는 이처럼
+                    콘솔을 UI로 표시하여 <b>실시간 로그 확인</b>이
+                    가능합니다.<br />특히 QA나 기획자 테스트 시 유용하며,
+                    <b>디버깅 비용을 획기적으로 줄여줄 수 있는 방법</b>입니다.
+                  </p>
+                  <blockquote data-ke-style="style1">
+                    <p data-ke-size="size16">
+                      개발 중 로그를 보고 싶다면, 이제 더 이상 USB 연결 없이도
+                      화면에서 직접 확인하세요!
+                    </p>
+                  </blockquote>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 참고자료</h2>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a href="https://react.dev/reference/react/useEffect"
+                        >React 공식 useEffect 문서</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/console/log"
+                        >MDN console.log</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://developer.chrome.com/docs/devtools/remote-debugging/"
+                        >How to use chrome://inspect without USB</a
+                      >
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

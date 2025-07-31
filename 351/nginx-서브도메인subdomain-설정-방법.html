@@ -1,0 +1,334 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>nginx 서브도메인(subdomain) 설정 방법</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      nginx 서브도메인(subdomain) 설정 방법
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Unix & Linux</p>
+                      <p class="date">2020-07-12 22:30:53</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <h2 style="text-align: center" data-ke-size="size26">
+                    nginx 서브도메인(subdomain) 설정 방법
+                  </h2>
+                  <p data-ke-size="size16">
+                    사이트를 운영하다보면 같은 도메인을 이용하여 여러개가 만들고
+                    싶을 때가 있습니다. 도메인을 하나 더 사자니 부담드럽고 한
+                    개의 도메인으로 여러개를 만들 수 있는 nginx 서브도메인 설정
+                    하는 방법에 대해서 소개해드리겠습니다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    1. nginx를 설치하고 실행을 합니다.
+                  </h2>
+                  <pre
+                    id="code_1594559821615"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>apt-get install -y nginx</code></pre>
+                  <p data-ke-size="size16">
+                    nginx 가 설치되고 나서 설치된 경로로 이동하여 줍니다. ( cd
+                    /etc/nginx )
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    2. sites-available 폴더로 이동하여 줍니다.
+                  </h2>
+                  <pre
+                    id="code_1594559988087"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>cd sites-available</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    3. 서브도메인으로 사용할 파일을 생성하여 줍니다. 그리고
+                    파일을 vi 편집기로 열어줍니다.
+                  </h2>
+                  <pre
+                    id="code_1594560053602"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>touch subdomain
+vi subdomain</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_2.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    4. 아래의 스크립트를 복사해서 넣어줍니다.
+                  </h2>
+                  <pre
+                    id="code_1594560336533"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>server {
+        listen 80;
+        listen [::]:80;
+
+        server_name subdomain.domain.com; // 서브도메인 주소 입력
+        rewrite ^ https://subdomain.domain.com$request_uri; // 서브도메인 443 Redirect
+}
+
+server {
+        listen 443 ssl ;
+        listen [::]:443 ssl ;
+
+        server_name subdomain.domain.com; // 서브도메인 주소 경로
+        
+        // SSL 인증서 경로
+        ssl_certificate /etc/letsencrypt/live/subdomain.domain.com/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.com/privkey.pem; # managed by Certbot
+
+        root /opt/html; // root 경로
+        index index.html;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_3.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">5. nginx를 재시작 하여 줍니다.</h2>
+                  <pre
+                    id="code_1594560422874"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>service nginx restart</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_4.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    6. 브라우저에 서브도메인 주소로 들어가서 잘 들어가는지
+                    확인을 해 줍니다.
+                  </h2>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_5.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,317 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 날짜 계산 함수 완벽 가이드 - DATEDIF와 NETWORKDAYS로 일수 차이 구하기
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 날짜 계산 함수 완벽 가이드 - DATEDIF와 NETWORKDAYS로
+                      일수 차이 구하기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-16 00:10:18</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 날짜 계산 함수 완벽 가이드 - DATEDIF와
+                        NETWORKDAYS로 일수 차이 구하기
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 두 날짜 사이의 차이를 계산하는 것은 업무에서 자주
+                    발생하는 작업입니다. 프로젝트 기간 산정, 근무일수 계산, 나이
+                    계산 등 다양한 상황에서 엑셀 날짜 계산 함수를 활용하게
+                    됩니다. 이번 글에서는 DATEDIF 함수와 NETWORKDAYS 함수를
+                    중심으로 정확하고 효율적인 날짜 차이 계산 방법을 상세히
+                    알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    DATEDIF 함수로 정확한 날짜 차이 계산하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    DATEDIF 함수는 엑셀에서 두 날짜 간의 차이를 계산하는 가장
+                    기본적이고 중요한 함수입니다. 이 함수의 구문은
+                    =DATEDIF(시작일, 종료일, 단위)로 매우 간단합니다. 단위
+                    옵션으로는 일수를 의미하는 "d", 개월수를 의미하는 "m",
+                    년수를 의미하는 "y"가 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      기본 사용법: =DATEDIF(A1, B1, "d")로 입력하면 A1셀과
+                      B1셀의 날짜 차이를 일수로 계산합니다
+                    </li>
+                    <li>
+                      실제 예시: =DATEDIF("2024-01-01", "2024-03-31", "d")를
+                      입력하면 89일이 결과로 나타납니다
+                    </li>
+                    <li>
+                      동적 계산: 셀 참조를 사용하면 날짜가 변경될 때마다
+                      자동으로 재계산됩니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    DATEDIF 함수는
+                    <a
+                      href="https://support.microsoft.com/en-us/office/datedif-function-25dba1a4-2812-480b-84dd-8b32a451b35c"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 공식 문서</a
+                    >에서도 확인할 수 있듯이 로터스 1-2-3 호환성을 위해 제공되는
+                    숨겨진 함수입니다. 특정 상황에서 부정확한 결과를 반환할 수
+                    있으므로 사용시 주의가 필요합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    NETWORKDAYS 함수로 근무일 계산 최적화
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    NETWORKDAYS 함수는 주말과 공휴일을 자동으로 제외하고 순
+                    근무일수를 계산하는 특별한 함수입니다. 이 함수의 구문은
+                    =NETWORKDAYS(시작일, 종료일, [공휴일])입니다. 선택적
+                    매개변수인 공휴일은 범위나 배열 형태로 입력할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      기본 기능: 토요일과 일요일을 자동으로 제외하여 근무일만
+                      계산합니다
+                    </li>
+                    <li>
+                      공휴일 제외: 별도 범위에 공휴일을 입력하면 해당 날짜들도
+                      제외하여 계산합니다
+                    </li>
+                    <li>
+                      프로젝트 관리: 실제 업무 진행 가능한 날짜만 산정하여
+                      정확한 일정 계획이 가능합니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    예를 들어, =NETWORKDAYS("2024-01-01", "2024-12-31")을
+                    입력하면 주말을 제외한 연간 근무일수를 계산할 수 있습니다.
+                    만약 E1:E10 범위에 공휴일이 입력되어 있다면
+                    =NETWORKDAYS("2024-01-01", "2024-12-31", E1:E10)과 같이
+                    사용하여 더욱 정확한 계산이 가능합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    날짜 계산시 주의사항과 오류 해결 방법
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 날짜 계산에서 발생할 수 있는 오류들을 미리 파악하고
+                    해결하는 것이 중요합니다. 가장 흔한 오류는 #NUM! 오류와
+                    #VALUE! 오류입니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    #NUM! 오류는 시작일이 종료일보다 클 때 발생합니다. 이를
+                    방지하려면 날짜 순서를 정확히 확인해야 합니다. #VALUE!
+                    오류는 엑셀이 입력된 값을 유효한 날짜로 인식하지 못할 때
+                    발생합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      날짜 형식 통일: YYYY-MM-DD 형식으로 일관되게 입력하는 것이
+                      좋습니다
+                    </li>
+                    <li>
+                      셀 서식 확인: 날짜 셀의 서식이 적절히 설정되어 있는지
+                      확인해야 합니다
+                    </li>
+                    <li>
+                      결과값 검증: 계산된 값이 음수로 나오지 않는지 반드시
+                      확인해야 합니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://docs.microsoft.com/en-us/office/troubleshoot/excel/datedif-function-incorrect-results"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 기술 지원 문서</a
+                    >에 따르면, DATEDIF 함수는 특정 시나리오에서 부정확한 결과를
+                    계산할 수 있으므로 중요한 계산에서는 다른 방법과 교차
+                    검증하는 것이 바람직합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무에서 활용하는 고급 날짜 계산 팁
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    실무에서는 단순한 날짜 차이 계산을 넘어서 더 복잡한
+                    요구사항들이 발생합니다. 예를 들어, 주차별 계산이나 특정
+                    조건에 따른 날짜 계산이 필요할 수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    주차 계산을 위해서는 DATEDIF 함수의 결과를 7로 나누는 방법을
+                    사용할 수 있습니다. =DATEDIF(A1, B1, "d")/7 공식으로 두 날짜
+                    사이의 주수를 구할 수 있습니다. 완전한 주수만 필요하다면
+                    ROUNDDOWN 함수를 함께 사용하여 =ROUNDDOWN(DATEDIF(A1, B1,
+                    "d")/7, 0)와 같이 작성할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      복합 계산: 여러 함수를 조합하여 년, 월, 일을 동시에
+                      표시하는 공식을 만들 수 있습니다
+                    </li>
+                    <li>
+                      조건부 계산: IF 함수와 결합하여 특정 조건에 따라 다른 계산
+                      방식을 적용할 수 있습니다
+                    </li>
+                    <li>
+                      자동화 구현: 오늘 날짜를 기준으로 하는 동적 계산을 위해
+                      TODAY() 함수를 함께 활용할 수 있습니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    NETWORKDAYS.INTL 함수는 표준 주말(토요일, 일요일) 이외의
+                    주말 패턴을 적용해야 하는 국제적인 업무 환경에서 유용합니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/networkdays-intl-function-a9b26239-4f20-46a1-9ab8-4e925bfd5e28"
+                      target="_blank"
+                      rel="noopener"
+                      >이 함수</a
+                    >를 사용하면 금요일과 토요일을 주말로 설정하는 등 다양한
+                    주말 패턴을 정의할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">날짜 계산 함수 활용 사례와 응용</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 날짜 계산 함수들은 다양한 업무 상황에서 실용적으로
+                    활용됩니다. 인사관리에서는 근속년수 계산, 연차 발생일 계산
+                    등에 활용되며, 프로젝트 관리에서는 작업 기간 산정과 마일스톤
+                    설정에 필수적입니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    재무 분야에서는 투자 기간 계산, 이자 계산 기간 산정, 계약
+                    기간 관리 등에 광범위하게 사용됩니다. 특히 NETWORKDAYS
+                    함수는 은행 업무일 기준 계산이 필요한 금융 상품 설계에서
+                    중요한 역할을 합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      인사 관리: 직원의 근속년수, 연차 발생 계산, 퇴직금 산정
+                      기준일 계산
+                    </li>
+                    <li>
+                      프로젝트 관리: 작업 소요 기간 예측, 납기일 설정, 지연 일수
+                      추적
+                    </li>
+                    <li>
+                      고객 서비스: 서비스 만료일 관리, 계약 갱신 알림, 응답 시간
+                      측정
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    고급 활용 예시로는 =DATEDIF(A1, B1, "Y") &amp; "년 " &amp;
+                    DATEDIF(A1, B1, "YM") &amp; "개월 " &amp; DATEDIF(A1, B1,
+                    "MD") &amp; "일"과 같은 복합 공식을 통해 정확한 경과 기간을
+                    년, 월, 일 단위로 자세히 표현할 수 있습니다. 이러한 공식은
+                    계약서나 보고서에서 기간을 명확하게 표기할 때 매우
+                    유용합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    결론적으로, DATEDIF와 NETWORKDAYS 함수를 적절히 활용하면
+                    엑셀에서 모든 종류의 날짜 계산을 효율적으로 처리할 수
+                    있습니다. 각 함수의 특성과 제한사항을 이해하고, 실무 상황에
+                    맞는 적절한 함수를 선택하여 사용하는 것이 중요합니다.
+                    <a
+                      href="https://corporatefinanceinstitute.com/resources/excel/datedif-function/"
+                      target="_blank"
+                      rel="noopener"
+                      >전문적인 활용법</a
+                    >을 참고하여 더욱 정교한 날짜 계산 시스템을 구축해보시기
+                    바랍니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

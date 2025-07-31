@@ -1,0 +1,213 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>두 개의 Object array 특정 키 값으로 Join 하는 방법</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      두 개의 Object array 특정 키 값으로 Join 하는 방법
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Javascript</p>
+                      <p class="date">2025-04-15 17:38:03</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    JavaScript에서 두 개의 객체 배열(Object Array)을 특정 키를
+                    기준으로 <b>join</b>하려면 SQL의 JOIN처럼 직접 구현해야
+                    합니다. JavaScript에는 기본적으로 SQL처럼 자동으로
+                    JOIN해주는 기능이 없기 때문에, map, filter, find 또는 reduce
+                    등의 메서드를 활용해서 수동으로 조합해야 합니다. 아래는
+                    다양한 방법으로 <b>inner join</b>(교집합 형태)을 구현하는
+                    예시입니다.
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">✅ 예시 상황</h2>
+                  <pre class="groovy"><code>const users = [
+  { id: 1, name: '철수' },
+  { id: 2, name: '영희' },
+  { id: 3, name: '민수' }
+];
+
+const orders = [
+  { userId: 1, product: '노트북' },
+  { userId: 2, product: '키보드' },
+  { userId: 4, product: '마우스' }
+];
+</code></pre>
+                  <p data-ke-size="size16">
+                    위처럼 users.id와 orders.userId를 기준으로 join하고 싶다고
+                    가정하면...
+                  </p>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ? 방법 1: map + find를 이용한 inner join
+                  </h2>
+                  <pre class="crmsh"><code>const joined = users.map(user =&gt; {
+  const order = orders.find(order =&gt; order.userId === user.id);
+  if (order) {
+    return {
+      ...user,
+      ...order
+    };
+  }
+}).filter(Boolean);
+
+console.log(joined);
+</code></pre>
+                  <h3 data-ke-size="size23">✅ 결과:</h3>
+                  <pre class="groovy"><code>[
+  { id: 1, name: '철수', userId: 1, product: '노트북' },
+  { id: 2, name: '영희', userId: 2, product: '키보드' }
+]
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">
+                    ⚡ 방법 2: reduce와 Map을 활용한 성능 최적화 (대량 데이터에
+                    유리)
+                  </h2>
+                  <pre
+                    class="stata"
+                  ><code>const orderMap = new Map(orders.map(order =&gt; [order.userId, order]));
+
+const joined = users.reduce((acc, user) =&gt; {
+  const order = orderMap.get(user.id);
+  if (order) {
+    acc.push({ ...user, ...order });
+  }
+  return acc;
+}, []);
+
+console.log(joined);
+</code></pre>
+                  <h3 data-ke-size="size23">✅ 성능 장점:</h3>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      orderMap은 O(1) 조회를 제공하므로, 전체 연산이 O(n)입니다.
+                    </li>
+                    <li>
+                      find 기반 map은 O(n^2)이라 데이터가 많을수록 느려질 수
+                      있어요.
+                    </li>
+                  </ul>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? Left Join 구현 예시</h2>
+                  <pre
+                    class="crmsh"
+                  ><code>const leftJoined = users.map(user =&gt; {
+  const order = orders.find(order =&gt; order.userId === user.id);
+  return {
+    ...user,
+    product: order ? order.product : null
+  };
+});
+
+console.log(leftJoined);
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? Full Outer Join 예시</h2>
+                  <pre class="javascript"><code>const allIds = new Set([
+  ...users.map(u =&gt; u.id),
+  ...orders.map(o =&gt; o.userId)
+]);
+
+const fullJoin = Array.from(allIds).map(id =&gt; {
+  const user = users.find(u =&gt; u.id === id);
+  const order = orders.find(o =&gt; o.userId === id);
+  return {
+    id,
+    name: user?.name ?? null,
+    product: order?.product ?? null
+  };
+});
+
+console.log(fullJoin);
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 라이브러리 추천 (lodash)</h2>
+                  <p data-ke-size="size16">
+                    lodash 같은 유틸 라이브러리를 쓰면 더 깔끔하게 처리할 수
+                    있어요.
+                  </p>
+                  <pre class="cmake"><code>npm install lodash
+</code></pre>
+                  <pre class="routeros"><code>import _ from 'lodash';
+
+const joined = _.map(users, user =&gt; {
+  const order = _.find(orders, { userId: user.id });
+  return {
+    ...user,
+    ...(order || {})
+  };
+});
+</code></pre>
+                  <hr data-ke-style="style1" />
+                  <h2 data-ke-size="size26">? 마무리 정리</h2>
+                  <p data-ke-size="size16">Join 종류 코드 방식 설명</p>
+                  <table
+                    style="border-collapse: collapse; width: 100%"
+                    border="1"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td>Inner Join</td>
+                        <td>map + find + filter(Boolean)</td>
+                        <td>공통 키만 매칭</td>
+                      </tr>
+                      <tr>
+                        <td>Left Join</td>
+                        <td>map + 기본값 처리</td>
+                        <td>왼쪽 기준으로 다 출력</td>
+                      </tr>
+                      <tr>
+                        <td>Full Outer Join</td>
+                        <td>Set으로 key 결합 후 find</td>
+                        <td>모든 키를 포함</td>
+                      </tr>
+                      <tr>
+                        <td>성능 최적화</td>
+                        <td>Map으로 구성 후 reduce 사용</td>
+                        <td>빠름 (대용량 데이터 적합)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

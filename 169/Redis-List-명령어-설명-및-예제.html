@@ -1,0 +1,1004 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[Redis] List 명령어 설명 및 예제</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [Redis] List 명령어 설명 및 예제
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2022-10-17 21:24:12</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >List 관련 명령어 예제</span
+                    >
+                  </p>
+                  <div>
+                    <span style="font-size: 32px; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </div>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">-&nbsp;</span></b
+                    ><b><span style="font-size: 18pt">LPUSH,&nbsp;</span></b
+                    ><b><span style="font-size: 18pt">RPUSH, LRANGE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LPUSH</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 지정된 모든 값을 키에 저장된 목록의 처음에
+                      넣습니다. 키가 없으면 조작을 수행하기 전에 키가 빈
+                      목록으로 작성</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">RPUSH</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 지정된 모든 값을 키에 저장된 목록의 끝에
+                      넣습니다. 키가 없으면 조작을 수행하기 전에 키가 빈
+                      목록으로 작성</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LRANGE</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: list형식으로 저장된 키의 값을 개수를 인덱스를
+                      지정하여 가져올 수 있음. 음수의 경우일 경우는 마지막 값을
+                      의미</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      >-1 은 마지막 값, -2 마지막에서 2번째 값, -3 마지막에서
+                      3번째 값</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >LPUSH&nbsp;</span
+                      >key value [value ...]</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;
+                      <span style="color: #a366ff">RPUSH&nbsp;</span>key value
+                      [value ...]</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b>redis-cli &gt;&nbsp;</b></span
+                    ><b
+                      ><span
+                        ><span style="color: #a366ff">LRANGE&nbsp;</span
+                        ><span style="color: #000000"
+                          >key start stop</span
+                        ></span
+                      ></b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">RPUSH</span> </b
+                            >list&nbsp;5 6 7 8 9</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LPU</b><b>S</b><b>H&nbsp;</b></span
+                            >list 1 2 3 4 5</span
+                          ><br /><span>&nbsp;(integer) 10</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">LARNGE</span> </b
+                            >list&nbsp;0 9</span
+                          ><br /><span
+                            >&nbsp;1) "5"<br />&nbsp;2) "4"<br />&nbsp;3) "3"<br />&nbsp;4)
+                            "2"<br />&nbsp;5) "1"<br />&nbsp;6) "5"<br />&nbsp;7)
+                            "6"<br />&nbsp;8) "7"<br />&nbsp;9) "8"<br />&nbsp;10)
+                            "9"</span
+                          ><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>LRANGE</b> </span
+                            >list -4 -3</span
+                          ><br /><span>&nbsp;1) "6"<br />&nbsp;2) "7"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LPOP, RPOP</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LPOP</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 리스트 키에 저장된 목록의 첫 번째 요소를 제거하고
+                      반환</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">RPOP</span>)</b
+                    ><span style="font-size: 13.3333px">&nbsp;:&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >리스트 키에 저장된 목록의 마지막 요소를 제거하고
+                      반환</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LPOP</b></span
+                    ><b><span>&nbsp;</span>key</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >RPOP&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>RPUSH&nbsp;</b></span
+                            >list&nbsp;5 6 7 8 9</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LPUSH&nbsp;</b></span
+                            >list 1 2 3 4 5</span
+                          ><br /><span>&nbsp;(integer) 10</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LPOP&nbsp;</b></span
+                            >list</span
+                          ><br /><span>&nbsp;"5"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>RPOP&nbsp;</b></span
+                            >list</span
+                          ><br /><span>&nbsp;"9"</span><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LPUSHX, RPUSHX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LPUSHX</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 키가 이미 있고 목록을 보유하고 있는 경우에만
+                      목록의 첫 번째에 값을 삽입합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">RPUSHX</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 키가 이미 있고 목록을 보유하고 있는 경우에만
+                      목록의 마지막에 값을 삽입합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LPOP</b></span
+                    ><b><span style="color: #a366ff">&nbsp;</span>key</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >RPOP&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>RPUSHX&nbsp;</b></span
+                            >list&nbsp;1</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>RPUSH&nbsp;</b></span
+                            >list 1 2 3 4 5</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>RPUSHX&nbsp;</b></span
+                            >list 3</span
+                          ><br /><span>&nbsp;(integer) 6</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LRANGE&nbsp;</b></span
+                            >list 0 -1&nbsp;</span
+                          ><br /><span
+                            >&nbsp;1) "1"<br />&nbsp;2) "2"<br />&nbsp;3) "3"<br />&nbsp;4)
+                            "4"<br />&nbsp;5) "5"<br />&nbsp;6) "3"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LINDEX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LINDEX</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 리스트 키에 지정된 인덱스 요소를 반환합니다. 0은
+                      첫 번째, 1은 두 번쨰, -1 뒤에서 첫번째, -2 뒤에서
+                      두번째</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LINDEX</b></span
+                    ><b><span style="color: #a366ff">&nbsp;</span>key index</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LPUSH&nbsp;</b></span
+                            >list&nbsp;"World"</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">LPUSH</span> </b
+                            >list "Hello"</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LINDEX&nbsp;</b></span
+                            >list 0</span
+                          ><br /><span>&nbsp;"Hello"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LINDEX&nbsp;</b></span
+                            >list -1&nbsp;</span
+                          ><br /><span>&nbsp;"World"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LSET, LREM</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span
+                      style="font-family: 'Noto Sans Demilight', 'Noto Sans KR'"
+                      ><b>설명(<span style="color: #a366ff">LSET</span>)</b
+                      ><span style="font-size: 13.3333px"
+                        >&nbsp;: 리스트에&nbsp;특정 인덱스 요소에 값을
+                        설정합니다.</span
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span
+                      style="font-family: 'Noto Sans Demilight', 'Noto Sans KR'"
+                      ><b>설명(<span style="color: #a366ff">LREM</span>) :</b>
+                      리스트에 특정 인덱스 요소의 값을 삭제합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LSET</b></span
+                    ><b
+                      ><span style="color: #a366ff">&nbsp;</span>key index
+                      value</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">RPUSH</span> </b
+                            >list 1 2 3 4 5</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LSET&nbsp;</b></span
+                            >list 3 5</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LRANGE&nbsp;</b></span
+                            >list 0 -1</span
+                          ><br /><span
+                            >&nbsp;1) "1"<br />&nbsp;2) "2"<br />&nbsp;3) "3"<br />&nbsp;4)
+                            "5"<br />&nbsp;5) "5"</span
+                          ><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LINDEX&nbsp;</b></span
+                            >list -1&nbsp;</span
+                          ><br /><span>&nbsp;"World"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LLEN</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LLEN</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 키에 저장된 목록의 길이를 반환. 키에 값이 없으면
+                      0을 리턴. 목록형이 아니면 에러를 반환</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LLEN</b></span
+                    ><b><span style="color: #a366ff">&nbsp;</span>key</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LPUSH&nbsp;</b></span
+                            >list "World"</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">LPUSH</span
+                              >&nbsp;</b
+                            >list "Hello"</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">LLEN</span> </b
+                            >list</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LINSERT</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LINSERT</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 키에 저장된 목록에 참조 값 피벗 전후에 값을
+                      삽입한다. 피벗값이 중복이면 앞에 있는 값을 우선적으로
+                      선택한다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LINSERT</b></span
+                    ><b
+                      ><span style="color: #a366ff">&nbsp;</span>key BEFORE |
+                      AFTER pivot value</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;LPUSH&nbsp;list 1 2 3 4 5 6 7
+                            8 9 10</span
+                          ><br /><span>&nbsp;(integer) 10</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LINSERT&nbsp;</b></span
+                            >list before&nbsp;5 4</span
+                          ><br /><span>&nbsp;(integer) 11</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>LINSERT&nbsp;</b></span
+                            >list after 5 5</span
+                          ><br /><span>&nbsp;(integer) 12</span><br /><span
+                            >&nbsp;redis &gt; LRANGE list 0 -1</span
+                          ><br /><span
+                            >&nbsp;1) "1"<br />&nbsp;2) "2"<br />&nbsp;3) "3"<br />&nbsp;4)
+                            "4"<br />&nbsp;5) "4"<br />&nbsp;6) "5"<br />&nbsp;7)
+                            "5"<br />&nbsp;8) "6"<br />&nbsp;9) "7"<br />&nbsp;10)
+                            "8"<br />&nbsp;11) "9"<br />&nbsp;12) "10"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- LTRIM</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">LTRIM</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 키의 지정된 요소만큼 범위를 잘라냅니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>redis-cli &gt;&nbsp;</b
+                    ><span style="color: #a366ff"><b>LTRIM</b></span
+                    ><b
+                      ><span style="color: #a366ff">&nbsp;</span>key start
+                      stop</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>&nbsp;</b>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;RPUSH&nbsp;list 1 2 3 4 5 6 7
+                            8 9 10</span
+                          ><br /><span>&nbsp;(integer) 10</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">LTRIM</span
+                              >&nbsp;</b
+                            >list 5 -1</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt; LRANGE list 0 -1</span
+                          ><br /><span
+                            >&nbsp;1) "6"<br />&nbsp;2) "7"<br />&nbsp;3) "8"<br />&nbsp;4)
+                            "9"<br />&nbsp;5) "10"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- RPOPLPUSH</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">RPOPLPUSH</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 마지막 요소를 반환하고 제거하고 새로운 키 대상
+                      헤드에 푸쉬(저장)합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;
+                      <span style="color: #a366ff">RPOPLPUSH&nbsp;</span></b
+                    ><b>source destination</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>&nbsp;</b>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;RPUSH&nbsp;list 1 2 3</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt; RPUSH list1 4 5 6</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>RPOPLPUSH</b></span
+                            >&nbsp;list list1</span
+                          ><br /><span>&nbsp;"3"</span><br /><span
+                            >&nbsp;redis &gt; LRANGE list 0 -1</span
+                          ><br /><span>&nbsp;1) "1"<br />&nbsp;2) "2"</span
+                          ><br /><span>&nbsp;redis &gt; LRANGE list1 0 -1</span
+                          ><br /><span
+                            >&nbsp;1) "3"<br />&nbsp;2) "4"<br />&nbsp;3) "5"<br />&nbsp;4)
+                            "6"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- BLPOP, BRPOP</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">BLPOP</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: 주어진 키 값에서 헤드에 POP을 할 요소가 없으면
+                      연결을 차단한다. 값이 들어와서 POP할 때까지 특정 timeout
+                      동안 차단된다. 값이 들어와서 pop이 되면 차단이
+                      풀린다.</span
+                    >
+                  </p>
+                  <div>
+                    <p data-ke-size="size16">
+                      <b>설명(<span style="color: #a366ff">BRPOP</span>)</b
+                      ><span style="font-size: 13.3333px"
+                        >&nbsp;: 주어진 키값에서 마지막 POP을 할 요소가 없으면
+                        연결을 차단한다. 값이 들어와서 POP할 때까지 특정 timeout
+                        동안 차단된다</span
+                      ><span style="font-size: 13.3333px"
+                        >. 값이 들어와서 pop이 되면 차단이 풀린다.</span
+                      >
+                    </p>
+                  </div>
+                  <div>
+                    <span style="font-size: 13.3333px"
+                      >timeout은 초 단위 이며 0으로 하면 무한이다.</span
+                    >
+                  </div>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >BLPOP&nbsp;</span
+                      ></b
+                    ><b>key [key ...] timeout</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >BRPOP&nbsp;</span
+                      ></b
+                    ><b>key [key ...] timeout</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>&nbsp;</b>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">BLPOP</span> </b
+                            >list1 list2 list3 0</span
+                          ><br /><span
+                            ><span style="color: #2f9d27">/*&nbsp;<br /></span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; 아무런 반응이 없음 연결이 차단
+                              됌</span
+                            ><span style="color: #2f9d27">&nbsp;<br /></span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; 다른 쉘 창을 켜서 RPUSH list1 hello
+                              명령어를 입력하면</span
+                            ></span
+                          ><br /><span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; list1 -&gt; list2 -&gt; list3
+                              순으로 순차적으로 POP할 요소를 찾음<br /></span
+                            ><span style="color: #2f9d27">*/</span></span
+                          ><br /><span
+                            >&nbsp;1) "list1"<br />&nbsp;2) "hello"</span
+                          ><br /><span
+                            ><span style="color: #2f9d27">/*&nbsp;<br /></span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; list1 에서 값을 꺼내고 연결이 다시
+                              활성화 됌</span
+                            ><span style="color: #2f9d27">&nbsp;</span
+                            ><span style="color: #2f9d27"><br /></span
+                            ><span style="color: #2f9d27">*/</span></span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- BRPOPLPUSH</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(<span style="color: #a366ff">BRPOPLPUSH</span>)</b
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;: RPOPLPUSH의 차단변형이다. source에 POP을 할 수
+                      있는 값이 있으면&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >RPOPLPUSH와 똑같이 작동한다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >BRPOPLPUSH&nbsp;</span
+                      ></b
+                    ><b>source destination&nbsp;timeout</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>&nbsp;</b>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"
+                              ><b>BRPOPLPUSH</b> </span
+                            >list1 list2 0</span
+                          ><br /><span
+                            ><span style="color: #2f9d27">/*&nbsp;<br /></span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; 아무런 반응이 없음 연결이 차단
+                              됌</span
+                            ><span style="color: #2f9d27">&nbsp;<br /></span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; 다른 쉘 창을 켜서 RPUSH list1 hello
+                              명령어를 입력하면</span
+                            ></span
+                          ><br /><span
+                            ><span style="color: #2f9d27"
+                              >&nbsp; &nbsp; list1 에서 값을 POP 한 후 list2에
+                              저장<br /></span
+                            ><span style="color: #2f9d27">*/</span></span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

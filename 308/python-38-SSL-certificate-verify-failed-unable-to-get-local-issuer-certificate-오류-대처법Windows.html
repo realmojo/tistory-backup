@@ -1,0 +1,262 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      python 3.8 certificate verify failed unable to get local issuer
+      certificate 오류 대처법(Windows, Mac)
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      python 3.8 certificate verify failed unable to get local
+                      issuer certificate 오류 대처법(Windows, Mac)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍</p>
+                      <p class="date">2020-06-16 11:56:50</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    python을 실행하는데
+                    <b
+                      >SSL: certificate_verify_failed unable to get local issuer
+                      certificate</b
+                    >
+                    오류가 발생하여 단순히 ssl 제거만 하면 될 줄 았았다.
+                    <span style="color: #333333"
+                      >오랜만에 python을 다시 사용하게 되었는데 그동안
+                      업데이트(?) 및 방치, 강력화된 방화벽(?)으로 인해 많은
+                      명령어들이 작동하지 않았다.</span
+                    >
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/python.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    SSL: certificate verify failed unable to get local issuer
+                    certificate 오류발생
+                  </h2>
+                  <p data-ke-size="size16">
+                    SSL을 건드린적도 없는데 약 4개월간 방치해 뒀더니 작동하지가
+                    않았다. SET npm_config_strict_ssl=false 등의 명령어를
+                    해보았지만 아무런 효과없이 속수무책이었다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">오류 해결방법(윈도우)</h2>
+                  <p data-ke-size="size16">
+                    윈도우는 Mac과 달라서 다른 방법으로 해결을 해야 한다. pip가
+                    설치되어 있다는 하에 가정하고 해결방법을 서술한다. 아래의
+                    명령어를 입력하면 다음과 같은 메시지가 나온다.
+                  </p>
+                  <pre
+                    id="code_1592275686186"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>pip install --upgrade certifi</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption>pip install --upgrade certifi</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    성공적으로 불러오고 나서 노란색으로 경고를 보여주는데
+                    무시해도 되고 진행해도 된다. 오랜만에 접속해서 파이선 버전이
+                    변경되었다는 내용이다.
+                  </p>
+                  <p data-ke-size="size16">
+                    You are using pip version 19.3.1; however, version 20.1.1 is
+                    available. ~~~~
+                  </p>
+                  <p data-ke-size="size16">
+                    아래의 명령어도 입력해 주었다. 그리고 다시 확인차 certifi
+                    업그레이드 명령어르 다시 해주었다.
+                  </p>
+                  <pre
+                    id="code_1592275832627"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>python -m pip install --upgrade pip
+pip install --upgrade certifi</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_2.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    그 이후로는 SSL:
+                    <span style="color: #333333"
+                      >certificate_verify_failed unable to get local issuer
+                      certificate 오류가 나오지 않았다.</span
+                    >
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">오류 해결방법(Mac)</h2>
+                  <p data-ke-size="size16">
+                    Python이 설치된 경로로 들어가서
+                    <b>Install Certificates.command</b> 파일을 실행하면 certifi
+                    플러그인이 업데이트 되된다. 그리고 다시 실행하면 정상적으로
+                    오류 없이 실행이 되는 것을 확인할 수 있다.
+                  </p>
+                  <figure
+                    id="og_1592275640762"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                  >
+                    <a href="https://krksap.tistory.com/1226">
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/Kqyr1/hyGrzzhBkV/IFxFMyULUBo2MEjTEM9pe1/img.png?width=800&amp;height=515&amp;face=0_0_800_515,https://scrap.kakaocdn.net/dn/c5e5gh/hyGqaVoyj2/ggEK8IgvmrUKtvyPICtxS1/img.png?width=800&amp;height=515&amp;face=0_0_800_515,https://scrap.kakaocdn.net/dn/d6ZtOM/hyGp6S0QoK/68wZOByWwHGR7b1VA6Vvjk/img.png?width=1000&amp;height=930&amp;face=0_0_1000_930');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          python [SSL: CERTIFICATE_VERIFY_FAILED] certificate
+                          verify failed 이 이러 나는 경우 해결 방법
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          python [SSL: CERTIFICATE_VERIFY_FAILED] certificate
+                          verify failed 이 이러 나는 경우 해결 방법 이게 주로
+                          맥에서 나는데 윈도에서 이게 난적은 없어서 윈도에서도
+                          실제로 나는지는 모르겠다. Finder(파인더)..
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          krksap.tistory.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">
+                    참조:
+                    <a href="https://krksap.tistory.com/1226"
+                      >https://krksap.tistory.com/1226</a
+                    >
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags">
+                  #python #오류 #해결방법 #certificate verify failed unable to
+                  get local issuer certificate
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>리눅스 파일 및 디렉토리 삭제하는 방법(rm 명령어)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      리눅스 파일 및 디렉토리 삭제하는 방법(rm 명령어)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Unix & Linux</p>
+                      <p class="date">2021-10-26 20:47:59</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    리눅스에서 파일 및 디렉터리를 삭제하는 명령어는 rm을
+                    이용하면 된다. 리눅스에서는 파일을 한 번 삭제를 하면
+                    윈도와는 달리 휴지통이라는 개념이 없어서 복구를 할 수 없으니
+                    신중히 사용해야 합니다.
+                  </p>
+                  <h2 data-ke-size="size26">1. 단일 파일 지우기</h2>
+                  <p data-ke-size="size16">
+                    단일 파일은 rm 명령어 뒤에 파일명을 같이 입력하면 됩니다.
+                  </p>
+                  <pre
+                    id="code_1594553977301"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>bitnami@172-26-14-3# rm 파일명</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">2. 여러 개 파일 지우기</h2>
+                  <p data-ke-size="size16">
+                    파일명을 띄어쓰기 구분자로 계속 나열해주면 여러개의 파일을
+                    지울 수 있습니다.
+                  </p>
+                  <pre
+                    id="code_1594554011612"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>bitnami@172-26-14-3# rm 파일명 파일명 파일명 파일명 ...</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_1.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">3. 확장자명으로 전부 지우기</h2>
+                  <p data-ke-size="size16">
+                    리눅스에서 * 문자는 전체를 의미 합니다. 반대로 a.* 이렇게
+                    명령어를 날리면 a. 으로 시작 되는 모든 파일을 지울 수
+                    있습니다.
+                  </p>
+                  <pre
+                    id="code_1594554088317"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>bitnami@172-26-14-3# rm *.txt</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_2.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <h2 data-ke-size="size26">
+                    4. 하위 디렉토리까지 강제로 지우기
+                  </h2>
+                  <p data-ke-size="size16">
+                    리눅스에서는 폴더 하위에 파일이 있거나 다른 폴더가 있다면
+                    삭제를 진행할 수 없습니다. 강제 옵션을 이용하여 지워주면 한
+                    번에 지울 수 있습니다.
+                  </p>
+                  <pre
+                    id="code_1594554161240"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>bitnami@172-26-14-3# rm -rf 폴더명</code></pre>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img_3.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/349"
+                      target="_self"
+                      rel="noopener"
+                      >리눅스 디스크 용량 확인하는 명령어(df/du)</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1672673232716"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="리눅스 디스크 용량 확인하는 명령어(df/du)"
+                    data-og-description="윈도우에서는 폴더의 우클릭을 해서 속성정보를 보면 간단하게 용량을 확인할 수 있지만 리눅스에서는 명령어 기반이기 때문에 어떤 명령어를 입력해야 할지 모르는 경우가 많습니다. 리눅스"
+                    data-og-host="realmojo.tistory.com"
+                    data-og-source-url="https://realmojo.tistory.com/349"
+                    data-og-url="https://realmojo.tistory.com/349"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bwwJ5C/hyQ6MKdETn/4NthXWVdSjHI1JYrXlZ0x1/img.png?width=615&amp;height=245&amp;face=0_0_615_245,https://scrap.kakaocdn.net/dn/bz1CsL/hyQ6WTCkpJ/WvMukXPOVH2QHpljDsa8W0/img.png?width=615&amp;height=245&amp;face=0_0_615_245,https://scrap.kakaocdn.net/dn/chsqxk/hyQ6NoO68g/e12gF1qHCUpl4hE0lXpBD0/img.png?width=445&amp;height=368&amp;face=0_0_445_368"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/349"
+                      target="_self"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/349"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bwwJ5C/hyQ6MKdETn/4NthXWVdSjHI1JYrXlZ0x1/img.png?width=615&amp;height=245&amp;face=0_0_615_245,https://scrap.kakaocdn.net/dn/bz1CsL/hyQ6WTCkpJ/WvMukXPOVH2QHpljDsa8W0/img.png?width=615&amp;height=245&amp;face=0_0_615_245,https://scrap.kakaocdn.net/dn/chsqxk/hyQ6NoO68g/e12gF1qHCUpl4hE0lXpBD0/img.png?width=445&amp;height=368&amp;face=0_0_445_368');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          리눅스 디스크 용량 확인하는 명령어(df/du)
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          윈도우에서는 폴더의 우클릭을 해서 속성정보를 보면
+                          간단하게 용량을 확인할 수 있지만 리눅스에서는 명령어
+                          기반이기 때문에 어떤 명령어를 입력해야 할지 모르는
+                          경우가 많습니다. 리눅스
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          realmojo.tistory.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/139"
+                      target="_self"
+                      rel="noopener"
+                      >umask 권한 생성 부여 방법</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1672673251084"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="umask 권한 생성 부여 방법"
+                    data-og-description="umask 는 리눅스에서 일반사용자가 파일 생성시 접근 되는 권한을 부여하는 것으로 알고 있었다. 자세히 알아보니- 폴더 생성- 파일 생성두가지 권한을 다르게 부여한다. 보통 umask를 022로 많이 설"
+                    data-og-host="realmojo.tistory.com"
+                    data-og-source-url="https://realmojo.tistory.com/139"
+                    data-og-url="https://realmojo.tistory.com/139"
+                    data-og-image="https://scrap.kakaocdn.net/dn/D7VNH/hyQ6VmTZ2H/gSYH93w90k6KTsDYrHN0P1/img.png?width=800&amp;height=800&amp;face=0_0_800_800,https://scrap.kakaocdn.net/dn/i47UU/hyQ8VMivkm/smMq6GZFMjPQRKoUbKrB3k/img.png?width=800&amp;height=800&amp;face=0_0_800_800"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/139"
+                      target="_self"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/139"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/D7VNH/hyQ6VmTZ2H/gSYH93w90k6KTsDYrHN0P1/img.png?width=800&amp;height=800&amp;face=0_0_800_800,https://scrap.kakaocdn.net/dn/i47UU/hyQ8VMivkm/smMq6GZFMjPQRKoUbKrB3k/img.png?width=800&amp;height=800&amp;face=0_0_800_800');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          umask 권한 생성 부여 방법
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          umask 는 리눅스에서 일반사용자가 파일 생성시 접근 되는
+                          권한을 부여하는 것으로 알고 있었다. 자세히 알아보니-
+                          폴더 생성- 파일 생성두가지 권한을 다르게 부여한다.
+                          보통 umask를 022로 많이 설
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          realmojo.tistory.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/175"
+                      target="_self"
+                      rel="noopener"
+                      >[AWS] 볼륨 마운트하기 mount, 포맷 mkfs</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1672673263533"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="article"
+                    data-og-title="[AWS] 볼륨 마운트하기 mount, 포맷 mkfs"
+                    data-og-description="AWS에서 볼륨을 증설 마운트 하려면 우선 볼륨을 생성해야 한다. 생성하는 법은 섹시한 뇌와 마우스를 클릭 할 수 있는 손가락만 있으면 누구나 볼륨을 추가 할 수 있다. [Volumes] - [Create Volume] 클"
+                    data-og-host="realmojo.tistory.com"
+                    data-og-source-url="https://realmojo.tistory.com/175"
+                    data-og-url="https://realmojo.tistory.com/175"
+                    data-og-image="https://scrap.kakaocdn.net/dn/zVfIK/hyQ6QMDjTz/CitNjRavSw0TBytj4T7daK/img.png?width=440&amp;height=51&amp;face=0_0_440_51,https://scrap.kakaocdn.net/dn/ZwV6g/hyQ6ZpgKKJ/hrtLYVdXm2PQgjwqCVMXrk/img.png?width=440&amp;height=51&amp;face=0_0_440_51,https://scrap.kakaocdn.net/dn/dOL18E/hyQ87sqXLM/TQiVrJIUn9Z0oLJOpRACrK/img.png?width=652&amp;height=472&amp;face=0_0_652_472"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/175"
+                      target="_self"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/175"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/zVfIK/hyQ6QMDjTz/CitNjRavSw0TBytj4T7daK/img.png?width=440&amp;height=51&amp;face=0_0_440_51,https://scrap.kakaocdn.net/dn/ZwV6g/hyQ6ZpgKKJ/hrtLYVdXm2PQgjwqCVMXrk/img.png?width=440&amp;height=51&amp;face=0_0_440_51,https://scrap.kakaocdn.net/dn/dOL18E/hyQ87sqXLM/TQiVrJIUn9Z0oLJOpRACrK/img.png?width=652&amp;height=472&amp;face=0_0_652_472');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          [AWS] 볼륨 마운트하기 mount, 포맷 mkfs
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          AWS에서 볼륨을 증설 마운트 하려면 우선 볼륨을 생성해야
+                          한다. 생성하는 법은 섹시한 뇌와 마우스를 클릭 할 수
+                          있는 손가락만 있으면 누구나 볼륨을 추가 할 수 있다.
+                          [Volumes] - [Create Volume] 클
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          realmojo.tistory.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p data-ke-size="size16">
+                    <script>
+                      setTimeout(() => {
+                        localStorage.removeItem("google_ama_settings");
+                        localStorage.removeItem("__lsv__");
+                      }, 1500);
+                    </script>
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>타입 호환 3가지 방식</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">타입 호환 3가지 방식</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2022-03-26 18:26:45</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    두개의 비슷한 인터페이스와 클래스가 있을 경우에 사용하는
+                    방식이며 아래의 예제를 살펴보자
+                  </p>
+                  <h2 data-ke-size="size26">인터페이스 타입호환</h2>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 5.02.00.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    developer = person 오류가 나지만<br />person = developer 는
+                    정상적으로 수행이 된다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이유를 살펴보자면 타입스크립트는 좌측 변수와 우측 변수가
+                    같은지 확인을 하게 된다. Developer1과 Person1은 타입이
+                    다르다.(속성이 다르다) Developer1은 name, skill 속성이 있고
+                    Person은 name 속성만 있다.
+                  </p>
+                  <p data-ke-size="size16">
+                    우측에서 좌측으로 변수를 담을 때 우측의 있는 변수가 더 큰
+                    범위일 경우에는 좌측에 담을 수 있다.
+                  </p>
+                  <p data-ke-size="size16">
+                    developer가 {name, age} 를 가지고 있고 person은 { name }을
+                    가지고 있기 때문에 <b>person = developer </b>가 성립하게
+                    된다. 이것이 바로 타입 호환이다.
+                  </p>
+                  <h2 data-ke-size="size26">함수 타입호환</h2>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 6.21.58.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    함수에서는 오히려 반대로 동작한다. add1의 경우 a: number이고
+                    sum1의 경우에는 a: number, b: number이기 때문에 더 작은수의
+                    인자값을 가지고 있는 add1이 sum1에 대입이 가능하다.
+                  </p>
+                  <h2 data-ke-size="size26">제네릭 타입호환</h2>
+                  <p>
+                    <figure class="imageblock widthContent">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-26 오후 6.22.01.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    제네릭의 경우에는 타입이 빈 값에 경우에는 호환이 가능하지만
+                    타입이 있을 경우에는 호환이 불가능하다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>안드로이드 개발 후 느낀점(Cordova)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      안드로이드 개발 후 느낀점(Cordova)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/안드로이드</p>
+                      <p class="date">2020-04-01 17:01:39</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>2달 간의 안드로이드 개발을 하고나서 느낀점을 기록</li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      개발을 시작하게 된 계기
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>설연휴에 심심해서</li>
+                        <li>한 번 해보고 싶어서</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      무엇을 만들지 부터 그리고 어떤 언어로 개발할지 가장 큰
+                      고민
+                      <ul
+                        style="list-style-type: disc"
+                        data-ke-list-type="disc"
+                      >
+                        <li>
+                          하이브리드 - 현재 내가 잘 할수 있는 언어로
+                          한다(Javascript, Cordova), 필자는 포토샵을 조금 할줄암
+                          <ul style="list-style-type: disc">
+                            <li>
+                              사용자 반응성을 테스트 해보고 싶을 땐 가장 빨리
+                              개발 할 수 있는 방향으로 설정
+                            </li>
+                            <li>
+                              구글 API의 사용성 때문에 약간 도입하기 싫은 부분도
+                              있었음
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          네이티브 - 조금 시간이 걸리더라도 배운다 ( Java,
+                          Kotlin )
+                          <ul style="list-style-type: disc">
+                            <li>
+                              네이티브를 처음에 하기 싫었던 이유는 레이아웃 구성
+                              때문(하지만 익히고 나니 별거없음)
+                            </li>
+                            <li>자바는 조금이나마 다룰줄 알았음</li>
+                          </ul>
+                        </li>
+                        <li>
+                          리액트 네이티브는 처음부터 제외시켰다( 본인은 Vue를
+                          사용하기 때문 )
+                        </li>
+                        <li>
+                          ios는 또한 일단 제외 하였다. 이유는 전세계 모바일
+                          점유율을 볼 때 미국을 제외하면 안드로이드가 70%
+                          이상이기 때문( 또한 개발자 콘솔에 매년 10만원을 낼
+                          자신이 없었음 )
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <span style="color: #8a3db6"
+                        ><b
+                          >현재는 네이티브(코틀린)로 갈아 탔습니다. 결국
+                          네이티브로 돌아온다는게 한 번 해보니 알았음. 처음
+                          개발하시는 분들은 시간이 걸리더라도 Java 혹은 Kotlin
+                          으로 시작하시길 권유 드립니다.</b
+                        ></span
+                      >
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      처음으로 시작한 개발은 가볍게 스도쿠를 만들기로 하였다.
+                      <ul style="list-style-type: disc">
+                        <li>
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.f5game.sudoku"
+                            >https://play.google.com/store/apps/details?id=com.f5game.sudoku</a
+                          >
+                        </li>
+                        <li>
+                          Javascript, CSS를 어느정도 다루다 보니 개발자체는
+                          오래걸리지 않음
+                        </li>
+                        <li>
+                          스도쿠 알고리즘도 github에 찾아보니 비슷한게 있어서
+                          커스터마이징해서 사용
+                        </li>
+                        <li>
+                          스도쿠는 숫자 놀이라서 이미지 저작권을 생각할 필요가
+                          없음
+                        </li>
+                        <li>
+                          Phonegab과 Cordova를 테스트 해보던 중 Phonegab 은
+                          이상하게 빌드할 때마다 apk 파일이 커지는 현상이 있어서
+                          <b>cordova</b> 로 선택, 프레임워크는
+                          <b>onsen-ui</b> 를 선택
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <figure
+                    id="og_1585723226287"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="스도쿠 퍼즐 게임 (무료) - Google Play 앱"
+                    data-og-description="-스도쿠 게임은 81 개의 사각형, 각각 9 개의 사각형, 9 개의 사각형 및 각각 3 개의 사각형으로 구성된 사각형을 사용합니다. 정사각형은 이미 일부 숫자로 채워져 있습니다. 스도쿠 게임의 목표는 1에서 9까지의 숫자가 겹치지 않도록 나머지 공간을 채우는 것입니다 (각 공간에 하나의 숫자 만 사용할 수 있음). 1. 각 빈 줄에 하나의 숫자 만 사용하십시오. 2. 각 공백에는 하나의 숫자 만 사용하십시오. 3. 각 작은 사각형의 공간에 숫자를 한 번만"
+                    data-og-host="play.google.com"
+                    data-og-source-url="https://play.google.com/store/apps/details?id=com.f5game.sudoku"
+                    data-og-url="https://play.google.com/store/apps/details?id=com.f5game.sudoku&amp;hl=ko"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bbi8CZ/hyFu7ytOvd/Gn5tiaYmBvf1MOI9wUAwO1/img.png?width=512&amp;height=250&amp;face=0_0_512_250,https://scrap.kakaocdn.net/dn/EjJpm/hyFvY7JhGn/kkuMRhEBhNScryBU6Rb870/img.png?width=600&amp;height=300&amp;face=0_0_600_300"
+                  >
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.f5game.sudoku"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://play.google.com/store/apps/details?id=com.f5game.sudoku"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bbi8CZ/hyFu7ytOvd/Gn5tiaYmBvf1MOI9wUAwO1/img.png?width=512&amp;height=250&amp;face=0_0_512_250,https://scrap.kakaocdn.net/dn/EjJpm/hyFvY7JhGn/kkuMRhEBhNScryBU6Rb870/img.png?width=600&amp;height=300&amp;face=0_0_600_300');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">
+                          스도쿠 퍼즐 게임 (무료) - Google Play 앱
+                        </p>
+                        <p class="og-desc">
+                          -스도쿠 게임은 81 개의 사각형, 각각 9 개의 사각형, 9
+                          개의 사각형 및 각각 3 개의 사각형으로 구성된 사각형을
+                          사용합니다. 정사각형은 이미 일부 숫자로 채워져
+                          있습니다. 스도쿠 게임의 목표는 1에서 9까지의 숫자가
+                          겹치지 않도록 나머지 공간을 채우는 것입니다 (각 공간에
+                          하나의 숫자 만 사용할 수 있음). 1. 각 빈 줄에 하나의
+                          숫자 만 사용하십시오. 2. 각 공백에는 하나의 숫자 만
+                          사용하십시오. 3. 각 작은 사각형의 공간에 숫자를 한
+                          번만
+                        </p>
+                        <p class="og-host">play.google.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <ul>
+                    <li>
+                      코도바앱 생성 및 개발환경 세팅은 아래 유투브를 참조 (<a
+                        href="https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw/videos"
+                        >https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw/videos</a
+                      >)
+                    </li>
+                  </ul>
+                  <figure
+                    id="og_1585723219815"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="profile"
+                    data-og-title="초보궁사 실전코딩 Chobo904"
+                    data-og-description="?무료로 앱 소스를 제공하여 누구나 쉽게 앱을 개발할 수 있게 하자는 목표로 운영되는 채널입니다. 초보자도 코딩을 몰라도 바로 앱부터 개발하는 궁극기?를 사용할 수 있습니다. ------------------------------------------- 안녕하세요~ ^^ 방문해 주..."
+                    data-og-host="www.youtube.com"
+                    data-og-source-url="https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw/videos"
+                    data-og-url="https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw"
+                    data-og-image="https://scrap.kakaocdn.net/dn/cLE011/hyFuY9mD2f/X25WAcPcL0Dde25NGD4rYk/img.jpg?width=900&amp;height=900&amp;face=0_0_900_900,https://scrap.kakaocdn.net/dn/doyg7B/hyFv9IbHX6/xtk6RzrnuJGdf9XhidcNlk/img.jpg?width=900&amp;height=900&amp;face=0_0_900_900"
+                  >
+                    <a
+                      href="https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw/videos"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://www.youtube.com/channel/UCVmD2eUTGL8Ac9fYcplrpgw/videos"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/cLE011/hyFuY9mD2f/X25WAcPcL0Dde25NGD4rYk/img.jpg?width=900&amp;height=900&amp;face=0_0_900_900,https://scrap.kakaocdn.net/dn/doyg7B/hyFv9IbHX6/xtk6RzrnuJGdf9XhidcNlk/img.jpg?width=900&amp;height=900&amp;face=0_0_900_900');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">초보궁사 실전코딩 Chobo904</p>
+                        <p class="og-desc">
+                          ?무료로 앱 소스를 제공하여 누구나 쉽게 앱을 개발할 수
+                          있게 하자는 목표로 운영되는 채널입니다. 초보자도
+                          코딩을 몰라도 바로 앱부터 개발하는 궁극기?를 사용할 수
+                          있습니다. -------------------------------------------
+                          안녕하세요~ ^^ 방문해 주...
+                        </p>
+                        <p class="og-host">www.youtube.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      개발 환경을 느슨하게 공유하자면
+                      <ul style="list-style-type: disc">
+                        <li>
+                          안드로이드 스튜디오 설치(cordova 로 개발해도 설치가
+                          필요)
+                        </li>
+                        <li>Gradle 설치</li>
+                        <li>npm 설치</li>
+                        <li>VSCode 설치</li>
+                        <li>Play Console(유료 한화 약 2~3만원), Admob 가입</li>
+                        <li>
+                          스플래시 이미지, 아이콘 이미지 generator -
+                          <a
+                            style="letter-spacing: 0px"
+                            href="https://pgicons.abiro.com/"
+                            >https://pgicons.abiro.com/</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <b>하이브리드로 개발 하였을 시 장단점</b>
+                      <ul style="list-style-type: disc">
+                        <li>
+                          장점
+                          <ul style="list-style-type: disc">
+                            <li>
+                              CSS를 다룰줄 아니까 왠만한 디자인은 손쉽게 구현이
+                              가능하였음
+                            </li>
+                            <li>
+                              Javascript 이기 때문에 오픈소스가 널려 있다.
+                              에디톨로지 답게 익숙한 거를 나만의 방식으로 손쉽게
+                              조합이 가능하였음
+                            </li>
+                            <li>
+                              브라우저에서 테스트를 해서 개발 공정이 너무나도
+                              빨랐음
+                            </li>
+                            <li>
+                              의외로 cordova에서 모바일 기기 지원되는 플러그인이
+                              많았음(Camera, Device, Vibaration, SplashScreen)
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          단점
+                          <ul style="list-style-type: disc">
+                            <li>
+                              확실히 터치가 애매모호하게 느리다(hammer.js 를
+                              사용하면 되지만 네이티브의 느낌이 나지 않음)
+                            </li>
+                            <li>
+                              애드몹 광고 중 네이티브 광고를 할 수 없음( 본인이
+                              만들던가, 제 3의 누군가가 만들어줄 때 까지
+                              기다려야함 )
+                            </li>
+                            <li>
+                              모바일 디바이스에서만 실행해야 하는 코드는
+                              디버깅하기 <s>까다로웠음</s> 귀찮았음<span
+                                >document</span
+                              ><span>.</span><span>addEventListener</span
+                              ><span>(</span><span>"deviceready"</span
+                              ><span>,&nbsp;</span><span>function</span
+                              ><span>()&nbsp;{</span><span>}</span>
+                            </li>
+                            <li>
+                              <span
+                                >앱 빌드시 최적화를 하는 방법을 모르겠음</span
+                              >
+                            </li>
+                            <li>
+                              <span
+                                >구글 API 사용시 제약이 많으며 코도바 공식
+                                플러그인이 없으면 개발을 못함</span
+                              ><span></span>
+                            </li>
+                            <li>
+                              <span
+                                >국내에 cordova로 개발을 하는 사람이 많지 않아
+                                개발관련 공유가 어려움(혼자서 해야함)</span
+                              >
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p style="text-align: center">
+                    <b>onsen 프레임워크를 도입해본 이유&nbsp;</b>
+                  </p>
+                  <figure
+                    id="og_1585810659805"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="article"
+                    data-og-title="onsen.io 프레임워크를 도입해본 이유"
+                    data-og-description="프레임워크를 선택하는게 어려워하는 부분이 아닐까 싶다 사실 목표를 정하고 개발하는 것 자체는 크게 어렵지 않지만 - 프레임워크를 도입해야하나? 한다면 side effect는 없을까? 레거시랑 잘 호환이 될까? 추후.."
+                    data-og-host="realmojo.tistory.com"
+                    data-og-source-url="https://realmojo.tistory.com/229"
+                    data-og-url="https://realmojo.tistory.com/229"
+                    data-og-image="https://scrap.kakaocdn.net/dn/rOASO/hyFv6r8Uc7/OPSqGlliBJI1B0yg5cNoGK/img.png?width=800&amp;height=542&amp;face=0_0_800_542,https://scrap.kakaocdn.net/dn/qWhvn/hyFvY1WemX/T5cHj8uOfEfpETOlNzUkdK/img.png?width=800&amp;height=542&amp;face=0_0_800_542,https://scrap.kakaocdn.net/dn/lOVA3/hyFv4HQd77/O8fwLbjEzbGkoHdrkblqKK/img.png?width=1124&amp;height=762&amp;face=0_0_1124_762"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/229"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/229"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/rOASO/hyFv6r8Uc7/OPSqGlliBJI1B0yg5cNoGK/img.png?width=800&amp;height=542&amp;face=0_0_800_542,https://scrap.kakaocdn.net/dn/qWhvn/hyFvY1WemX/T5cHj8uOfEfpETOlNzUkdK/img.png?width=800&amp;height=542&amp;face=0_0_800_542,https://scrap.kakaocdn.net/dn/lOVA3/hyFv4HQd77/O8fwLbjEzbGkoHdrkblqKK/img.png?width=1124&amp;height=762&amp;face=0_0_1124_762');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">
+                          onsen.io 프레임워크를 도입해본 이유
+                        </p>
+                        <p class="og-desc">
+                          프레임워크를 선택하는게 어려워하는 부분이 아닐까 싶다
+                          사실 목표를 정하고 개발하는 것 자체는 크게 어렵지
+                          않지만 - 프레임워크를 도입해야하나? 한다면 side
+                          effect는 없을까? 레거시랑 잘 호환이 될까? 추후..
+                        </p>
+                        <p class="og-host">realmojo.tistory.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags">
+                  #개발 #javascript #후기 #안드로이드 #네이티브 #느낀점 #cordova
+                  #코틀린
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] Glacier 데이터 보관 및 백업 전용</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [AWS] Glacier 데이터 보관 및 백업 전용
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2017-04-25 21:40:31</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p><b style="font-size: 24px">Glacier</b></p>
+                  <p>
+                    <span style="font-size: 24px"
+                      ><b><br /></b
+                    ></span>
+                  </p>
+                  <p>
+                    <span style="font-size: 16px"
+                      ><b
+                        >데이터 보관 ( Archive ) 및 백업 전용 스토리지
+                        서비스&nbsp;</b
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <b style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt"><br /></span
+                    ></b>
+                  </p>
+                  <p>
+                    <b style="font-size: 13.3333px"
+                      ><span style="font-size: 12pt">Glacier 특징</span></b
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 12pt"
+                      >- 요금이 매우 저렴 1Gb/ 0.01$ / 10원</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 12pt"
+                      >- 보관된 파일을 꺼내려면 3~5시간 소요</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 12pt"
+                      >- 대용량 데이터 저장에만 특화</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 16px"
+                      >- 압축하지 않은 고해상도 동영상의 원본 데이터</span
+                    >
+                  </p>
+                  <p>
+                    <span style="font-size: 16px">- 몇 년치 이메일 데이터</span>
+                  </p>
+                  <span style="font-size: 16px">- 금융, 법무, 재무 기록</span>
+                  <p>
+                    <span style="font-size: 16px">- 연구 및 과학 데이터</span>
+                  </p>
+                  <span style="font-size: 16px">- 오래된 컨텐츠</span>
+                  <div>
+                    <p>
+                      <span style="font-size: 16px"
+                        >- Glacier 클라이언트, Java SDK, .NET SDK를 통해서
+                        데이터를 저장하고 꺼낼 수 있음</span
+                      >
+                    </p>
+                    <div>
+                      <div>
+                        <div>
+                          <p>
+                            <b style="font-size: 13.3333px"
+                              ><span style="font-size: 12pt"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <b style="font-size: 13.3333px"
+                              ><span style="font-size: 12pt"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <b style="font-size: 13.3333px"
+                              ><span style="font-size: 12pt"
+                                >Glacier 기본개념</span
+                              ></b
+                            >
+                          </p>
+                          <p>
+                            <span style="font-weight: bold; font-size: 12pt"
+                              >아카이브(Archive): </span
+                            ><span style="font-size: 14.6667px"
+                              >Glacier에 데이터가 저장되는 최소 단위. 파일이
+                              Glacier 볼트에 저장된 상태를 아카이브라 부름</span
+                            >
+                          </p>
+                          <p>
+                            <span style="font-size: 14.6667px"
+                              >- 객체 하나의 크기는 1byte ~ 40TB<br />-
+                              아카이브를 업로드하고 삭제할 수 있지만 수정하거나
+                              덮어쓸 수는 없음</span
+                            >
+                          </p>
+                          <p>
+                            <b style="font-size: 13.3333px"
+                              ><span style="font-size: 12pt"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <span style="font-weight: bold; font-size: 12pt"
+                              >볼트(Vault): </span
+                            ><span style="font-size: 14.6667px"
+                              >Glacier에서 생성할 수 있는 최상위 폴더. 리전별로
+                              생성해야 하며 각 리전별로 최대 1,000개 까지
+                              가능<br
+                            /></span>
+                          </p>
+                          <p>
+                            <span style="font-size: 14.6667px"
+                              >- 볼트안에 아카이브가 저장된다.<br />- 폴더
+                              생성이 가능<br />- 저장가능한 아카이브의 개수는
+                              무제한<br />- 저장 가능한 용량은 무제한</span
+                            >
+                          </p>
+                          <p>
+                            <b
+                              ><span style="font-size: 14.6667px"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <span style="font-size: 14.6667px"
+                              ><b>볼트 인벤토리(Valut Inventory): </b>볼트에
+                              저장된 아카이브의 목록과 각 아카이브의 크기, 생성
+                              날짜, 아카이브 설명 등의 정보를 뜻함. 24시간에 한
+                              번씩 업데이트 됌</span
+                            >
+                          </p>
+                          <p>
+                            <b
+                              ><span style="font-size: 14.6667px"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <span style="font-size: 14.6667px"
+                              ><b>반출(Retrieval): </b>볼트 인벤토리를 가져오는
+                              작업과 아카이브를 다운로드하기 위해 준비하는
+                              작업을 뜻함. 반출 작업은 3~5시간 정도 소요되고,
+                              아카이브 반출 작업이 완료된 후 24시간 동안
+                              아카이브를 다운로드 가능</span
+                            >
+                          </p>
+                          <p>
+                            <b
+                              ><span style="font-size: 14.6667px"><br /></span
+                            ></b>
+                          </p>
+                          <p>
+                            <span style="font-size: 14.6667px"
+                              ><b>내구성: </b>1년 기준으로 99.999999999%</span
+                            >
+                          </p>
+                        </div>
+                        <p><br /></p>
+                      </div>
+                      <p><br /></p>
+                    </div>
+                    <p><br /></p>
+                  </div>
+                  <p><br /></p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

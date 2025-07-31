@@ -1,0 +1,300 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>엑셀 글자수 세기와 공백 제외 함수 활용법 완벽 가이드</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 글자수 세기와 공백 제외 함수 활용법 완벽 가이드
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-21 00:33:32</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 글자수 세기와 공백 제외 함수 활용법 완벽 가이드
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 글자수를 세는 작업은 일상적인 업무에서 자주 필요한
+                    기능입니다. 문서 작성 시 글자수 제한이 있거나, 데이터
+                    분석에서 텍스트 길이를 파악해야 할 때 엑셀의 내장 함수들을
+                    활용하면 효율적으로 처리할 수 있습니다. 이번 가이드에서는
+                    기본적인 엑셀 글자수 세기부터 공백 제거, 특정 문자 개수
+                    확인까지 실무에서 바로 활용할 수 있는 다양한 방법들을
+                    소개해드리겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">LEN 함수로 기본 글자수 세기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀의 LEN 함수는 가장 기본적이면서도 강력한 텍스트 분석
+                    도구입니다. 이 함수는 지정된 셀에 포함된 모든 문자의 개수를
+                    자동으로 계산해줍니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/count-characters-in-cells-in-excel-1be151d7-5b8f-4186-87b9-7b0318583163"
+                      target="_blank"
+                      rel="noopener"
+                      >LEN 함수의 공식적인 사용법</a
+                    >은 매우 간단합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      기본 문법: =LEN(A1)과 같이 셀 참조를 입력하면 해당 셀의
+                      전체 글자수가 표시됩니다
+                    </li>
+                    <li>
+                      숫자, 영문자, 한글, 특수문자, 공백을 모두 포함하여
+                      계산합니다
+                    </li>
+                    <li>
+                      결과값을 다른 셀로 복사하여 여러 셀의 글자수를 한번에
+                      확인할 수 있습니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    LEN 함수는 띄어쓰기와 특수문자까지 모두 포함하므로, 정확한
+                    문자 개수를 파악하는데 매우 유용합니다. 다만 공백이 포함된
+                    상태의 글자수이므로, 순수한 텍스트만의 길이를 알고 싶다면
+                    추가적인 함수 조합이 필요합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    SUBSTITUTE 함수와 조합한 공백 제외 계산
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    실제 업무에서는 공백을 제외한 순수한 글자수가 필요한 경우가
+                    많습니다. 특히 보고서나 자기소개서 작성 시 실제 텍스트만의
+                    분량을 확인해야 할 때가 그렇습니다.
+                    <a
+                      href="https://corporatefinanceinstitute.com/resources/excel/substitute-function/"
+                      target="_blank"
+                      rel="noopener"
+                      >SUBSTITUTE 함수</a
+                    >를 LEN과 함께 사용하면 이런 요구사항을 쉽게 해결할 수
+                    있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      공백 제거 공식: =LEN(SUBSTITUTE(A1," ",""))을 사용하면
+                      모든 공백이 제거된 상태의 글자수를 계산합니다
+                    </li>
+                    <li>
+                      SUBSTITUTE 함수는 지정된 문자를 다른 문자로 바꾸는 기능을
+                      수행합니다
+                    </li>
+                    <li>
+                      공백(" ")을 빈 문자("")로 치환하여 실질적으로 공백을
+                      제거하는 효과를 얻습니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 방법은 데이터 정제 작업에서도 매우 유용합니다. 외부에서
+                    가져온 데이터에 불필요한 공백이 포함되어 있을 때, 정확한
+                    텍스트 길이를 파악하거나 데이터 품질을 개선하는데 활용할 수
+                    있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">특정 문자 개수 세기 고급 기법</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    문서 분석이나 데이터 검증 작업에서는 특정 문자가 몇 번
+                    등장하는지 확인해야 하는 경우가 있습니다. 예를 들어, 이메일
+                    주소에서 점(.)의 개수를 세거나, 전화번호에서 하이픈(-)의
+                    개수를 확인하는 작업이 그렇습니다.
+                    <a
+                      href="https://exceljet.net/formulas/count-specific-characters-in-text-string"
+                      target="_blank"
+                      rel="noopener"
+                      >특정 문자 개수 세기</a
+                    >는 LEN과 SUBSTITUTE 함수의 창의적인 조합으로 가능합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    특정 문자 개수를 세는 공식은
+                    =LEN(A1)-LEN(SUBSTITUTE(A1,"찾을문자",""))입니다. 이 공식의
+                    원리는 다음과 같습니다:
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      원본 텍스트의 길이에서 특정 문자를 제거한 텍스트의 길이를
+                      빼면, 제거된 문자의 개수가 나옵니다
+                    </li>
+                    <li>대소문자를 구분하므로 정확한 문자를 입력해야 합니다</li>
+                    <li>
+                      특수문자나 숫자도 동일한 방식으로 개수를 셀 수 있습니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 기법은 텍스트 패턴 분석이나 데이터 유효성 검사에서 매우
+                    유용합니다. 예를 들어, 주민등록번호 형식 검증이나 전화번호
+                    포맷 확인 등의 작업에 활용할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    여러 셀 범위의 총 글자수 계산하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    대량의 데이터를 다룰 때는 여러 셀에 있는 텍스트의 총
+                    글자수를 한번에 계산해야 하는 경우가 있습니다. 이런
+                    상황에서는 SUM과 LEN 함수를 조합하거나 SUMPRODUCT 함수를
+                    활용할 수 있습니다.
+                    <a
+                      href="https://trumpexcel.com/count-characters-in-excel/"
+                      target="_blank"
+                      rel="noopener"
+                      >범위 글자수 계산</a
+                    >
+                    방법은 다음과 같습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      SUM 조합 공식: =SUM(LEN(A1:A10))을 배열 수식으로 입력
+                      (Ctrl+Shift+Enter)
+                    </li>
+                    <li>
+                      SUMPRODUCT 활용: =SUMPRODUCT(LEN(A1:A10))으로 더 간단하게
+                      계산 가능
+                    </li>
+                    <li>
+                      공백 제외 범위 계산: =SUMPRODUCT(LEN(SUBSTITUTE(A1:A10,"
+                      ","")))로 전체 범위의 공백 제외 글자수 계산
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이러한 방법들은 대용량 문서의 분량 확인이나 여러 셀에 분산된
+                    텍스트의 총량 파악에 매우 효과적입니다. 특히
+                    데이터베이스에서 추출한 텍스트 필드들의 전체 크기를 분석할
+                    때 유용합니다.
+                  </p>
+                  <h2 data-ke-size="size26">실무 활용 팁과 주의사항</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 글자수 세기 함수들을 실무에서 효과적으로 활용하려면 몇
+                    가지 중요한 사항들을 알아두어야 합니다. 먼저 LEN 함수는 셀에
+                    표시되는 형식이 아닌 실제 저장된 값을 기준으로 계산합니다.
+                    예를 들어, 통화 형식으로 표시된 숫자의 경우 통화 기호는
+                    계산에 포함되지 않습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    데이터 정제 작업에서는 TRIM 함수를 LEN과 함께 사용하는 것이
+                    좋습니다. TRIM 함수는 앞뒤 공백과 중간의 여러 공백을
+                    정리해주므로, 더 정확한 글자수 계산이 가능합니다. 공식은
+                    =LEN(TRIM(A1))과 같이 사용할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      성능 최적화: 대용량 데이터에서는 SUMPRODUCT가 SUM 배열
+                      수식보다 일반적으로 더 빠릅니다
+                    </li>
+                    <li>
+                      오류 방지: 빈 셀이 포함된 범위에서는 IFERROR 함수와
+                      조합하여 오류를 방지할 수 있습니다
+                    </li>
+                    <li>
+                      다국어 처리: 한글, 영문, 숫자가 혼재된 텍스트에서도
+                      동일하게 작동합니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    마지막으로, 이러한 함수들은 동적으로 업데이트되므로 원본
+                    데이터가 변경되면 글자수도 자동으로 재계산됩니다. 이는
+                    실시간 문서 관리나 진행 상황 모니터링에 매우 유용한
+                    특성입니다.
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-len-functions-count-characters-cell/"
+                      target="_blank"
+                      rel="noopener"
+                      >고급 LEN 함수 활용법</a
+                    >을 참고하면 더 복잡한 텍스트 분석 작업도 수행할 수
+                    있습니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

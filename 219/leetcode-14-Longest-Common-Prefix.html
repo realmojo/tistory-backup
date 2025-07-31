@@ -1,0 +1,198 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>leetcode 14 - Longest Common Prefix</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      leetcode 14 - Longest Common Prefix
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/leetcode</p>
+                      <p class="date">2019-02-18 23:46:04</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      data-filename="leet.png"
+                      data-origin-width="225"
+                      data-origin-height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="leet.png"
+                          data-origin-width="225"
+                          data-origin-height="225"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <div>
+                    <blockquote>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                          color: rgba(0, 0, 0, 0.65);
+                          font-family: -apple-system, BlinkMacSystemFont,
+                            'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                            'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                            Arial, sans-serif, 'Apple Color Emoji',
+                            'Segoe UI Emoji', 'Segoe UI Symbol';
+                        "
+                      >
+                        Write a function to find the longest common prefix
+                        string amongst an array of strings.<br />If there is no
+                        common prefix, return an empty string&nbsp;<code
+                          style="
+                            box-sizing: border-box;
+                            color: #546e7a;
+                            background-color: #f7f9fa;
+                            padding: 2px 4px;
+                            border-radius: 3px;
+                          "
+                          >""</code
+                        >.
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                        "
+                      >
+                        <span
+                          ><span
+                            ><span style="color: #5d5d5d"
+                              >문자열 배열 사이에서 가장 긴 공통 접두사 문자열을
+                              찾는 함수를 작성하십시오.</span
+                            ></span
+                          ><span><br /></span></span
+                        ><span
+                          style="
+                            color: #5d5d5d;
+                            font-family: -apple-system, BlinkMacSystemFont,
+                              'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                              'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                              Arial, sans-serif, 'Apple Color Emoji',
+                              'Segoe UI Emoji', 'Segoe UI Symbol';
+                          "
+                          >공통 접두사가없는 경우 빈 문자열 ""을
+                          반환합니다.</span
+                        >
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                        "
+                      >
+                        <span
+                          style="
+                            color: #5d5d5d;
+                            font-family: -apple-system, BlinkMacSystemFont,
+                              'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                              'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                              Arial, sans-serif, 'Apple Color Emoji',
+                              'Segoe UI Emoji', 'Segoe UI Symbol';
+                          "
+                          >&nbsp;</span
+                        >
+                      </p>
+                      <p
+                        style="
+                          box-sizing: border-box;
+                          margin-top: 0px;
+                          margin-bottom: 1em;
+                        "
+                      >
+                        <span
+                          style="
+                            color: #424242;
+                            font-family: -apple-system, BlinkMacSystemFont,
+                              'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                              'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                              Arial, sans-serif, 'Apple Color Emoji',
+                              'Segoe UI Emoji', 'Segoe UI Symbol';
+                            font-size: 14px;
+                          "
+                          >I used to eval function. If you use a different
+                          language, the code below will not work<br /></span
+                        ><span
+                          style="
+                            font-size: 14px;
+                            color: #424242;
+                            font-family: -apple-system, BlinkMacSystemFont,
+                              'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                              'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+                              Arial, sans-serif, 'Apple Color Emoji',
+                              'Segoe UI Emoji', 'Segoe UI Symbol';
+                          "
+                          >자바스크립트이 eval 이라는 특수 함수를 사용해서
+                          풀었다. 다른언어로 푼다면 다른 알고리즘을 사용해야 할
+                          것입니다.</span
+                        >
+                      </p>
+                    </blockquote>
+                  </div>
+                  <pre class="maxima"><code>
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+    if(strs.length == 0){return '';}
+    var length = strs.length, result = '';
+    
+    var s = '', min = strs[0].length, j = 0;
+    for(let i = 0; i &lt; length ; i++){
+        j = (length-1 == i) ? 0 : i+1;
+        s = s + '(strs['+i+'][i] == strs['+j+'][i]) &amp;&amp; ';
+        if(min &gt; strs[i].length){
+            min = strs[i].length;
+        }
+    }
+    s = s.substring(0, s.length-4);
+    for(let i = 0; i &lt; min ; i++){
+        if(i == 0 &amp;&amp; !eval(s)){
+            return "";
+        }
+        if(eval(s)){
+            result = result + strs[0][i];
+        }
+    }
+    return result;
+};
+</code></pre>
+                  <div><code>&nbsp;</code></div>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

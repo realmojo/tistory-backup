@@ -1,0 +1,238 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] IAM 접근제어 및 관리 이해하기</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [AWS] IAM 접근제어 및 관리 이해하기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2024-07-23 00:41:50</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 18pt"
+                        >IAM ( Identity and Access Management, 식별 및 접근
+                        관리&nbsp;)</span
+                      ></b
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      ><b
+                        ><span style="font-size: 12pt"
+                          >IAM은 사용자와 그룹을 생성하고 AWS의 각 리소스에 대해
+                          접근제어와 권한관리를 제공하는 서비스. 또한 실제로
+                          서</span
+                        ><span style="font-size: 12pt"
+                          >비스를 제공하는 AWS 리소스가 아니라서 사용요금이
+                          없다</span
+                        ></b
+                      ></span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px">&nbsp;</span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px">IAM 특징</span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      >- 그룹과 사용자를 생성하여 접근제어 및 권한관리
+                      세분화</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      >- EC2 사용자만 관리 혹은 S3 사용자만 관리 등등 세분화
+                      가능</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px">- 보안성 강화</span>
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px">-&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >IAM 사용자도 AWS 콘솔 접속 가능</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      >- 액세스 키를 별도로 생성할 수 있고, 이 액세스 키를
+                      이용하여 AWS API를 사용</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <span style="font-size: 13.3333px"
+                      >- EC2 인스턴스 전용으로 권한을 설정가능. 이것을 IAM
+                      역할(Role) 부름</span
+                    >
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="864"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 864px;
+                            height: 24px;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;<b>Note</b
+                            ><span style="color: #ff0000"
+                              >: IAM은 리전별로 설정할 수 없고 모든 리전에서
+                              동일하게&nbsp;작동</span
+                            ></span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="807"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/IAM.png" width="900" height="807" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p style="text-align: center" data-ke-size="size16">
+                    <b
+                      ><span style="font-size: 12pt">[IAM 기본개념도</span
+                      ><span style="font-size: 12pt">]</span></b
+                    >
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <div><span style="font-size: 10pt">&nbsp;</span></div>
+                  <div>
+                    <span style="font-size: 13.3333px"
+                      >즉 root 계정은 모든 권한이 다 들어있어서&nbsp;잘못
+                      사용했다가 과금폭탄테러를 맞을 수 있으니</span
+                    >
+                  </div>
+                  <div>
+                    <span style="font-size: 13.3333px"
+                      >IAM 계정을 만들어서 사용하는 편이 더 효율적이다. 또한
+                      부서별로 권한을 나누어서 사용이 가능하다.</span
+                    >
+                  </div>
+                  <div><span style="font-size: 13.3333px">&nbsp;</span></div>
+                  <div><span style="font-size: 13.3333px">&nbsp;</span></div>
+                  <div>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="900"
+                      height="423"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/10.png" width="900" height="423" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                    <table
+                      class="txc-table"
+                      style="border: none; border-collapse: collapse"
+                      border="0"
+                      width="864"
+                      cellspacing="0"
+                      cellpadding="0"
+                      data-ke-align="alignLeft"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            style="
+                              width: 864px;
+                              height: 24px;
+                              background-color: #f1f2f3;
+                              border: 1px solid #cccccc;
+                            "
+                          >
+                            <span
+                              >&nbsp;※ IAM 계정을 생성할 때 Programmatic access
+                              를 체크해야 Access key와 Secret access key 가
+                              발급되어 AWS API, CLI, SDK 등 다른 개발 툴에서
+                              호출해서 사용이 가능하다.</span
+                            ><br /><span
+                              >또한 Secret access key는 다시 확인 할 수 없으므로
+                              생성을 하고나서 어딘가에 잘 복사해 두어야
+                              한다.</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">
+                      IAM 계정을 생성시에는 접근 정책권한이 ...엄청나게 많으므로
+                      필요한 권한만 부여해서 생성하면 된다.
+                    </p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                    <p data-ke-size="size16">&nbsp;</p>
+                  </div>
+                  <p data-ke-size="size16">&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1094 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[Redis] Strings 명령어 설명 및 예제</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      [Redis] Strings 명령어 설명 및 예제
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Redis</p>
+                      <p class="date">2022-10-17 21:24:44</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >Strings 관련 명령어 예제</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 32px; font-weight: bold"
+                      >&nbsp;</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SET,&nbsp;</span></b
+                    ><b><span style="font-size: 18pt">GET</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(SET)</b>&nbsp;: 가장 기본적인 데이터 입력 형태로
+                      키와 값을 입력한다. 만약 키에 값이 이미 지정되어 있으면
+                      타입에 상관없이 덮어씌워 진다.<br /><b>설명(GET) </b
+                      >:&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >가장 기본적인 데이터 출력 형태이며 키에 값이 없으면 nil을
+                      반환한다</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >SET&nbsp;</span
+                      >key value [EX seconds] [PX milliseconds] [NX|XX]</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>옵션</b
+                    ><span
+                      ><span style="font-size: 13.3333px">&nbsp;:</span></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp; &nbsp;- EX seconds : 만료시간을 초 단위로 설정<br />&nbsp;
+                      &nbsp;- PX milliseconds : 만료시간을 밀리초 단위로 설정<br />&nbsp;
+                      &nbsp;- NX : 값이 존재 하지 않을 경우에만 키 값에 값을
+                      저장<br />&nbsp; &nbsp;- XX : 값이 존재할 경우에만 키 값에
+                      덮어씀</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"><b></b></span
+                    ><b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >GET&nbsp;</span
+                      >key</b
+                    ><span style="font-size: 16px"
+                      ><b><br /></b
+                    ></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SET&nbsp;</b></span
+                            >test "hello" &nbsp;
+                            <span style="color: #2f9d27"
+                              >&nbsp; // 기본적인 set 저장 형태</span
+                            ></span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SET&nbsp;</b></span
+                            >test2 "hello" EX 10 &nbsp;<span
+                              style="color: #2f9d27"
+                            >
+                              &nbsp; // 10초 후에 데이터 소멸</span
+                            ></span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SET&nbsp;</b></span
+                            >test3 "hello" PX 5000&nbsp;
+                            <span style="color: #2f9d27"
+                              >&nbsp; &nbsp;// 5초 후에 데이터 소멸</span
+                            ></span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SET&nbsp;</b></span
+                            >test4 "hello" NX &nbsp;
+                            <span style="color: #2f9d27"
+                              >&nbsp; // test4키는 값이 존재하지
+                              않으므로&nbsp;저장</span
+                            ></span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SET&nbsp;</b></span
+                            >test5&nbsp;"hello" EX 10 &nbsp; &nbsp;<span
+                              style="color: #2f9d27"
+                            >
+                              // test5키는 값이 존재하지 않으므로 저장을 하지
+                              못함</span
+                            ></span
+                          ><br /><span>&nbsp;"(nil)"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">GET</span>&nbsp;</b
+                            >test</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SETEX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명&nbsp;</b>: 문자열 값을 보관할 키를 설정하고 초
+                      단위로 시간을 설정 합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >SETEX&nbsp;</span
+                        >key seconds value<br /></b
+                    ></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SETEX&nbsp;</b></span
+                            >test1 10 "hello"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt; ttl test1</span
+                          ><br /><span>&nbsp;(integer) 10</span><br /><span
+                            >&nbsp;redis &gt; GET test1</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            >&nbsp;<span style="color: #2f9d27"
+                              >// After 10 seconds&nbsp;//</span
+                            ></span
+                          ><br /><span>&nbsp;redis &gt; GET test1</span
+                          ><br /><span>&nbsp;"(nil)"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SETNX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명&nbsp;</b>: 키가 존재하지 않을 경우에만 값을
+                      지정할 수 있다. (<b>SET</b> if <b>N</b>ot
+                      e<b>X</b>ists)&nbsp;의 줄임말이다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >SETNX&nbsp;</span
+                        >key value<br /></b
+                    ></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SETNX&nbsp;</b></span
+                            >test1 "hello"</span
+                          ><br /><span
+                            >&nbsp;(integer) 1
+                            <span style="color: #2f9d27"
+                              >&nbsp;// Success</span
+                            ></span
+                          ><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SETNX&nbsp;</b></span
+                            >test1 "world"</span
+                          ><br /><span
+                            >&nbsp;(integer) 0<span style="color: #2f9d27">
+                              &nbsp;// Fail</span
+                            ></span
+                          ><br /><span>&nbsp;redis &gt; GET test1</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">&nbsp;</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">-&nbsp;</span></b
+                    ><b><span style="font-size: 18pt">STRLEN</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명&nbsp;</b>: 키에 저장된 값의 길이를 리턴한다. 0을
+                      리턴할 때는 키가 존재하지 않는다</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >STRLEN&nbsp;</span
+                        >key<br /></b
+                    ></span>
+                  </p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;SET<b>&nbsp;</b>test1
+                            "hello"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>STRLEN&nbsp;</b></span
+                            >test1</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>STRLEN</b> </span
+                            >test2</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- SETRANGE</span></b
+                    ><b><span style="font-size: 18pt">, GETRANGE</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(SETRANGE)</b>&nbsp;: 값의 전체 길이에 대해 지정된
+                      오프셋에서 시작하여 키에 저장된 문자열의 일부를 덮어
+                      쓴다.</span
+                    ><span style="font-size: 10pt"
+                      ><br /><b>설명(GETRANGE)</b>&nbsp;: 키에 저장되어 있는
+                      값을 잘라서 가져온다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;
+                        <span style="color: #a366ff">SETRANGE&nbsp;</span>key
+                        offset value</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;
+                      <span style="color: #a366ff">GETRANGE&nbsp;</span>key
+                      start end</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>SET&nbsp;</b></span
+                            >test "hello world"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>SETRANGE&nbsp;</b></span
+                            >test 6 "Redis"</span
+                          ><br /><span>&nbsp;"hello Redis"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"
+                              ><b>GETRANGE</b>&nbsp;</span
+                            >test 0 -1</span
+                          ><br /><span>&nbsp;"hello Redis"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>GETRANGE</b>&nbsp;</span
+                            >test 0 4</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <b><span style="color: #a366ff">GETRANGE</span> </b
+                            >test -3 -2</span
+                          ><br /><span>&nbsp;"di"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>GETRANGE</b> </span
+                            >test -5 -1</span
+                          ><br /><span>&nbsp;"Redis"<br /><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- INCR</span></b
+                    ><b><span style="font-size: 18pt">, DECR</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(INCR)</b>&nbsp;: 키에 저장된 수를 1씩 증가
+                      시킵니다. 값이 없으면 0부터 시작합니다.</span
+                    ><span style="font-size: 10pt"
+                      ><br /><b>설명(DECR)</b>&nbsp;:&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >키에 저장된 수를 1씩 감소 시킵니다. 값이 없으면 0부터
+                      시작합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >INCR&nbsp;</span
+                        >key</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >DECR&nbsp;</span
+                      >key</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">INCR</span>&nbsp;</b
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 3</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>DECR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 2</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>DE</b><b>CR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>DE</b><b>CR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- INCRBY</span></b
+                    ><b><span style="font-size: 18pt">, DECR</span></b
+                    ><b><span style="font-size: 18pt">BY</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(INCR)</b>&nbsp;: 키에 저장된 수를 지정된
+                      값을&nbsp;증가 시킵니다. 값이 없으면 0부터
+                      시작합니다.</span
+                    ><span style="font-size: 10pt"
+                      ><br /><b>설명(DECR)</b>&nbsp;:&nbsp;</span
+                    ><span style="font-size: 13.3333px"
+                      >키에 저장된 수를&nbsp;</span
+                    ><span style="font-size: 13.3333px">지정된 값을</span
+                    ><span style="font-size: 13.3333px"
+                      >&nbsp;감소 시킵니다. 값이 없으면 0부터 시작합니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="color: #252525; font-size: 13.3333px"
+                      ><b>시간복잡도</b>&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >INCRBY&nbsp;</span
+                        >key increment</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >DECR</span
+                      ></b
+                    ><span style="color: #a366ff"><b>BY</b></span
+                    ><b><span style="color: #a366ff">&nbsp;</span>key&nbsp;</b
+                    ><b>increment</b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCR&nbsp;</b></span
+                            >aaa</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCRBY&nbsp;</b></span
+                            >aaa 10</span
+                          ><br /><span>&nbsp;(integer) 11</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>DECRBY&nbsp;</b></span
+                            >aaa 5</span
+                          ><br /><span>&nbsp;(integer) 6</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- INCRBYFLOAT</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명 :&nbsp;</b>키에 저장된 수를 지정된 값 만큼 key에
+                      소수점을 나타내는 문자열을 증가, 감소 시킵니다. 키가
+                      존재하지 않으면 0으로 설정됩니다. 다음 조건 중 하나가
+                      발생하면 오류가 반환 됩니다.<br />&nbsp;- 키에 잘못된
+                      유형의 값이 들어 있을 경우(문자열이 아님)<br />&nbsp;-
+                      현재의 키 내용 또는 지정된 증가분은 배정 밀도 부동 소수점
+                      수로 구문 분석 할 수 없습니다.</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >INCRBYFLOAT&nbsp;</span
+                        >key increment</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt; SET aaa<b>&nbsp;</b>10.5</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCRBYFLOAT&nbsp;</b></span
+                            >aaa 0.1</span
+                          ><br /><span>&nbsp;"10.6"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>INCRBYFLOAT</b><b>&nbsp;</b></span
+                            >aaa -5</span
+                          ><br /><span>&nbsp;"5.6"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- MSET, MGET</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(MSET) : </b>지정된 키를 각각의 값의 값으로
+                      설정합니다. MSET은 일반 SET와 마찬가지로 기존 값을 새로
+                      바꾼다. 기존 값을 덮어 씌지 않으려면 MSETNX를 참조<br /></span
+                    ><b>설명(MGET) : </b
+                    ><span style="font-size: 13.3333px"
+                      >지정된 모든 키의 값을 반환합니다. 키의 값이 없으면 nil이
+                      리턴</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >MSET&nbsp;</span
+                        >key value [key value...]</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >MGET&nbsp;</span
+                      >key [key ...]</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>MSET</b> </span>key1
+                            "hello" key2 "hello2" key3 "hello3"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>MGET&nbsp;</b></span
+                            >key1 key2 key3</span
+                          ><br /><span
+                            >&nbsp;1) "hello"<br />&nbsp;2) "hello2"<br />&nbsp;3)
+                            "hello3"</span
+                          ><br /><span><br /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- MSETNX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b>설명(MSETNX) :&nbsp;</b
+                    ><span style="font-size: 10pt"
+                      >지정된 키를 각각의 값으로 설정합니다. MSETNX는 단 하나의
+                      키가 이미 존재하면 아무 작업도 수행하지 않습니다.</span
+                    ><span style="font-size: 13.3333px"><br /></span
+                    ><b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(N)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >MSETNX&nbsp;</span
+                        >key value [key value...]</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b
+                      >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                        >MGET&nbsp;</span
+                      >key [key ...]</b
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>MSETNX</b>&nbsp;</span
+                            >key1 "hello" key2 "hello2" key3 "hello3"</span
+                          ><br /><span>&nbsp;(integer) 1</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>MSETNX&nbsp;</b></span
+                            >key3 "hello3" key4 "hello4" key5 "hello5"</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- PSETEX</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(PSETEX) : </b>만료시간이 초 대신 밀리 초 단위로
+                      지정된다는 차이점만 제외하고 SETEX와 똑같이 작용<br /></span
+                    ><b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;
+                        <span style="color: #a366ff">PSETEX&nbsp;</span>key
+                        milliseconds&nbsp;value</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>PSETEX</b>&nbsp;</span
+                            >key1 1000 "hello"
+                            <span style="color: #2f9d27"
+                              >/* 1초로 지정 */</span
+                            ></span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- GETSET</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(GETSET) :&nbsp;</b>값을 리턴 후 특정 값으로 재
+                      설정 합니다. 기존에 지정된 값이 없으면 nil을 반환 후
+                      새로운 값을 저장<br /></span
+                    ><b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >GETSET&nbsp;</span
+                        >key value</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span
+                            >&nbsp;redis &gt; SET<b>&nbsp;</b>key "hello"</span
+                          ><br /><span>&nbsp;"OK"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>GETSET</b> </span
+                            >key "mello"</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            >&nbsp;redis &gt;
+                            <span style="color: #a366ff"><b>GETSET</b> </span
+                            >key2 "hello"
+                            <span style="color: #2f9d27"
+                              >/* 값이 없을 경우는 nil을 반환 후 새로운 값을
+                              저장</span
+                            ><span style="color: #2f9d27">&nbsp;*/</span></span
+                          ><br /><span>&nbsp;(nil)</span><br /><span
+                            >&nbsp;redis &gt; GET key2</span
+                          ><br /><span>&nbsp;"hello"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <b><span style="font-size: 18pt">- APPEND</span></b>
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 10pt"
+                      ><b>설명(APPEND) : </b>key가 이미 있고 문자열인 경우에
+                      문자열 끝에 값을 추가합니다. 키가 존재하지 않으면 새로
+                      생성되고 빈 문자열로 설정되므로 APPEND는 SET 과
+                      유사합니다.<br /></span
+                    ><b>시간복잡도</b
+                    ><span style="color: #252525; font-size: 13.3333px"
+                      >&nbsp;: O(1)</span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">
+                    <span style="font-size: 16px"
+                      ><b
+                        >redis-cli &gt;&nbsp;<span style="color: #a366ff"
+                          >GETSET&nbsp;</span
+                        >key&nbsp;value</b
+                      ></span
+                    >
+                  </p>
+                  <p style="text-align: left" data-ke-size="size16">&nbsp;</p>
+                  <table
+                    class="txc-table"
+                    style="border: none; border-collapse: collapse"
+                    border="0"
+                    width="784"
+                    cellspacing="0"
+                    cellpadding="0"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            width: 784px;
+                            height: 24px;
+                            background-color: #eaeaea;
+                            border: 1px solid #cccccc;
+                          "
+                        >
+                          <span>&nbsp;redis &gt;&nbsp;EXISTS key1</span
+                          ><br /><span>&nbsp;(integer) 0</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<b
+                              ><span style="color: #a366ff">APPEND</span> </b
+                            >key1 "Hello"</span
+                          ><br /><span>&nbsp;(integer) 5</span><br /><span
+                            >&nbsp;redis &gt;&nbsp;<span style="color: #a366ff"
+                              ><b>APPEND</b>&nbsp;</span
+                            >key1 "World"</span
+                          ><br /><span>&nbsp;(integer) 11</span><br /><span
+                            >&nbsp;redis &gt; GET key1</span
+                          ><br /><span>&nbsp;"hello world"</span><br /><span
+                            ><br
+                          /></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

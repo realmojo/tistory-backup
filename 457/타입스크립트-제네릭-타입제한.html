@@ -1,0 +1,95 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>타입스크립트 제네릭, 타입제한</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">타입스크립트 제네릭, 타입제한</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2022-03-25 17:16:36</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    타입스크립트 제네릭은 호출하는 시점에 타입을 정의하는 것을
+                    의미한다.
+                  </p>
+                  <pre
+                    id="code_1648194982914"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>function logText&lt;T&gt;(text: T): T {
+	return text;
+}</code></pre>
+                  <p data-ke-size="size16">
+                    T라는 것은 타입의 줄임말이며 아직 타입이 정의되지 않은 상태
+                    입니다. 아래처럼 함수를 호출 할 때 타입을 정의 할 수 있음
+                  </p>
+                  <pre
+                    id="code_1648195065050"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>function logText&lt;T&gt;(text: T): T {
+	return text;
+}
+
+logText&lt;string&gt;("안녕하세요);
+logText&lt;number&gt;(10);
+logText&lt;boolean&gt;(true);</code></pre>
+                  <p data-ke-size="size16">
+                    또한 인터페이스에서 제네릭을 사용하므로써 코드를 상당히 줄일
+                    수 있는 장점도 있다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-25 오후 4.55.34.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    제네릭의 타입제한 ㅌ타입을 무한정으로 받아버리면 이 역시
+                    나중에 코드분석을 하기 어려워 진다. 딱 필요한 타입만 받게끔
+                    미리 설정을 해 둠으로써 추후에 복기를 했을 때 까먹지 않고
+                    바로 이해할 수 있다.
+                  </p>
+                  <p data-ke-size="size16">
+                    extends, extends keyof 등의 키워드를 이용하여 타입을 제한이
+                    가능하다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2022-03-25 오후 5.15.10.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

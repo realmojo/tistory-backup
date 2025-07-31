@@ -1,0 +1,296 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 시간 계산 함수 완벽 가이드 근무시간부터 야근계산까지 쉽게 마스터하기
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 시간 계산 함수 완벽 가이드 근무시간부터 야근계산까지
+                      쉽게 마스터하기
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-22 01:02:32</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    엑셀에서 시간 계산은 많은 직장인들이 어려워하는 기능 중
+                    하나입니다. 특히 근무시간 관리나 야근시간 계산을 위해 엑셀을
+                    사용하는 분들에게는 필수적인 스킬이죠. 오늘은 엑셀 시간
+                    계산을 위한 핵심 함수들과 실무에서 바로 활용할 수 있는
+                    방법들을 자세히 알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    엑셀에서 시간이 저장되는 방식과 기본 원리
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀에서 시간은 숫자로 저장됩니다. 하루 24시간을 1로
+                    표현하기 때문에 12시간은 0.5, 6시간은 0.25로 계산됩니다.
+                    이러한 원리를 이해하면 시간 계산이 훨씬 쉬워집니다. 예를
+                    들어 오전 9시 출근해서 오후 6시에 퇴근한다면 =B2-A2 공식으로
+                    간단히 근무시간을 계산할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>24시간 = 1</li>
+                    <li>12시간 = 0.5</li>
+                    <li>6시간 = 0.25</li>
+                    <li>1시간 = 1/24 &asymp; 0.0417</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이런 방식으로 엑셀은 시간을 분수 형태로 저장하며, 이를 통해
+                    다양한 시간 계산이 가능합니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/calculate-the-difference-between-two-times-e1c78778-7b58-4558-b0e8-25dc8c5d1493"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 공식 가이드</a
+                    >에서도 이와 같은 원리를 확인할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">TEXT 함수로 시간 형식 변환하기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    시간 계산 결과가 0.375 같은 소수로 나타날 때가 있습니다.
+                    이럴 때 TEXT 함수를 사용하면 사람이 읽기 쉬운 형태로 변환할
+                    수 있습니다. =TEXT(B2-A2, "hh:mm") 공식을 사용하면 0.375가
+                    09:00으로 표시됩니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>TEXT 함수의 기본 구조: =TEXT(값, "형식코드")</li>
+                    <li>
+                      시간 형식 코드: "hh:mm" (시:분), "hh:mm:ss" (시:분:초)
+                    </li>
+                    <li>12시간 형식: "h:mm AM/PM"</li>
+                    <li>24시간 초과 시간: "[h]:mm"</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    TEXT 함수는 특히 보고서 작성이나 출력용 문서에서 시간을 보기
+                    좋게 표시할 때 매우 유용합니다. 다만 TEXT 함수의 결과는
+                    텍스트이므로 추가 계산에는 사용할 수 없다는 점을 주의해야
+                    합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    MOD 함수로 야간 근무시간 정확히 계산하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    야간 근무처럼 다음 날로 넘어가는 시간 계산에서는 MOD 함수가
+                    필수입니다. 예를 들어 밤 10시부터 다음날 오전 6시까지
+                    근무했다면 단순 뺄셈으로는 음수 결과가 나오게 됩니다. 이때
+                    =MOD(B2-A2, 1) 공식을 사용하면 정확한 근무시간을 계산할 수
+                    있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    MOD 함수는 나눗셈의 나머지를 구하는 함수로, 시간 계산에서는
+                    24시간을 초과하는 부분을 처리할 때 유용합니다.
+                    <a
+                      href="https://exceljet.net/functions/mod-function"
+                      target="_blank"
+                      rel="noopener"
+                      >엑셀젯의 MOD 함수 가이드</a
+                    >에서 더 자세한 설명을 확인할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      =MOD(퇴근시간-출근시간, 1): 날짜가 넘어가는 근무시간 계산
+                    </li>
+                    <li>=MOD(A1*60, 60): 분 단위 나머지 계산</li>
+                    <li>=MOD(A1*3600, 60): 초 단위 나머지 계산</li>
+                  </ul>
+                  <h2 data-ke-size="size26">
+                    HOUR와 MINUTE 함수로 시간 요소 분리하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    때로는 시간에서 시와 분을 따로 추출해야 할 경우가 있습니다.
+                    HOUR 함수와 MINUTE 함수를 사용하면 시간 값에서 각각의 요소를
+                    쉽게 분리할 수 있습니다. =HOUR(B2-A2)는 근무시간에서 시간만,
+                    =MINUTE(B2-A2)는 분만 반환합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    이 함수들은 특히 급여 계산이나 세밀한 시간 분석이 필요할 때
+                    유용합니다. 예를 들어 9시간 30분 근무했다면 HOUR 함수는 9를,
+                    MINUTE 함수는 30을 반환합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>=HOUR(시간값): 0~23 사이의 시간 반환</li>
+                    <li>=MINUTE(시간값): 0~59 사이의 분 반환</li>
+                    <li>=SECOND(시간값): 0~59 사이의 초 반환</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/calculate-time-excel/"
+                      target="_blank"
+                      rel="noopener"
+                      >에이블비츠의 시간 계산 가이드</a
+                    >에서는 이러한 함수들의 실제 활용 예시를 다양하게 제공하고
+                    있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무 활용: 근무시간 및 야근수당 계산 시스템 구축
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    지금까지 배운 함수들을 조합하면 완전한 근태관리 시스템을
+                    만들 수 있습니다. 정규 근무시간은 8시간으로 설정하고, 초과
+                    근무시간에 대해서는 1.5배의 야근수당을 적용하는 공식을
+                    만들어보겠습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>정규 근무시간 계산: =MIN(총근무시간, 8/24)</li>
+                    <li>야근시간 계산: =MAX(총근무시간-8/24, 0)</li>
+                    <li>
+                      총 급여 계산: =(정규시간*기본시급)+(야근시간*기본시급*1.5)
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    IF 함수와 조합하면 더욱 정교한 계산이 가능합니다.
+                    =IF(총근무시간&gt;8/24,
+                    (8/24*기본시급)+((총근무시간-8/24)*기본시급*1.5),
+                    총근무시간*기본시급)와 같은 공식으로 정규시간과 야근시간을
+                    자동으로 구분하여 계산할 수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://trumpexcel.com/excel-timesheet-calculator-template/"
+                      target="_blank"
+                      rel="noopener"
+                      >트럼프 엑셀의 타임시트 템플릿</a
+                    >에서는 이러한 기능들이 구현된 실제 템플릿을 다운로드받을 수
+                    있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    시간 계산 시 주의사항과 문제해결 팁
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    엑셀 시간 계산에서 자주 발생하는 문제들과 해결방법을
+                    알아보겠습니다. 가장 흔한 문제는 24시간을 초과하는 시간이
+                    제대로 표시되지 않는 것입니다. 이때는 셀 서식을 [h]:mm
+                    형태로 변경해야 합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    또한 텍스트로 입력된 시간값은 계산이 되지 않으므로 TIMEVALUE
+                    함수를 사용하여 시간 형식으로 변환해야 합니다. 음수 시간값이
+                    나올 때는 MOD 함수를 활용하여 해결할 수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>24시간 초과 시간 표시: 셀 서식을 [h]:mm으로 변경</li>
+                    <li>
+                      텍스트 시간 변환: =TIMEVALUE("텍스트시간") 함수 사용
+                    </li>
+                    <li>음수 시간 처리: MOD 함수로 양수로 변환</li>
+                    <li>정확성 확인: 계산 결과를 실제 시간과 비교 검증</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    마지막으로 복잡한 시간 계산이 필요하다면 전용 시간추적
+                    소프트웨어나
+                    <a
+                      href="https://factorialhr.com/blog/how-to-calculate-employee-hours-worked/"
+                      target="_blank"
+                      rel="noopener"
+                      >팩토리얼 HR의 자동화 솔루션</a
+                    >
+                    같은 도구를 고려해볼 수도 있습니다. 하지만 기본적인 근무시간
+                    관리에는 엑셀의 시간 함수들만으로도 충분히 효과적인 시스템을
+                    구축할 수 있습니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

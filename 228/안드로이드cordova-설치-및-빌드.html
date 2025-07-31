@@ -1,0 +1,269 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>안드로이드(cordova) - 설치 및 빌드</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      안드로이드(cordova) - 설치 및 빌드
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/안드로이드</p>
+                      <p class="date">2020-04-02 15:19:58</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    저처럼 Javascript 를 좋아하는 사람들이 어플을 간단하게 나마
+                    만들 수 있도록 제 지식을 공유하려고 합니다. 전문성 있는
+                    어플을 개발하려면 결국에는 네이티브로 개발을 하게 되는
+                    본인의 모습을 보게 될 테지만 그 전에 맛보기를 해보면서 뭐가
+                    부족한지 아니면 cordova로 해도 충분한지 터득해 보시길
+                    바라며..!..
+                  </p>
+                  <p>개발환경 : Windows 10 64bit, 8RAM, Intel i7</p>
+                  <ol
+                    style="list-style-type: decimal"
+                    data-ke-list-type="decimal"
+                  >
+                    <li>안드로이드 스튜디오 설치</li>
+                    <li>node(npm) 설치</li>
+                    <li>vue 혹은 바닐라 Javascript</li>
+                    <li>cordova 설치</li>
+                    <li>빌드</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><span style="color: #ee2323">주의 사항</span></p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <span style="color: #ee2323"
+                        >간혹 PC 호스트명이 한글로 되어 있을 경우에 안드로이드
+                        빌드시 sdk 경로를 인식하지 못합니다.</span
+                      >
+                    </li>
+                    <li>
+                      <span style="color: #ee2323"
+                        >본인의 개발 PC 이름이 한글이면 안드로이드를 다른 경로에
+                        설치해주셔야 합니다.</span
+                      >
+                    </li>
+                  </ul>
+                  <p>&nbsp;</p>
+                  <p>1. 안드로이드 스튜디오 설치</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      아래의 공식 홈 링크에서 다운( 링크가 의심되면 구글에서
+                      직접 검색해도 됩니다 )
+                    </li>
+                    <li>
+                      설치는 별거 없으니 Next를 누르면서 설치를 하면 됩니다.
+                    </li>
+                    <li>
+                      <a href="https://developer.android.com/studio?hl=ko"
+                        >https://developer.android.com/studio?hl=ko</a
+                      >
+                    </li>
+                  </ul>
+                  <figure
+                    id="og_1585806093898"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="Download Android Studio and SDK tools &nbsp;|&nbsp; Android 스튜디오"
+                    data-og-description="&lt;!-- hide description --&gt;"
+                    data-og-host="developer.android.com"
+                    data-og-source-url="https://developer.android.com/studio?hl=ko"
+                    data-og-url="https://developer.android.com/studio?hl=ko"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bVzrl0/hyFv0FieTe/kMjYx6f4rUwcxK21SkaZnk/img.jpg?width=1352&amp;height=818&amp;face=0_0_1352_818,https://scrap.kakaocdn.net/dn/J4Hxb/hyFv4gBMTT/owld13sQ7b6YZ0NQZket81/img.png?width=725&amp;height=578&amp;face=0_0_725_578,https://scrap.kakaocdn.net/dn/AKbND/hyFvZGnNBB/4WVPxFAakK5ux5hjz3NjB0/img.png?width=725&amp;height=556&amp;face=0_0_725_556"
+                  >
+                    <a
+                      href="https://developer.android.com/studio?hl=ko"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://developer.android.com/studio?hl=ko"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bVzrl0/hyFv0FieTe/kMjYx6f4rUwcxK21SkaZnk/img.jpg?width=1352&amp;height=818&amp;face=0_0_1352_818,https://scrap.kakaocdn.net/dn/J4Hxb/hyFv4gBMTT/owld13sQ7b6YZ0NQZket81/img.png?width=725&amp;height=578&amp;face=0_0_725_578,https://scrap.kakaocdn.net/dn/AKbND/hyFvZGnNBB/4WVPxFAakK5ux5hjz3NjB0/img.png?width=725&amp;height=556&amp;face=0_0_725_556');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">
+                          Download Android Studio and SDK tools &nbsp;|&nbsp;
+                          Android 스튜디오
+                        </p>
+                        <p class="og-desc"><!-- hide description --></p>
+                        <p class="og-host">developer.android.com</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>2. node 설치</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      <a
+                        style="letter-spacing: 0px"
+                        href="https://nodejs.org/ko/"
+                        >https://nodejs.org/ko/</a
+                      >
+                    </li>
+                    <li>공식 홈페이지에서 받아서 설치</li>
+                  </ul>
+                  <figure
+                    id="og_1585807451117"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="Node.js"
+                    data-og-description="Node.js&reg; is a JavaScript runtime built on Chrome's V8 JavaScript engine."
+                    data-og-host="nodejs.org"
+                    data-og-source-url="https://nodejs.org/ko/"
+                    data-og-url="https://nodejs.org/ko/"
+                    data-og-image="https://scrap.kakaocdn.net/dn/s4dvY/hyFv2b6V0I/RKCawC4tp3K11iBtTYSiAK/img.png?width=224&amp;height=256&amp;face=0_0_224_256,https://scrap.kakaocdn.net/dn/gsWOb/hyFv2b6V1n/skXWiE5QTQVJA3Fm40VJa0/img.png?width=224&amp;height=256&amp;face=0_0_224_256"
+                  >
+                    <a
+                      href="https://nodejs.org/ko/"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://nodejs.org/ko/"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/s4dvY/hyFv2b6V0I/RKCawC4tp3K11iBtTYSiAK/img.png?width=224&amp;height=256&amp;face=0_0_224_256,https://scrap.kakaocdn.net/dn/gsWOb/hyFv2b6V1n/skXWiE5QTQVJA3Fm40VJa0/img.png?width=224&amp;height=256&amp;face=0_0_224_256');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title">Node.js</p>
+                        <p class="og-desc">
+                          Node.js&reg; is a JavaScript runtime built on Chrome's
+                          V8 JavaScript engine.
+                        </p>
+                        <p class="og-host">nodejs.org</p>
+                      </div>
+                    </a>
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>3. vue 설치 및 필요한 라이브러리 설치</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>vue 설치</li>
+                  </ul>
+                  <pre
+                    id="code_1585807596195"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>npm install -g vue</code></pre>
+                  <p>&nbsp;</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      vue onsen ui 프레임워크 설치 -
+                      <a style="letter-spacing: 0px" href="https://onsen.io/"
+                        >https://onsen.io/</a
+                      >
+                      <ul style="list-style-type: disc">
+                        <li>android 빌드시에는 material 디자인</li>
+                        <li>ios 빌드시에는 기본 ios 디자인</li>
+                        <li>
+                          직접개발하고 싶으면 <b>vue create app-name</b> 해서
+                          설치하자
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <pre
+                    id="code_1585807687186"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>vue init OnsenUI/vue-cordova-webpack [project-name]</code></pre>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>4. cordova , yarn 설치</p>
+                  <ul style="list-style-type: disc">
+                    <li style="text-align: justify">
+                      yarn 의 경우에는 본인의 취향 따라 하면 됌
+                    </li>
+                    <li style="text-align: justify">
+                      cordova cli 를 아래와 같이 설치
+                    </li>
+                    <li style="text-align: justify">
+                      cordova platform add android 를 해줘야 안드로이드 빌드 및
+                      개발을 할 수 있음
+                    </li>
+                  </ul>
+                  <pre
+                    id="code_1585807799564"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>npm install -g cordova
+npm install -g yarn
+
+// 설치가 되었으면
+cd app-name
+cordova platform add android // 약 1분 정도 소요</code></pre>
+                  <p>&nbsp;</p>
+                  <p>5. 빌드 및 실행</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      모바일 기기를 개발PC와 연결을 하고나서 아래와 같이
+                      실행하면 빌드가 되고 안드로이드로 실행이 된다
+                    </li>
+                  </ul>
+                  <pre
+                    id="code_1585807988477"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>yarn build &amp;&amp; cordova run android --device</code></pre>
+                  <p>
+                    <figure
+                      class="imageblock alignLeft"
+                      data-filename="34.png"
+                      data-origin-width="661"
+                      data-origin-height="417"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img
+                          src="./img/img.png"
+                          data-filename="34.png"
+                          data-origin-width="661"
+                          data-origin-height="417"
+                        />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                </div>
+                <br />
+                <div class="tags">#설치 #build #안드로이드 #cordova</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

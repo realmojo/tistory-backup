@@ -1,0 +1,241 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 반올림 함수 완벽 가이드 - ROUND, ROUNDUP, ROUNDDOWN 활용법과 실무
+      예제
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 반올림 함수 완벽 가이드 - ROUND, ROUNDUP, ROUNDDOWN
+                      활용법과 실무 예제
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-17 20:47:40</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 반올림 함수 완벽 가이드 - ROUND, ROUNDUP, ROUNDDOWN
+                        활용법과 실무 예제
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀 작업에서 숫자 계산을 할 때 소수점이 너무 길어지거나
+                    특정 자리에서 반올림이 필요한 경우가 많습니다. 특히 재무
+                    보고서나 데이터 분석에서는 정확하고 깔끔한 숫자 표현이
+                    중요한데, 이때 엑셀의 반올림 함수들을 활용하면 효율적으로
+                    숫자를 정리할 수 있습니다. 엑셀에서 제공하는 ROUND 계열
+                    함수들은 각각 다른 특성을 가지고 있어 상황에 맞게 선택하여
+                    사용할 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">ROUND 함수의 기본 사용법과 구문</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUND 함수는 가장 기본적인 반올림 함수로, 일반적인 반올림
+                    규칙을 따릅니다. 구문은 =ROUND(숫자, 자릿수) 형태로
+                    사용되며, 첫 번째 인수는 반올림할 값을, 두 번째 인수는
+                    반올림할 위치를 나타냅니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>자릿수가 양수이면 소수점 오른쪽에서 반올림됩니다</li>
+                    <li>자릿수가 0이면 정수로 반올림됩니다</li>
+                    <li>
+                      자릿수가 음수이면 소수점 왼쪽(10단위, 100단위 등)에서
+                      반올림됩니다
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    예를 들어, =ROUND(12.756, 2)는 12.76을 반환하고, =ROUND(157,
+                    -1)은 160을 반환합니다. 이 함수는 5 이상은 올림하고 4 이하는
+                    내림하는 일반적인 수학 규칙을 따릅니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    ROUNDUP 함수로 무조건 올림 처리하기
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDUP 함수는 반올림 기준에 상관없이 항상 큰 수로 올림을
+                    수행합니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/roundup-function-f8bc9b23-e795-47db-8703-db171d0c42a7"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 공식 문서</a
+                    >에 따르면 이 함수는 항상 0에서 멀어지는 방향으로
+                    반올림합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>=ROUNDUP(12.345, 2)는 12.35를 반환합니다</li>
+                    <li>=ROUNDUP(7.18, 0)은 8을 반환합니다</li>
+                    <li>=ROUNDUP(3.85, -1)은 10을 반환합니다</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 함수는 배달비 계산, 가격 조정, 인원 수 계산 등에서
+                    유용하게 활용됩니다. 특히 보수적인 예산 편성이나 최소 임계값
+                    설정 시 안전장치 역할을 할 수 있습니다. 음수에 대해서도
+                    절댓값이 더 큰 음수로 올림됩니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    ROUNDDOWN 함수를 활용한 무조건 내림 처리
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수는 ROUNDUP과 반대로 항상 0에 가까운 방향으로
+                    내림을 수행합니다. 뒤따르는 숫자의 값에 관계없이 항상 내림
+                    처리되므로 최대값 설정이나 예측치의 과대추정을 방지할 때
+                    유용합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    =ROUNDDOWN(12.987, 2)는 12.98을, =ROUNDDOWN(5.5, 0)은 5를
+                    반환합니다.
+                    <a
+                      href="https://www.ablebits.com/office-addins-blog/excel-round-functions/"
+                      target="_blank"
+                      rel="noopener"
+                      >전문가 가이드</a
+                    >에 따르면 이 함수는 할인율 계산이나 재고 계산에서 특히
+                    유용하다고 설명합니다. 재무 분석에서 보수적인 접근이 필요할
+                    때 ROUNDDOWN을 사용하면 안전한 계산 결과를 얻을 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">MROUND 함수와 특정 단위 반올림</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    MROUND 함수는 특정 배수로 반올림할 때 사용되는 함수입니다.
+                    구문은 =MROUND(숫자, 반올림단위) 형태로, 지정된 배수의 가장
+                    가까운 값으로 반올림합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>=MROUND(157, 10)은 160을 반환합니다</li>
+                    <li>=MROUND(23, 5)는 25를 반환합니다</li>
+                    <li>=MROUND(14.5, 0.5)는 14.5를 그대로 반환합니다</li>
+                  </ul>
+                  <p data-ke-size="size16">
+                    이 함수는 금액 계산에서 특정 단위(10원, 100원)로 정리하거나,
+                    시간을 15분 단위로 반올림하는 등의 실무에서 자주 사용됩니다.
+                    <a
+                      href="https://exceljet.net/functions/roundup-function"
+                      target="_blank"
+                      rel="noopener"
+                      >엑셀젯 튜토리얼</a
+                    >에서는 MROUND가 제품 단위 정리나 배송 단위 계산에서 매우
+                    효과적이라고 설명합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    실무에서의 반올림 함수 활용 전략
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    각 반올림 함수는 서로 다른 특성을 가지고 있어 상황에 맞게
+                    선택해야 합니다. 일반적인 계산에서는 ROUND를, 보수적인
+                    추정이 필요할 때는 ROUNDUP을, 과대추정을 피해야 할 때는
+                    ROUNDDOWN을 사용합니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    재무 보고서에서는 통일성 있는 소수점 표시를 위해 ROUND
+                    함수를 주로 사용하며, 은행 이자 계산처럼 고객에게 유리하게
+                    처리해야 할 때는 ROUNDUP을 활용합니다.
+                    <a
+                      href="https://www.datacamp.com/tutorial/excel-round"
+                      target="_blank"
+                      rel="noopener"
+                      >데이터캠프 가이드</a
+                    >에서는 재무 모델링에서 작은 차이도 중요한 영향을 미칠 수
+                    있으므로 정확한 반올림이 필수적이라고 강조합니다. 또한
+                    이러한 함수들은 다른 함수와 함께 사용하여 더 복잡한 계산도
+                    가능합니다. 예를 들어, =ROUND(SUM(A1:A10), 2)로 합계를
+                    소수점 둘째 자리까지 반올림하거나, =ROUNDUP(AVERAGE(B1:B10),
+                    0)으로 평균값을 정수로 올림할 수 있습니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

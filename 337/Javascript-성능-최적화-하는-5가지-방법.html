@@ -1,0 +1,354 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Javascript 성능 최적화 하는 5가지 방법</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      Javascript 성능 최적화 하는 5가지 방법
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Javascript</p>
+                      <p class="date">2020-07-03 01:40:52</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    자바스크립트에서 성능 최적화를 하는 방법에는 여러 가지가
+                    있습니다. 우선 제가 주로 사용하는 몇 가지 방법을
+                    공유드리려고 합니다. 성능 최적화를 하는 이유는
+                    비개발자이거나 소규모 사이트의 제작자 라면 사실할 필요도
+                    크게 없습니다. 반면 본인이 서버를 직접 운영한다거나 대규모
+                    사이트를 운영하고 있으시다면 성능 최적화만 하더라도 운영비를
+                    크게 감소할 수 있을 것으로 예측이 됩니다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">1. DOM 접근 최소화</h2>
+                  <p data-ke-size="size16">
+                    DOM을 접근할 때에는 가능하면 지역 변수로 할당하여 사용하시는
+                    것이 좋습니다. dom 도 하나의 object이기 때문에 프로토타입
+                    체인에 의해 내가 원하는 위치를 찾는데 시간이 발생하기
+                    때문입니다.
+                  </p>
+                  <pre
+                    id="code_1593705686527"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>function getObject(){
+    let dom = document.getElementById('container'); // 변수에 할당하여 사용
+    // dom 조작 관련 코드 삽입
+    
+    let location = window.location;
+    // location 조작 관련 코드 삽입
+}</code></pre>
+                  <h2 data-ke-size="size26">2. Repaint, Reflow 최소화</h2>
+                  <p data-ke-size="size16">
+                    프론트엔드 면접에서 자주 질문 나오는 유형중 하나이며 성능에
+                    많은 요소를 차지하게 되는 것 중 하나입니다. 보통 통계 그래프
+                    대시보드나 차트 같은 라이브러리를 사용하게 될 때 많이
+                    직면하게 될 텐데요. 차트 같은 것은 실시간 데이터를 화면에
+                    계속 그려주어야 하기 때문에 Repaint, Reflow를 자주 사용하게
+                    됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    Repaint : DOM 변경시 주로 색상( Background-color,
+                    font-color, visiblity<br />Reflow :&nbsp; DOM 변경시 수치에
+                    대한 계산( width, height, resize, node 추가 제거, margin,
+                    padding )
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">3. 빌드시 사용 크기 줄이기</h2>
+                  <p data-ke-size="size16">
+                    webpack 시 번들 분석기를 설치하여 어떤 js 파일이 가장 많이
+                    차지하는지 보여주는 라이브러리이다.
+                    <a
+                      href="https://www.npmjs.com/package/webpack-bundle-analyzer"
+                      target="_blank"
+                      rel="noopener"
+                      >webpack-bundle-analyzer</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1593706754382"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="website"
+                    data-og-title="webpack-bundle-analyzer"
+                    data-og-description="Webpack plugin and CLI utility that represents bundle content as convenient interactive zoomable treemap"
+                    data-og-host="www.npmjs.com"
+                    data-og-source-url="https://www.npmjs.com/package/webpack-bundle-analyzer"
+                    data-og-url="https://www.npmjs.com/package/webpack-bundle-analyzer"
+                    data-og-image="https://scrap.kakaocdn.net/dn/2NylY/hyGDeJpq9Y/ffMMGVKbyCghvbLGboTWM0/img.png?width=1200&amp;height=630&amp;face=0_0_1200_630"
+                  >
+                    <a
+                      href="https://www.npmjs.com/package/webpack-bundle-analyzer"
+                      data-source-url="https://www.npmjs.com/package/webpack-bundle-analyzer"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/2NylY/hyGDeJpq9Y/ffMMGVKbyCghvbLGboTWM0/img.png?width=1200&amp;height=630&amp;face=0_0_1200_630');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          webpack-bundle-analyzer
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          Webpack plugin and CLI utility that represents bundle
+                          content as convenient interactive zoomable treemap
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          www.npmjs.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <pre
+                    id="code_1593706748699"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>npm install --save-dev webpack-bundle-analyzer</code></pre>
+                  <p data-ke-size="size16">
+                    위의 명령어로 쉽게 설치가 가능하고 Vue, React에 따라
+                    적용해서 빌드를 하면 된다.
+                  </p>
+                  <pre
+                    id="code_1593706828304"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+}</code></pre>
+                  <h2 data-ke-size="size26">
+                    4.
+                    <span style="color: #333333"
+                      >import 부분적으로 호출하기</span
+                    >
+                  </h2>
+                  <p data-ke-size="size16">
+                    <span style="color: #333333"
+                      >라이브러리를 과다하게 사용하다보면 필요 없는 js파일까지
+                      로드를 하게 돼서 실제 사용하지는 않는데 용량과 메모리만
+                      잡아먹는 파일들이 간혹 존재한다. require의 선언은
+                      가급적이면 피하고 import를 사용하는 습관을 들이자.</span
+                    >
+                  </p>
+                  <pre
+                    id="code_1593707032974"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>import lib from 'library' // 전체가 필요하다면 보통 이렇게 사용하지만
+import { getCode } from 'library' // 부분적으로만 불러온다면 빌드시에 파일이 줄어든다. 이 코드로 습관을 들이는 것이 좋다.</code></pre>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    5. nginx를 사용한다면 gzip 사용하기
+                  </h2>
+                  <p data-ke-size="size16">
+                    프론트엔드(Vue, React) 프로젝트를 빌드하면 Gzipped라는 것을
+                    볼 수 있습니다. File 명, Size, Gzipped의 행이 보이는데
+                    일반적으로 배포를 하였을 때는 Size의 크기로 업로드가 됩니다.
+                    하지만 gzipped 같이 압축을 해서 서버 설정을 한다면 절반
+                    이상의 서버 절감 효과를 누릴 수 있습니다. Size로 배포하면
+                    89kb, Gzipped로 배포하면 31kb가 소모됩니다. 이걸 통해서 하루
+                    트래픽 용량 대비 몇명의 동접자 혹은 페이지 방문이 가능한지
+                    유추를 할 수 있습니다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>yarn build 예시</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    nginx gzip 기본 옵션(
+                    <a
+                      href="https://nginx.org/en/docs/http/ngx_http_gzip_module.html"
+                      target="_blank"
+                      rel="noopener"
+                      >자세히 보기</a
+                    >
+                    )
+                  </p>
+                  <pre
+                    id="code_1593707807066"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>http {
+  gzip  on; // gzip 사용
+  gzip_disable "msie6"; // 익스플로러는 제외
+
+  gzip_comp_level 6; // 압축레벨
+  gzip_min_length 1100; // gzip 최소 길이
+  gzip_buffers 16 8k; // gzip 버퍼 크기 32 4k , 16 8k 둘 중 하나
+  gzip_proxied any; // 프록시 요청시 
+  gzip_http_version 1.1; // http 버전, default 가 1.1이라 안써도 무방
+  gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+}</code></pre>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

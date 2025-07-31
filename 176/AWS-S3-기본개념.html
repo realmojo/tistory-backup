@@ -1,0 +1,114 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>[AWS] S3 기본개념</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">[AWS] S3 기본개념</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/AWS</p>
+                      <p class="date">2017-04-15 01:08:30</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <h2><b>S3 기본개념</b></h2>
+                  <p><br /></p>
+                  <p><br /></p>
+                  <p>
+                    <b>객체(Object) : </b>S3에 데이터가 저장되는 최소 단위. 이
+                    객체는 파일과 메타데이터로 구성
+                  </p>
+                  <p>
+                    &nbsp;- 기본적으로 키(Key)가 객체의 이름이며 값(Value)이
+                    객체의 데이터<br />&nbsp;- 객체 하나의 크기는 1Byte ~
+                    5TB&nbsp;<br />&nbsp;- 메타데이터는 HTTP Content-Type
+                    형식이며, 파일의 확장자에 따라 자동으로 설정되며 임의로
+                    설정할 수도 있고, 키-값(Key - Value) 형식이며 S3 전용
+                    메타데이터 및 사용자 정의 메타데이터도 저장
+                  </p>
+                  <p><br /></p>
+                  <p>
+                    <b>버킷(Bucket)</b> <b>:</b> S3에서 생성할 수 있는 최상위
+                    폴더. 버킷은 리전별로 생성해야 하며, 단 버킷의 이름은 모든
+                    S3리전 중에서 유일해야함. 계정별로 100개 까지 생성가능
+                  </p>
+                  <p>
+                    &nbsp;- 버킷 안에 객체가 저장<br />&nbsp;- 폴더 생성이
+                    가능(실제로는 객체 이름이 디렉터리 경로까지 포함)<br />&nbsp;-
+                    저장 가능한 객체의 개수는 무제한<br />&nbsp;- 저장 가능한
+                    용량은 무제한<br />&nbsp;- 접속 제어 및 권한 관리가 가능<br />&nbsp;-
+                    URL 로 접근이 가능.
+                    http://examplebucket.s3.amazonaws.com/helloworld.jpg 에서
+                    examplebucket은 버킷, helloworld.jpg는 객체
+                  </p>
+                  <p><br /></p>
+                  <p>
+                    <b>내구성과 가용성 : </b>1년 기준으로 99.9999% 내구성
+                    99.9999% 가용성을 지님. 즉 내구성은 데이터가 유실되지 않는
+                    것을 의미하며 가용성은 언제나 정상적으로 사용 가능한 상태
+                  </p>
+                  <p><br /></p>
+                  <p>
+                    <b>요금 :</b> 저장 용량과 데이터 전송량, HTTP(Request)
+                    개수로 책정
+                  </p>
+                  <p><br /></p>
+                  <p><br /></p>
+                  <p>
+                    S3 내구성에 따른 두 가지 스토리지 옵션 객체(디렉터리) 별로
+                    설정 가능
+                  </p>
+                  <p>
+                    <b>표준 스토리지(Standard Storage) : </b>일반적인 스토리지
+                    옵션 99.99999999% 내구성을 가지고 있지만 AWS 내부적으로도
+                    이런 높은 내구성을 유지하려면 그만큼 비용이 많이 들게 되고
+                    요금도 높아짐. 따라서 유실되면 안 되는 중요한 데이터 저장에
+                    권장
+                  </p>
+                  <p>
+                    <b>낮은 중복 스토리지(RRS, Reduced Redundancy Storage) : </b
+                    >표준 스토리지보다 낮은 99.99% 내구성을 가짐. 이름 그대로
+                    데이터를 복제한 사본의 수를 줄여 비용을 낮추었기 때문에
+                    요금이 저렴. 표준 스토리지 대비 약 20% 저렴. 원본 데이터를
+                    다른 곳에 가지고 있거나, 동영상이나 이미지의 썸네일 등
+                    원본에서 다시 생성할 수 있는 데이터 저장에 적합
+                  </p>
+                  <p><br /></p>
+                  <p><br /></p>
+                  <p><br /></p>
+                  <p>
+                    <b><br /></b>
+                  </p>
+                  <p>
+                    <b
+                      >S3 객체 권한 관리<br />S3 버킷 권한 관리<br />S3 정적
+                      웹사이트 호스팅 사용<br />HTTP Referer 로 S3 접근 제한<br />S3
+                      객체 스토리지 클래스, 암호화 설정<br />S3 객체 메타데이터
+                      설정<br />S3 버킷 로그 설정<br />S3 버킷 버저닝 설정<br />S3
+                      버킷 수명 주기 설정</b
+                    >
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>버튼 클릭 효과 애니메이션 처리</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      버튼 클릭 효과 애니메이션 처리
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/CSS</p>
+                      <p class="date">2020-04-25 17:05:23</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p>
+                    <figure
+                      class="imageblock alignCenter"
+                      width="225"
+                      height="225"
+                    >
+                      <span data-lightbox="lightbox">
+                        <img src="./img/css.png" width="225" height="225" />
+                      </span>
+                      <figcaption>css 버튼 클릭 효과</figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <p data-ke-size="size16">
+                    PC에서는 버튼을 클릭 시 크게 효과가 없지만 모바일에서는
+                    터치로 클릭하였을 때 손가락이 터치했다는 걸 사용자에게
+                    인지하기 위에서 버튼 클릭 시 살짝 버튼이 아래로 가게 하는
+                    기법이 있어서 UX의 만족도를 조금 더 높여 줄 수 있는 방법이다
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <h2 data-ke-size="size26">각 CSS 프레임워크 별 버튼 비교</h2>
+                  <p data-ke-size="size16">
+                    Normal, Bootstrap, Material, Flat, Element UI 등등이
+                    대표적입니다<br /><span style="color: #333333"
+                      >가볍게 코딩을 해보았습니다</span
+                    >
+                  </p>
+                  <p>
+                    <iframe
+                      src="https://codepen.io/xhdvfwfb/pen/KKdWbzP"
+                      width="800"
+                      height="400"
+                    ></iframe>
+                  </p>
+                  <p data-ke-size="size16">&nbsp;</p>
+                  <h2 data-ke-size="size26">버튼 클릭 효과</h2>
+                  <p data-ke-size="size16">
+                    위의 예제에서 마지막에 custom button을 보면 기존의
+                    프레임워크와의 클릭이 조금 다르다는 것을 확인할 수 있습니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    클릭(active)을 했을 때만
+                    <span style="color: #ee2323"
+                      ><b>transform: translateY(4px);</b> </span
+                    >를 추가하여 클릭한 효과를 줄 수 있습니다.
+                  </p>
+                  <pre
+                    id="code_1587801696245"
+                    class="html xml"
+                    style="
+                      display: block;
+                      overflow: auto;
+                      padding: 15px;
+                      color: #383a42;
+                      background: #f6f7f8;
+                      font-size: 14px;
+                      border-radius: 3px;
+                      font-family: Menlo, Consolas, Monaco, monospace;
+                      border: 1px solid #dddddd;
+                      margin: 20px auto 0px;
+                      cursor: default;
+                      z-index: 1;
+                      font-style: normal;
+                      font-variant-ligatures: normal;
+                      font-variant-caps: normal;
+                      font-weight: 400;
+                      letter-spacing: normal;
+                      orphans: 2;
+                      text-align: start;
+                      text-indent: 0px;
+                      text-transform: none;
+                      widows: 2;
+                      word-spacing: 0px;
+                      -webkit-text-stroke-width: 0px;
+                      text-decoration-style: initial;
+                      text-decoration-color: initial;
+                    "
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>.custom:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}</code></pre>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://realmojo.tistory.com/249"
+                      target="_blank"
+                      rel="noopener"
+                      >2020/04/25 - [프로그래밍/CSS] - 반응형 웹 CSS 미디어쿼리
+                      media query 템플릿 세팅</a
+                    >
+                  </p>
+                  <figure
+                    id="og_1592843709958"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-og-type="article"
+                    data-og-title="반응형 웹 CSS 미디어쿼리 media query 템플릿 세팅"
+                    data-og-description="반응형 웹 반응형 웹은 PC, 태블릿, 모바일(가로, 세로) 등을 모두 지원할 수 있게끔 설정 해주는 템플릿을 의믜한다. 일반적으로는 CSS의 미디어쿼리를 이용하여 분기처리를 하지만 적응형 웹으��"
+                    data-og-host="realmojo.tistory.com"
+                    data-og-source-url="https://realmojo.tistory.com/249"
+                    data-og-url="https://realmojo.tistory.com/249"
+                    data-og-image="https://scrap.kakaocdn.net/dn/bipBRR/hyGw0J80Ux/uov7aT2JjPXVhFKqxzJ1q1/img.png?width=225&amp;height=225&amp;face=0_0_225_225,https://scrap.kakaocdn.net/dn/cnVnlb/hyGxcjvnXK/xe7dvfXHtrOTB3dHfi4JB0/img.png?width=225&amp;height=225&amp;face=0_0_225_225,https://scrap.kakaocdn.net/dn/cyz3tM/hyGwZLezkk/xoyUAFKmRISudC4Bt8BVW1/img.png?width=225&amp;height=225&amp;face=0_0_225_225"
+                  >
+                    <a
+                      href="https://realmojo.tistory.com/249"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://realmojo.tistory.com/249"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/bipBRR/hyGw0J80Ux/uov7aT2JjPXVhFKqxzJ1q1/img.png?width=225&amp;height=225&amp;face=0_0_225_225,https://scrap.kakaocdn.net/dn/cnVnlb/hyGxcjvnXK/xe7dvfXHtrOTB3dHfi4JB0/img.png?width=225&amp;height=225&amp;face=0_0_225_225,https://scrap.kakaocdn.net/dn/cyz3tM/hyGwZLezkk/xoyUAFKmRISudC4Bt8BVW1/img.png?width=225&amp;height=225&amp;face=0_0_225_225');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          반응형 웹 CSS 미디어쿼리 media query 템플릿 세팅
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          반응형 웹 반응형 웹은 PC, 태블릿, 모바일(가로, 세로)
+                          등을 모두 지원할 수 있게끔 설정 해주는 템플릿을
+                          의믜한다. 일반적으로는 CSS의 미디어쿼리를 이용하여
+                          분기처리를 하지만 적응형 웹으��
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          realmojo.tistory.com
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-format="autorelaxed"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="3001283579"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                </div>
+                <br />
+                <div class="tags">
+                  #애니메이션 #css #모바일 #효과 #클릭 #버튼
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

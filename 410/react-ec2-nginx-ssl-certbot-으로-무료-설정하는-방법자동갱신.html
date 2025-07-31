@@ -1,0 +1,339 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>nginx ssl certbot react ec2 으로 무료 설정하는 방법(자동갱신)</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      nginx ssl certbot react ec2 으로 무료 설정하는
+                      방법(자동갱신)
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Unix & Linux</p>
+                      <p class="date">2021-10-18 11:20:26</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    <script>
+                      var script = document.createElement("script");
+                      script.src =
+                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1963334904140891";
+                      document.head.appendChild(script);
+                    </script>
+                  </p>
+                  <div style="text-align: center; width: 100%">
+                    <script>
+                      if (window.innerWidth >= 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2362887690"></ins>'
+                        );
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px;margin-left: 20px;"data-ad-client="ca-pub-1963334904140891" data-ad-slot="5405291887"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      } else if (window.innerWidth < 768) {
+                        document.write(
+                          '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script><ins class="adsbygoogle" style="display:block;" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-1963334904140891" data-ad-slot="2257049676"></ins>'
+                        );
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      }
+                    </script>
+                  </div>
+                  <p data-ke-size="size16">
+                    리액트로 홈페이지를 여러 개 만들고 있는데 항상 배포 전에 ssl
+                    설정 때문에 많이 시간이 지체되어 이번에 nginx + ssl +
+                    certbot으로 무료 ssl 설정하는 방법에 대해 포스팅해보려고
+                    한다. 꽤 여러 번 해보았어서 이번엔 정리도 해볼 겸 다음번에
+                    빠르게 하기 위해 명령어만 신속하게 정리를 해본다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/certbot.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    서버는 AWS EC2 ubuntu 18.04버전으로 하였으며 다른 버전도
+                    크게 상관없을 거 같다. yum 계열의 linux 계열이면 명령어가
+                    조금 다를 것이니 주의하여야 한다. 아래의 명령어를 순차대로
+                    실행하면 될 것이다.
+                  </p>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">1. nginx &amp; certbot 설치</h2>
+                  <p data-ke-size="size16">
+                    기본적인 설치를 진행해 주도록 한다. nginx와 certbot을
+                    설치한다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>apt-get update</li>
+                    <li>apt-get install nginx</li>
+                    <li>apt-get install software-properties-common</li>
+                    <li>add-apt-repository ppa:certbot/certbot</li>
+                    <li>apt-get update</li>
+                  </ul>
+                  <h2 data-ke-size="size26">2. 파이썬 설치</h2>
+                  <p data-ke-size="size16">
+                    certbot용 파이썬을 설치해야하는데 처음 설치하는 것이라면
+                    보통 위의 명령어로 설치가 될 것이다. 만약 파이썬 3.0이
+                    설치되어 있다면 아래 명령어로 실행해야 한다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>apt-get install python-certbot-nginx</li>
+                    <li>apt-get install python-certbot3-nginx</li>
+                  </ul>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    3. webroot 방식으로 ssl pem 생성
+                  </h2>
+                  <p data-ke-size="size16">
+                    nginx를 중단하고 설치를 진행한다. 만약 서비스를 하고 있는
+                    상태라면 굳이 중지하지 않고 해도 된다. 또한 두 번째 명령어인
+                    도메인은 1개이면 하나만 있으면 하나만 해도 된다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>service nginx stop</li>
+                    <li>certbot certonly --manual -d "도메인1" -d "도메인2"</li>
+                  </ul>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/ssl설정.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    이메일을 적어주고, 동의를 하고, Y를 선택하여 계속 뒤로
+                    넘어가 줍니다. 딱히 설정할 건 없고 이메일은 도메인이 만료될
+                    시점에 알람이 오는 것인데 알람을 받길 원하지 않으면 무시해도
+                    좋습니다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/ssl설정2.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    이 부분이 조금 애매한데 마지막 줄에 나온 주소로 파일을
+                    생성하고 위의 값으로 입력한 후 저장을 해야 합니다. 아래의
+                    값은 위의 이미지에 대한 예시이며 본인의 값으로 대체해서
+                    입력하셔야 합니다.
+                  </p>
+                  <p data-ke-size="size16">[파일 생성]</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      vi&nbsp;http://도메인/.well-known/acme-challenge/Dg-UBaJecX95GuKtlw3kTI8arOBOWsKoUd10phFFHw4
+                    </li>
+                  </ul>
+                  <p data-ke-size="size16">[값 입력]</p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      Dg-UBaJecX95GuKtlw3kTI8arOBOWsKoUd10phFFHw4.3y51YK92RVl3xdHSpxCr9LNOKuwzPoldc7XQbqImMmM
+                    </li>
+                  </ul>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/스크린샷 2021-10-18 오후 1.05.11.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    완료가 되면 위의 이미지처럼 결과화면이 나오는 것을 확인할 수
+                    있습니다.
+                  </p>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/ssl설정3.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    완료가 되면 위의 폴더처럼 비밀키 파일이 생성된 것을 확인할
+                    수 있습니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>cd /etc/letsencrypt/live/도메인</li>
+                  </ul>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block; text-align: center"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="5190265931"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">4. nginx 설정(react용)</h2>
+                  <p data-ke-size="size16">
+                    80번 포트는 443으로 리다이렉트를 해주고 443 포트에는 ssl
+                    설정을 적용시켜줘야 합니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>vi /etc/nginx/sites-available/default</li>
+                  </ul>
+                  <pre
+                    id="code_1634523085561"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>server {
+        listen 80;
+        listen [::]:80;
+
+        server_name 도메인;
+
+        location / {
+                return 301 https://$host$request_uri;
+        }
+}
+
+server {
+        listen 443;
+        listen [::]:443;
+        server_name 도메인;
+
+        ssl     on;
+        ssl_certificate /etc/letsencrypt/live/도메인/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/도메인/privkey.pem;
+
+        location / {
+        		root /opt;
+                index   index.html;
+                try_files $uri $uri/ /index.html;
+        }
+        location /api { // api 경로 proxy pass 처리
+                proxy_pass http://localhost:3001;
+        }
+}</code></pre>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7426365365"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <h2 data-ke-size="size26">
+                    5. 도메인 자동갱신 설정(crontab)
+                  </h2>
+                  <p data-ke-size="size16">
+                    마지막으로 도메인을 자동으로 갱신해줘야 합니다. 무료 ssl은
+                    기한이 3개월이라서 계속 업데이트해줘야 하는데 신경 쓰기
+                    귀찮으니까 crontab으로 등록을 해줍니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>crontab -e</li>
+                    <li>
+                      1&nbsp;1&nbsp;1&nbsp;*&nbsp;*&nbsp;certbot&nbsp;renew&nbsp;--quiet&nbsp;--renew-hook&nbsp;"service&nbsp;nginx&nbsp;restart"
+                    </li>
+                  </ul>
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/ssl설정4.png" />
+                      </span>
+                      <figcaption></figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    이상으로 도메인 ssl 무료로 적용하는 방법에 대해서
+                    알아보았습니다. 글이 유익하셨다면 좋아요 한 번 부탁드립니다.
+                    이외에도 다른 유용한 글들을 한 번씩 봐보시길 바랍니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    <a href="https://realmojo.tistory.com/404" rel="noopener"
+                      >[IT 활용법/인터넷] - 유튜브 영상 다운로드 가장 확실한
+                      방법(고화질 무료)</a
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <a href="https://realmojo.tistory.com/408" rel="noopener"
+                      >[IT 활용법/인터넷] - 오피스 2019 정품인증 사용하는
+                      방법(최신)</a
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <a href="https://realmojo.tistory.com/403" rel="noopener"
+                      >[IT 활용법/인터넷] - MS 오피스 2019 다운로드 무료 설치
+                      방법 총정리</a
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <a href="https://realmojo.tistory.com/397" rel="noopener"
+                      >[Web 프로그래밍/Javascript] - React Native Expo 2달 사용
+                      후기 및 설치 및 배포 방법</a
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    <a href="https://realmojo.tistory.com/393" rel="noopener"
+                      >[IT 활용법/인터넷] - 저작권 걱정없는 무료폰트 추천
+                      100가지 선</a
+                    >
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>
+      엑셀 소수점 버림 완벽 가이드 INT ROUNDDOWN TRUNC 함수 활용법 정수 변환
+      실무 팁
+    </title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">
+                      엑셀 소수점 버림 완벽 가이드 INT ROUNDDOWN TRUNC 함수
+                      활용법 정수 변환 실무 팁
+                    </h2>
+                    <div class="box-info">
+                      <p class="category">IT정보</p>
+                      <p class="date">2025-06-25 04:10:39</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p>
+                    <figure class="imageblock alignCenter">
+                      <span data-lightbox="lightbox">
+                        <img src="./img/img.png" />
+                      </span>
+                      <figcaption>
+                        엑셀 소수점 버림 완벽 가이드 INT ROUNDDOWN TRUNC 함수
+                        활용법 정수 변환 실무 팁
+                      </figcaption>
+                    </figure>
+                  </p>
+                  <p data-ke-size="size16">
+                    엑셀에서 수치 데이터를 다룰 때 소수점 처리는 매우 중요한
+                    작업입니다. 특히 보고서 작성이나 데이터 분석 과정에서 정확한
+                    소수점 버림이 필요한 경우가 많습니다. 엑셀은 다양한 소수점
+                    처리 함수를 제공하며, 각각의 특성을 이해하고 상황에 맞게
+                    활용하는 것이 중요합니다. 이 글에서는 INT, ROUNDDOWN, TRUNC
+                    함수의 특징과 활용법을 상세하게 알아보겠습니다.
+                  </p>
+                  <h2 data-ke-size="size26">엑셀 INT 함수로 정수 변환하기</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    INT 함수는 가장 기본적인 소수점 버림 함수로, 소수점 이하를
+                    무조건 제거하고 정수만 반환합니다. 이 함수의 가장 큰 특징은
+                    음수 처리 방식에 있습니다.
+                    <a
+                      href="https://support.microsoft.com/en-us/office/int-function-a6c4af9e-356d-4369-ab6a-cb1fd9d343ef"
+                      target="_blank"
+                      rel="noopener"
+                      >마이크로소프트 공식 문서</a
+                    >에 따르면, INT 함수는 항상 작은 방향으로 내림 처리를
+                    수행합니다. 예를 들어 INT(3.7)은 3을 반환하지만, INT(-2.7)은
+                    -3을 반환합니다. 이는 음수에서 더 작은 수로 내림하기
+                    때문입니다. 양수에서는 단순히 소수점을 제거하지만,
+                    음수에서는 절댓값이 커지는 방향으로 처리되므로 주의가
+                    필요합니다. 실무에서는 주로 재고 관리나 개수 계산에서
+                    활용되며, 간단한 정수 변환이 필요한 경우에 매우 유용합니다.
+                  </p>
+                  <h2 data-ke-size="size26">
+                    ROUNDDOWN 함수의 정밀한 소수점 제어
+                  </h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    ROUNDDOWN 함수는 사용자가 원하는 소수점 자리까지 정확하게
+                    내림 처리할 수 있는 강력한 도구입니다. 이 함수의 문법은
+                    =ROUNDDOWN(숫자, 자릿수) 형태로 사용됩니다. 자릿수
+                    매개변수를 통해 소수점 몇 번째 자리까지 유지할지 결정할 수
+                    있습니다. 예를 들어 ROUNDDOWN(5.987, 2)는 5.98을 반환하고,
+                    ROUNDDOWN(5.987, 0)은 5를 반환합니다. 이 함수의 장점은
+                    유연한 자릿수 조정이 가능하다는 점입니다.
+                  </p>
+                  <ul style="list-style-type: disc" data-ke-list-type="disc">
+                    <li>
+                      ROUNDDOWN(123.456, 2) = 123.45 (소수점 둘째 자리까지 유지)
+                    </li>
+                    <li>
+                      ROUNDDOWN(123.456, 1) = 123.4 (소수점 첫째 자리까지 유지)
+                    </li>
+                    <li>ROUNDDOWN(123.456, 0) = 123 (정수로 변환)</li>
+                    <li>ROUNDDOWN(123.456, -1) = 120 (십의 자리에서 내림)</li>
+                  </ul>
+                  <h2 data-ke-size="size26">TRUNC 함수의 특별한 자르기 기능</h2>
+                  <center>
+                    <ins
+                      class="adsbygoogle"
+                      style="display: block"
+                      data-ad-client="ca-pub-1963334904140891"
+                      data-ad-slot="7459422657"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </center>
+                  <p data-ke-size="size16">
+                    TRUNC 함수는 '자르기' 개념으로 동작하는 독특한 함수입니다.
+                    <a
+                      href="https://exceljet.net/functions/trunc-function"
+                      target="_blank"
+                      rel="noopener"
+                      >Excel Jet</a
+                    >의 설명에 따르면, TRUNC는 방향성 없이 단순히 지정된
+                    자리에서 숫자를 자릅니다. 이는 INT 함수와의 가장 큰
+                    차이점입니다. TRUNC(-3.2, 0)은 -3을 반환하지만, INT(-3.2)는
+                    -4를 반환합니다. 이러한 특성 때문에 음수 데이터에서 더
+                    직관적인 결과를 원할 때 TRUNC 함수가 선호됩니다.
+                  </p>
+                  <table
+                    class="app-table"
+                    style="width: 100%"
+                    data-ke-align="alignLeft"
+                  >
+                    <tbody>
+                      <tr>
+                        <th>함수</th>
+                        <th>양수 예시</th>
+                        <th>음수 예시</th>
+                      </tr>
+                      <tr>
+                        <td>INT(4.7)</td>
+                        <td>4</td>
+                        <td>INT(-4.7) = -5</td>
+                      </tr>
+                      <tr>
+                        <td>TRUNC(4.7, 0)</td>
+                        <td>4</td>
+                        <td>TRUNC(-4.7, 0) = -4</td>
+                      </tr>
+                      <tr>
+                        <td>ROUNDDOWN(4.7, 0)</td>
+                        <td>4</td>
+                        <td>ROUNDDOWN(-4.7, 0) = -4</td>
+                      </tr>
+                      <tr>
+                        <td>사용 목적</td>
+                        <td>간단한 정수 변환</td>
+                        <td>직관적인 음수 처리</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2 data-ke-size="size26">
+                    실무에서의 소수점 버림 활용 사례
+                  </h2>
+                  <p data-ke-size="size16">
+                    재고 관리 시스템에서는 정확한 수량 계산이 필수적입니다. 예를
+                    들어 150.75개의 상품이 입고되었다면, 실제로는 150개만
+                    계산해야 합니다. 이때 INT 함수나 TRUNC 함수를 활용하면
+                    정확한 재고 수량을 산출할 수 있습니다.
+                    <a
+                      href="https://spreadsheeto.com/truncate/"
+                      target="_blank"
+                      rel="noopener"
+                      >Spreadsheeto</a
+                    >에서 제시하는 실무 사례에 따르면, 대량의 데이터 분석 시
+                    소수점 제거를 통해 일관된 데이터 형식을 유지할 수 있습니다.
+                    또한 차트나 그래프 작성 시 불필요한 정밀도를 제거하여 시각적
+                    효과를 높일 수 있습니다. 금융 분야에서는 원 단위 계산이나
+                    주식 수량 계산에서도 이러한 함수들이 광범위하게 활용됩니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    급여 계산이나 세금 계산에서도 소수점 버림은 중요한 역할을
+                    합니다. 특히 시간당 임금 계산 시 소수점 이하는 버리고 정수
+                    시간만 계산하는 경우가 많습니다. 이때 적절한 소수점 처리
+                    함수를 선택하면 정확하고 일관된 결과를 얻을 수 있습니다.
+                  </p>
+                  <h2 data-ke-size="size26">함수별 선택 기준과 최적화 팁</h2>
+                  <p data-ke-size="size16">
+                    각 함수의 선택 기준은 데이터의 성격과 처리 목적에 따라
+                    달라집니다. 단순히 정수만 필요한 경우라면 INT 함수가 가장
+                    간단합니다. 하지만 음수 처리가 중요한 경우라면 TRUNC 함수를
+                    사용하는 것이 좋습니다.
+                    <a
+                      href="https://www.lifewire.com/excel-trunc-function-remove-decimals-3123987"
+                      target="_blank"
+                      rel="noopener"
+                      >Lifewire</a
+                    >의 전문가 의견에 따르면, 정밀한 소수점 자리 조정이 필요한
+                    경우에는 ROUNDDOWN 함수가 최적의 선택입니다. 대용량 데이터
+                    처리 시에는 함수의 처리 속도도 고려해야 하는데, 일반적으로
+                    INT 함수가 가장 빠르고, TRUNC와 ROUNDDOWN 함수는 비슷한
+                    성능을 보입니다.
+                  </p>
+                  <p data-ke-size="size16">
+                    실무에서는 여러 함수를 조합하여 사용하는 경우도 많습니다.
+                    예를 들어 SUM(TRUNC(A1:A10))과 같이 TRUNC 함수와 SUM 함수를
+                    결합하면 범위 내 모든 값을 정수로 변환한 후 합계를 구할 수
+                    있습니다. 이러한 조합 활용법을 익히면 더욱 효율적인 데이터
+                    처리가 가능합니다. 또한 조건부 서식과 함께 사용하면 특정
+                    조건을 만족하는 데이터만 소수점 처리를 할 수도 있어 매우
+                    유용합니다.
+                  </p>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

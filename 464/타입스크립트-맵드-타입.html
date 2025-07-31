@@ -1,0 +1,120 @@
+<meta charset="utf-8" />
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>타입스크립트 맵드 타입</title>
+  </head>
+  <body id="tt-body-page" class="">
+    <div id="wrap" class="wrap-right">
+      <div id="container">
+        <main class="main">
+          <div class="area-main">
+            <div class="area-view">
+              <div class="article-header">
+                <div class="inner-article-header">
+                  <div class="box-meta">
+                    <h2 class="title-article">타입스크립트 맵드 타입</h2>
+                    <div class="box-info">
+                      <p class="category">Web 프로그래밍/Typescript</p>
+                      <p class="date">2022-03-27 20:01:53</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="article-view">
+                <div class="contents_style">
+                  <p data-ke-size="size16">
+                    타입스크립트 맵드타입을 알아보겠습니다. 맵드타입이란 기존에
+                    정의가 되어 있는 타입을 새로운 타입으로 변환해 주는 것을
+                    의미 합니다. 자바스크립트의 map 이라는 함수를 이용하는 것과
+                    비슷합니다.
+                  </p>
+                  <pre
+                    id="code_1648378774100"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>const a = [1, 2, 3];
+const b = a.map(item =&gt; item * 2);
+
+console.log(b); // [2, 4, 6]</code></pre>
+                  <p data-ke-size="size16">
+                    <a
+                      href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                      >https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map</a
+                    >
+                  </p>
+                  <p data-ke-size="size16">
+                    자바스크립트의 맵은 오브젝트, 배열 등의 객체를 순회하면서
+                    새로운 객체로 반환하는 함수 입니다.
+                  </p>
+                  <figure
+                    id="og_1648378782641"
+                    contenteditable="false"
+                    data-ke-type="opengraph"
+                    data-ke-align="alignCenter"
+                    data-og-type="website"
+                    data-og-title="Array.prototype.map() - JavaScript | MDN"
+                    data-og-description="map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다."
+                    data-og-host="developer.mozilla.org"
+                    data-og-source-url="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                    data-og-url="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                    data-og-image="https://scrap.kakaocdn.net/dn/qqJEj/hyNPKuDMHB/8aGvBMKFGNDGrWlLupMOFK/img.png?width=1920&amp;height=1080&amp;face=0_0_1920_1080"
+                  >
+                    <a
+                      href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                      target="_blank"
+                      rel="noopener"
+                      data-source-url="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                    >
+                      <div
+                        class="og-image"
+                        style="
+                          background-image: url('https://scrap.kakaocdn.net/dn/qqJEj/hyNPKuDMHB/8aGvBMKFGNDGrWlLupMOFK/img.png?width=1920&amp;height=1080&amp;face=0_0_1920_1080');
+                        "
+                      >
+                        &nbsp;
+                      </div>
+                      <div class="og-text">
+                        <p class="og-title" data-ke-size="size16">
+                          Array.prototype.map() - JavaScript | MDN
+                        </p>
+                        <p class="og-desc" data-ke-size="size16">
+                          map() 메서드는 배열 내의 모든 요소 각각에 대하여
+                          주어진 함수를 호출한 결과를 모아 새로운 배열을
+                          반환합니다.
+                        </p>
+                        <p class="og-host" data-ke-size="size16">
+                          developer.mozilla.org
+                        </p>
+                      </div>
+                    </a>
+                  </figure>
+                  <h2 data-ke-size="size26">맵드타입 기본 예제</h2>
+                  <pre
+                    id="code_1648378857498"
+                    class="html xml"
+                    data-ke-language="html"
+                    data-ke-type="codeblock"
+                  ><code>type Food = "kimchi" | "kimbab" | "lamen";
+type FoodColor = {
+  [K in Food]: string;
+};
+
+const obj: FoodColor = {
+  kimchi: "red",
+  kimbab: "black",
+  lamen: "orange",
+};</code></pre>
+                </div>
+                <br />
+                <div class="tags"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
